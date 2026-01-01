@@ -2085,79 +2085,91 @@ sequenceDiagram
 ### 13.4 System Context (External Integrations)
 
 ```mermaid
-flowchart LR
-    %% ===== Users =====
-    subgraph U[Users]
-        B[Buyer/Renter]
-        S[Seller/Owner]
-        AG[Realtor/Agent<br/>(URA badge optional)]
-        L[Legal Agent / Law Firm]
-        FI[Financial Agent / Financial Institute]
-        SP[Service Provider]
-        SU[Social User]
-        ADM[Admin/Verifier/Moderator]
+graph TB
+    subgraph Users["👥 Platform Users"]
+        Buyer[Buyer/Renter]
+        Seller[Seller/Owner]
+        Agent[Real Estate Agent]
+        Legal[Legal Agent]
+        Financial[Financial Agent]
+        Service[Service Provider]
+        Social[Social User]
+        Admin[Admin/Moderator]
     end
-
-    %% ===== Clients =====
-    subgraph C[Clients]
-        WEB[Web App]
-        MOB[iOS/Android App]
+    
+    subgraph Clients["📱 Client Applications"]
+        Web[Web Application]
+        iOS[iOS App]
+        Android[Android App]
     end
-
-    %% ===== Core Platform =====
-    subgraph P[MSC Home Platform]
-        API[Backend API]
-        RT[Realtime Gateway<br/>(chat, presence)]
-        DB[(Primary DB)]
-        OBJ[(Media/Object Storage + CDN)]
-        NOTIF[Notification Service]
+    
+    subgraph Platform["🏢 MSC Home Platform"]
+        API[API Gateway]
+        Auth[Auth Service]
+        Listing[Listing Service]
+        Transaction[Transaction Service]
+        Payment[Payment Service]
+        Chat[Chat Service]
+        DB[(Database)]
+        Cache[(Redis Cache)]
+        Storage[(Media Storage)]
     end
-
-    %% ===== External Services =====
-    subgraph X[External Services]
-        OAUTH[OAuth Providers<br/>(Google P0, LinkedIn P1, X/Twitter P1)]
-        OTP[OTP Provider<br/>(SMS/Email)]
-        MAPS[Maps Provider]
-        KYC[e-KYC Provider (Optional)]
-        PAY[Payment Gateway]
-        RTC[Audio/Video SDK (Optional)]
-        GOV[Govt Land Portals<br/>(link-out + evidence)]
-        ISS[Credential Issuers<br/>(Financial/Non-financial)]
+    
+    subgraph External["🔌 External Services"]
+        OAuth[OAuth Providers]
+        SMS[SMS/Email Provider]
+        Maps[Maps API]
+        eKYC[eKYC Service]
+        Gateway[Payment Gateway]
+        Video[Video SDK]
+        Gov[Government Portals]
+        Credential[Credential Issuers]
     end
-
-    %% user -> clients
-    B --> WEB
-    B --> MOB
-    S --> WEB
-    S --> MOB
-    AG --> WEB
-    AG --> MOB
-    L --> WEB
-    FI --> WEB
-    SP --> WEB
-    SU --> WEB
-    ADM --> WEB
-
-    %% clients -> platform
-    WEB <--> API
-    MOB <--> API
-    WEB <--> RT
-    MOB <--> RT
-
-    API <--> DB
-    API <--> OBJ
-    API --> NOTIF
-    RT --> NOTIF
-
-    %% platform -> external
-    API --> OAUTH
-    API --> OTP
-    API --> MAPS
-    API --> KYC
-    API --> PAY
-    API --> RTC
-    API --> GOV
-    API --> ISS
+    
+    Buyer --> Web
+    Buyer --> iOS
+    Buyer --> Android
+    Seller --> Web
+    Seller --> iOS
+    Seller --> Android
+    Agent --> Web
+    Agent --> iOS
+    Agent --> Android
+    Legal --> Web
+    Financial --> Web
+    Service --> Web
+    Social --> Web
+    Admin --> Web
+    
+    Web --> API
+    iOS --> API
+    Android --> API
+    
+    API --> Auth
+    API --> Listing
+    API --> Transaction
+    API --> Payment
+    API --> Chat
+    
+    Auth --> DB
+    Listing --> DB
+    Transaction --> DB
+    Payment --> DB
+    Chat --> DB
+    
+    Auth --> Cache
+    Listing --> Cache
+    
+    Listing --> Storage
+    
+    Auth --> OAuth
+    Auth --> SMS
+    Listing --> Maps
+    Auth --> eKYC
+    Payment --> Gateway
+    Chat --> Video
+    Transaction --> Gov
+    Auth --> Credential
 ```
 
 
@@ -2282,74 +2294,69 @@ sequenceDiagram
 ### 13.10 Use Case Diagram - Core Platform Features
 
 ```mermaid
-graph TB
-    subgraph "MSC Home Platform"
-        subgraph "User Management"
-            UC1[Register & Login]
-            UC2[Switch Professional Mode]
-            UC3[Submit Verification]
-            UC4[Manage Profile]
-        end
-        
-        subgraph "Marketplace"
-            UC5[Create Listing]
-            UC6[Search Properties]
-            UC7[View Listing Details]
-            UC8[Save Favorites]
-            UC9[Request Document Access]
-        end
-        
-        subgraph "Communication"
-            UC10[Chat with Parties]
-            UC11[Book Appointment]
-            UC12[Audio/Video Call]
-        end
-        
-        subgraph "Transactions"
-            UC13[Submit Offer]
-            UC14[Negotiate Terms]
-            UC15[Track Transaction Steps]
-            UC16[Upload Step Proofs]
-            UC17[Make Payment]
-        end
-        
-        subgraph "Support Services"
-            UC18[Find Legal Agent]
-            UC19[Book Legal Service]
-            UC20[Find Financial Agent]
-            UC21[Request Loan Assistance]
-        end
-        
-        subgraph "Reviews & Ratings"
-            UC22[Submit Review]
-            UC23[Respond to Review]
-        end
-        
-        subgraph "Admin & Moderation"
-            UC24[Approve Verification]
-            UC25[Moderate Listings]
-            UC26[Resolve Disputes]
-            UC27[Manage Users]
-        end
+graph LR
+    Buyer([👤 Buyer])
+    Seller([👤 Seller])
+    Agent([👤 Agent])
+    Legal([⚖️ Legal Agent])
+    Financial([💰 Financial Agent])
+    Admin([👨‍💼 Admin])
+    
+    subgraph Authentication["🔐 Authentication"]
+        UC1[Register & Login]
+        UC2[Switch Professional Mode]
+        UC3[Submit Verification]
+        UC4[Manage Profile]
     end
     
-    Buyer([Buyer])
-    Seller([Seller])
-    Agent([Real Estate Agent])
-    Legal([Legal Agent])
-    Financial([Financial Agent])
-    Admin([Admin/Verifier])
+    subgraph Marketplace["🏘️ Marketplace"]
+        UC5[Create Listing]
+        UC6[Search Properties]
+        UC7[View Listing Details]
+        UC8[Save Favorites]
+        UC9[Request Document Access]
+    end
+    
+    subgraph Communication["💬 Communication"]
+        UC10[Chat with Parties]
+        UC11[Book Appointment]
+        UC12[Audio/Video Call]
+    end
+    
+    subgraph Transactions["💳 Transactions"]
+        UC13[Submit Offer]
+        UC14[Negotiate Terms]
+        UC15[Track Transaction Steps]
+        UC16[Upload Step Proofs]
+        UC17[Make Payment]
+    end
+    
+    subgraph Support["🤝 Support Services"]
+        UC18[Find Legal Agent]
+        UC19[Book Legal Service]
+        UC20[Find Financial Agent]
+        UC21[Request Loan Assistance]
+    end
+    
+    subgraph Reviews["⭐ Reviews"]
+        UC22[Submit Review]
+        UC23[Respond to Review]
+    end
+    
+    subgraph Administration["⚙️ Administration"]
+        UC24[Approve Verification]
+        UC25[Moderate Listings]
+        UC26[Resolve Disputes]
+        UC27[Manage Users]
+    end
     
     Buyer --> UC1
     Buyer --> UC6
     Buyer --> UC7
     Buyer --> UC8
-    Buyer --> UC9
     Buyer --> UC10
     Buyer --> UC11
     Buyer --> UC13
-    Buyer --> UC14
-    Buyer --> UC15
     Buyer --> UC17
     Buyer --> UC18
     Buyer --> UC20
@@ -2358,34 +2365,33 @@ graph TB
     Seller --> UC1
     Seller --> UC2
     Seller --> UC3
-    Seller --> UC4
     Seller --> UC5
     Seller --> UC10
     Seller --> UC14
-    Seller --> UC15
     Seller --> UC23
     
-    Agent --> UC1
     Agent --> UC2
     Agent --> UC3
     Agent --> UC5
     Agent --> UC10
     Agent --> UC11
     Agent --> UC14
-    Agent --> UC23
     
-    Legal --> UC1
     Legal --> UC2
     Legal --> UC3
     Legal --> UC18
     Legal --> UC19
     
-    Financial --> UC1
     Financial --> UC2
     Financial --> UC3
     Financial --> UC20
     Financial --> UC21
     
+    Admin --> UC24
+    Admin --> UC25
+    Admin --> UC26
+    Admin --> UC27
+```
     Admin --> UC24
     Admin --> UC25
     Admin --> UC26
@@ -2398,47 +2404,47 @@ graph TB
 
 ```mermaid
 graph TB
-    subgraph "Client Layer"
-        WEB[Web Application<br/>React/Next.js]
-        ANDROID[Android App<br/>Kotlin/Java]
-        IOS[iOS App<br/>Swift]
+    subgraph Client["📱 Client Layer"]
+        WEB[Web Application]
+        ANDROID[Android App]
+        IOS[iOS App]
     end
     
-    subgraph "API Gateway Layer"
-        APIGW[API Gateway<br/>Load Balancer + Rate Limiting]
+    subgraph Gateway["🚪 API Gateway Layer"]
+        APIGW[API Gateway & Load Balancer]
     end
     
-    subgraph "Application Layer"
-        AUTH[Authentication Service<br/>JWT + OAuth + OTP]
-        USER[User Service<br/>Profiles + Verification]
-        LISTING[Listing Service<br/>CRUD + Search]
-        COMM[Communication Service<br/>Chat + Appointments]
-        TRANS[Transaction Service<br/>Offers + Steps]
-        PAY[Payment Service<br/>Gateway Integration]
-        DOC[Document Vault Service<br/>Access Control]
-        NOTIF[Notification Service<br/>Email/SMS/Push]
-        ADMIN[Admin Service<br/>Moderation + Analytics]
+    subgraph Services["⚙️ Application Services"]
+        AUTH[Authentication Service]
+        USER[User Service]
+        LISTING[Listing Service]
+        COMM[Communication Service]
+        TRANS[Transaction Service]
+        PAY[Payment Service]
+        DOC[Document Vault]
+        NOTIF[Notification Service]
+        ADMIN[Admin Service]
     end
     
-    subgraph "Data Layer"
-        DB[(Primary Database<br/>PostgreSQL)]
-        CACHE[(Cache<br/>Redis)]
-        SEARCH[(Search Engine<br/>Elasticsearch)]
-        QUEUE[(Message Queue<br/>RabbitMQ/Kafka)]
+    subgraph Data["💾 Data Layer"]
+        DB[(PostgreSQL)]
+        CACHE[(Redis)]
+        SEARCH[(Elasticsearch)]
+        QUEUE[(Message Queue)]
     end
     
-    subgraph "Storage Layer"
-        S3[(Object Storage<br/>AWS S3 / MinIO)]
-        CDN[CDN<br/>CloudFront / Cloudflare]
+    subgraph Storage["📦 Storage Layer"]
+        S3[(Object Storage)]
+        CDN[CDN]
     end
     
-    subgraph "External Services"
-        SMS[SMS Provider<br/>Twilio / local]
-        EMAIL[Email Service<br/>SendGrid / SES]
-        MAPS[Maps API<br/>Google Maps]
-        EKYC[eKYC Provider<br/>Porichoy / NADRA]
-        GATEWAY[Payment Gateways<br/>bKash/Nagad/SSLCommerz]
-        VIDEO[Video SDK<br/>Agora/Twilio]
+    subgraph External["🌐 External Services"]
+        SMS[SMS Provider]
+        EMAIL[Email Service]
+        MAPS[Maps API]
+        EKYC[eKYC Provider]
+        GATEWAY[Payment Gateways]
+        VIDEO[Video SDK]
     end
     
     WEB --> APIGW
@@ -2487,41 +2493,41 @@ graph TB
 ### 13.12 Data Flow Diagram - Property Search & Transaction
 
 ```mermaid
-graph LR
-    A[User Initiates Search] --> B[Search Service]
+flowchart TD
+    A[🔍 User Initiates Search] --> B[Search Service]
     B --> C{Cache Hit?}
-    C -->|Yes| D[Return Cached Results]
+    C -->|Yes| D[✅ Return Cached Results]
     C -->|No| E[Query Elasticsearch]
-    E --> F[Apply Filters<br/>Location, Price, Type]
-    F --> G[Rank Results<br/>by Accuracy Score]
-    G --> H[Fetch Listing Details<br/>from Database]
-    H --> I[Load Media URLs<br/>from CDN]
-    I --> J[Apply Access Control<br/>Check Verified Status]
-    J --> K[Return Results to User]
+    E --> F[Apply Filters]
+    F --> G[Rank by Accuracy Score]
+    G --> H[Fetch from Database]
+    H --> I[Load Media from CDN]
+    I --> J[Apply Access Control]
+    J --> K[📋 Return Results]
     K --> L[Cache Results]
     
-    K --> M[User Views Listing]
+    K --> M[👁️ User Views Listing]
     M --> N[Load Full Details]
     N --> O{Document Access?}
-    O -->|Granted| P[Show Documents]
-    O -->|Not Granted| Q[Show Request Button]
+    O -->|Granted| P[📄 Show Documents]
+    O -->|Not Granted| Q[🔒 Show Request Button]
     
-    M --> R[User Submits Offer]
+    M --> R[💰 User Submits Offer]
     R --> S[Validate Offer]
     S --> T[Create Offer Record]
-    T --> U[Notify Seller/Agent]
+    T --> U[📧 Notify Seller/Agent]
     U --> V{Seller Action}
-    V -->|Accept| W[Create Transaction]
-    V -->|Counter| X[Update Offer]
-    V -->|Reject| Y[Close Offer]
+    V -->|Accept| W[✅ Create Transaction]
+    V -->|Counter| X[🔄 Update Offer]
+    V -->|Reject| Y[❌ Close Offer]
     
-    W --> Z[Initialize Transaction Timeline]
+    W --> Z[Initialize Timeline]
     Z --> AA[Track Steps]
     AA --> AB[Upload Proofs]
     AB --> AC[Admin Verification]
-    AC --> AD[Payment Processing]
-    AD --> AE[Complete Transaction]
-    AE --> AF[Enable Reviews]
+    AC --> AD[💳 Payment Processing]
+    AD --> AE[✅ Complete Transaction]
+    AE --> AF[⭐ Enable Reviews]
 ```
 
 ---
@@ -2589,81 +2595,78 @@ sequenceDiagram
 
 ```mermaid
 graph TB
-    subgraph "User Devices"
+    subgraph Users["👥 User Devices"]
         BROWSER[Web Browsers]
-        MOBILE[Mobile Apps<br/>Android & iOS]
+        MOBILE[Mobile Apps]
     end
     
-    subgraph "CDN & Edge"
-        CF[Cloudflare CDN<br/>Static Assets + Images]
+    subgraph Edge["🌐 CDN & Edge"]
+        CF[Cloudflare CDN]
         WAF[Web Application Firewall]
     end
     
-    subgraph "Load Balancer & Ingress"
-        LB[Load Balancer<br/>NGINX / ALB]
+    subgraph LB["⚖️ Load Balancer"]
+        NGINX[NGINX Load Balancer]
         SSL[SSL/TLS Termination]
     end
     
-    subgraph "Kubernetes Cluster (Application Pods)"
-        subgraph "Frontend"
+    subgraph K8s["☸️ Kubernetes Cluster"]
+        subgraph Frontend["Frontend Pods"]
             WEB1[Web App Pod 1]
             WEB2[Web App Pod 2]
         end
         
-        subgraph "API Services"
-            API1[API Gateway Pod 1]
-            API2[API Gateway Pod 2]
-            AUTH1[Auth Service Pod]
-            USER1[User Service Pod]
-            LIST1[Listing Service Pod]
-            COMM1[Communication Service Pod]
-            TRANS1[Transaction Service Pod]
-            PAY1[Payment Service Pod]
+        subgraph API["API Services Pods"]
+            API1[API Gateway 1]
+            API2[API Gateway 2]
+            AUTH1[Auth Service]
+            USER1[User Service]
+            LIST1[Listing Service]
+            PAY1[Payment Service]
         end
         
-        subgraph "Background Workers"
+        subgraph Workers["Background Workers"]
             WORKER1[Notification Worker]
-            WORKER2[Payment Reconciliation Worker]
-            WORKER3[Search Indexer Worker]
+            WORKER2[Payment Worker]
+            WORKER3[Search Indexer]
         end
     end
     
-    subgraph "Database Cluster"
-        DBPRIMARY[(Primary DB<br/>PostgreSQL)]
+    subgraph DB["💾 Database Cluster"]
+        DBPRIMARY[(Primary PostgreSQL)]
         DBREPLICA1[(Read Replica 1)]
         DBREPLICA2[(Read Replica 2)]
     end
     
-    subgraph "Cache & Queue"
-        REDIS[(Redis Cluster<br/>Session + Cache)]
-        RABBIT[RabbitMQ Cluster<br/>Message Queue]
+    subgraph Cache["⚡ Cache & Queue"]
+        REDIS[(Redis Cluster)]
+        RABBIT[RabbitMQ]
     end
     
-    subgraph "Search & Analytics"
-        ELASTIC[(Elasticsearch Cluster<br/>Property Search)]
+    subgraph Search["🔍 Search"]
+        ELASTIC[(Elasticsearch)]
     end
     
-    subgraph "Object Storage"
-        S3[(S3 / MinIO<br/>Documents + Media)]
+    subgraph Storage["📦 Object Storage"]
+        S3[(S3 / MinIO)]
     end
     
-    subgraph "External Services"
+    subgraph Ext["🔌 External Services"]
         PAYMENT[Payment Gateways]
         SMS[SMS Gateway]
         EMAIL[Email Service]
-        MONITORING[Monitoring<br/>DataDog / Prometheus]
     end
     
-    subgraph "Backup & DR"
-        BACKUP[(Automated Backups<br/>Daily + Weekly)]
-        DR[(DR Site<br/>Hot Standby)]
+    subgraph Backup["💿 Backup & DR"]
+        BACKUPS[(Automated Backups)]
+        DR[(DR Site)]
     end
     
     BROWSER --> CF
     MOBILE --> CF
     CF --> WAF
-    WAF --> LB
-    LB --> SSL
+    WAF --> NGINX
+    NGINX --> SSL
     SSL --> WEB1
     SSL --> WEB2
     WEB1 --> API1
@@ -2673,17 +2676,12 @@ graph TB
     API2 --> AUTH1
     API1 --> USER1
     API1 --> LIST1
-    API1 --> COMM1
-    API1 --> TRANS1
     API1 --> PAY1
     
     AUTH1 --> REDIS
     USER1 --> DBPRIMARY
     LIST1 --> DBPRIMARY
     LIST1 --> ELASTIC
-    COMM1 --> DBPRIMARY
-    COMM1 --> RABBIT
-    TRANS1 --> DBPRIMARY
     PAY1 --> DBPRIMARY
     PAY1 --> RABBIT
     
@@ -2705,12 +2703,8 @@ graph TB
     LIST1 --> S3
     CF --> S3
     
-    DBPRIMARY --> BACKUP
+    DBPRIMARY --> BACKUPS
     DBPRIMARY --> DR
-    
-    API1 --> MONITORING
-    AUTH1 --> MONITORING
-    USER1 --> MONITORING
 ```
 
 ---
