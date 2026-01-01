@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Quotation - MSC Home Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @page {
+            size: A4;
+            margin: 1.5cm;
+        }
+        
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .no-print {
+                display: none;
+            }
+            .page-break {
+                page-break-after: always;
+            }
+            .avoid-break {
+                page-break-inside: avoid;
+            }
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .a4-page {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        
+        @media screen {
+            body {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                padding: 30px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cover Page -->
+    <div class="a4-page p-12 page-break">
+        <div class="h-full flex flex-col">
+            <!-- Company Header -->
+            <div class="border-b-4 border-blue-600 pb-6 mb-8">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <div class="flex items-center mb-3">
+                            <div class="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg flex items-center justify-center mr-4">
+                                <span class="text-white text-2xl font-bold">CH</span>
+                            </div>
+                            <div>
+                                <h1 class="text-3xl font-bold text-gray-900">CodeStorm Hub</h1>
+                                <p class="text-gray-600">Professional Software Solutions</p>
+                            </div>
+                        </div>
+                        <div class="text-sm text-gray-600 space-y-1">
+                            <p>📍 Dhaka, Bangladesh</p>
+                            <p>📧 contact@codestormhub.dev</p>
+                            <p>📞 +880-1970279556</p>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <div class="bg-blue-600 text-white px-4 py-2 rounded-lg inline-block mb-2">
+                            <p class="text-xs font-semibold">QUOTATION</p>
+                        </div>
+                        <p class="text-sm text-gray-600">Date: 01 January 2026</p>
+                        <p class="text-sm text-gray-600">Valid for: 30 Days</p>
+                        <p class="text-sm font-semibold text-gray-900">QTN-MSC-RE-08L-2026</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Client Info -->
+            <div class="bg-gray-50 border-2 border-gray-200 rounded-lg p-6 mb-8">
+                <h2 class="text-lg font-bold text-gray-900 mb-4">Quotation For:</h2>
+                <div class="grid grid-cols-2 gap-4 text-sm">
+                    <div>
+                        <p class="text-gray-500 font-semibold">Client Name:</p>
+                        <p class="text-gray-900 font-medium">MSC Home Rental & Real Estate</p>
+                    </div>
+                    <div>
+                        <p class="text-gray-500 font-semibold">Location:</p>
+                        <p class="text-gray-900">Dhaka, Bangladesh</p>
+                    </div>
+                    <div>
+                        <p class="text-gray-500 font-semibold">Contact Person:</p>
+                        <p class="text-gray-900">_______________________</p>
+                    </div>
+                    <div>
+                        <p class="text-gray-500 font-semibold">Email:</p>
+                        <p class="text-gray-900">_______________________</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project Title -->
+            <div class="flex-grow flex flex-col justify-center text-center mb-8">
+                <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-8 rounded-xl shadow-lg">
+                    <h2 class="text-3xl font-bold mb-3">Software Development Quotation</h2>
+                    <h3 class="text-2xl font-semibold mb-4">MSC Home Rental & Real Estate Platform</h3>
+                    <p class="text-lg opacity-90">Web Application + Android & iOS Mobile Applications</p>
+                </div>
+            </div>
+            
+            <!-- Price Highlight -->
+            <div class="bg-gradient-to-r from-green-500 to-green-600 text-white rounded-xl p-6 text-center">
+                <p class="text-sm font-semibold mb-2">TOTAL PROJECT COST</p>
+                <p class="text-5xl font-bold mb-2">৳ 8,00,000</p>
+                <p class="text-lg">Eight Lakh Bangladeshi Taka Only</p>
+                <div class="mt-4 text-sm opacity-90">
+                    <p>Development: ৳ 7,30,000 | AMC (12 Months): ৳ 70,000</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project Summary -->
+    <div class="a4-page p-12 page-break">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b-4 border-blue-600 pb-2">Project Summary</h2>
+        
+        <div class="mb-8 avoid-break">
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">Objectives</h3>
+            <div class="bg-blue-50 border-l-4 border-blue-600 p-4 rounded-r-lg">
+                <p class="text-gray-700 mb-3">
+                    The MSC Home Rental & Real Estate Platform is a <span class="font-semibold">multi-platform digital solution</span> 
+                    aimed at enabling secure, verified, and transparent property buying, selling, and renting.
+                </p>
+                <ul class="space-y-2 text-gray-700">
+                    <li class="flex items-start">
+                        <span class="text-blue-600 mr-2">✓</span>
+                        <span>Digitize real estate listing and transactions</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-blue-600 mr-2">✓</span>
+                        <span>Enable verified buyers, sellers, and agents</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-blue-600 mr-2">✓</span>
+                        <span>Provide centralized backend and API-driven access</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-blue-600 mr-2">✓</span>
+                        <span>Support Web, Android, and iOS platforms</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-blue-600 mr-2">✓</span>
+                        <span>Ensure system reliability through post-launch maintenance</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="mb-8 avoid-break">
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">Architecture</h3>
+            <div class="bg-gray-100 rounded-lg p-6 text-center">
+                <div class="flex items-center justify-center space-x-4">
+                    <div class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold">Backend</div>
+                    <div class="text-2xl text-gray-400">→</div>
+                    <div class="bg-green-600 text-white px-6 py-3 rounded-lg font-semibold">API</div>
+                    <div class="text-2xl text-gray-400">→</div>
+                    <div class="bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold">Frontend</div>
+                </div>
+                <p class="text-sm text-gray-600 mt-4">Scalable, Secure, and Maintainable Architecture</p>
+            </div>
+        </div>
+        
+        <div class="grid grid-cols-2 gap-6 avoid-break">
+            <div>
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">✅ Included</h3>
+                <ul class="space-y-2 text-sm text-gray-700">
+                    <li>✓ Backend system development</li>
+                    <li>✓ REST API development</li>
+                    <li>✓ Web application development</li>
+                    <li>✓ Android & iOS mobile apps</li>
+                    <li>✓ UI/UX design</li>
+                    <li>✓ Testing & deployment</li>
+                    <li>✓ Documentation</li>
+                    <li>✓ Annual Maintenance (12 months)</li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">❌ Excluded</h3>
+                <ul class="space-y-2 text-sm text-gray-700">
+                    <li>✗ Hosting & cloud infrastructure</li>
+                    <li>✗ Third-party API/service fees</li>
+                    <li>✗ App Store registration fees</li>
+                    <li>✗ Domain & SSL certificates</li>
+                    <li>✗ SMS/Email gateway charges</li>
+                    <li>✗ Payment gateway fees</li>
+                    <li>✗ Content writing & photography</li>
+                    <li>✗ New features beyond scope</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cost Breakdown -->
+    <div class="a4-page p-12 page-break">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b-4 border-blue-600 pb-2">Cost Distribution & Timeline</h2>
+        
+        <table class="w-full border-collapse mb-8 avoid-break">
+            <thead>
+                <tr class="bg-gradient-to-r from-blue-600 to-blue-700 text-white">
+                    <th class="border border-blue-500 px-4 py-3 text-left">Phase</th>
+                    <th class="border border-blue-500 px-4 py-3 text-left">Purpose</th>
+                    <th class="border border-blue-500 px-4 py-3 text-center">Timeline</th>
+                    <th class="border border-blue-500 px-4 py-3 text-right">Cost (BDT)</th>
+                </tr>
+            </thead>
+            <tbody class="text-sm">
+                <tr>
+                    <td class="border border-gray-300 px-4 py-3 font-semibold">Step 1</td>
+                    <td class="border border-gray-300 px-4 py-3">
+                        <p class="font-semibold">Requirements & UI/UX Design</p>
+                        <p class="text-xs text-gray-600">Define system flow and user experience</p>
+                    </td>
+                    <td class="border border-gray-300 px-4 py-3 text-center">3 Weeks</td>
+                    <td class="border border-gray-300 px-4 py-3 text-right font-semibold">70,000</td>
+                </tr>
+                <tr class="bg-gray-50">
+                    <td class="border border-gray-300 px-4 py-3 font-semibold">Step 2</td>
+                    <td class="border border-gray-300 px-4 py-3">
+                        <p class="font-semibold">Backend Development</p>
+                        <p class="text-xs text-gray-600">Core business logic, roles, verification</p>
+                    </td>
+                    <td class="border border-gray-300 px-4 py-3 text-center">7 Weeks</td>
+                    <td class="border border-gray-300 px-4 py-3 text-right font-semibold">2,10,000</td>
+                </tr>
+                <tr>
+                    <td class="border border-gray-300 px-4 py-3 font-semibold">Step 3</td>
+                    <td class="border border-gray-300 px-4 py-3">
+                        <p class="font-semibold">API Development</p>
+                        <p class="text-xs text-gray-600">Secure data communication for all platforms</p>
+                    </td>
+                    <td class="border border-gray-300 px-4 py-3 text-center">4 Weeks</td>
+                    <td class="border border-gray-300 px-4 py-3 text-right font-semibold">1,00,000</td>
+                </tr>
+                <tr class="bg-gray-50">
+                    <td class="border border-gray-300 px-4 py-3 font-semibold">Step 4</td>
+                    <td class="border border-gray-300 px-4 py-3">
+                        <p class="font-semibold">Web Application</p>
+                        <p class="text-xs text-gray-600">Browser-based access for users and admins</p>
+                    </td>
+                    <td class="border border-gray-300 px-4 py-3 text-center">5 Weeks</td>
+                    <td class="border border-gray-300 px-4 py-3 text-right font-semibold">1,30,000</td>
+                </tr>
+                <tr>
+                    <td class="border border-gray-300 px-4 py-3 font-semibold">Step 5</td>
+                    <td class="border border-gray-300 px-4 py-3">
+                        <p class="font-semibold">Mobile Apps (Android & iOS)</p>
+                        <p class="text-xs text-gray-600">Mobile access for buyers, sellers & agents</p>
+                    </td>
+                    <td class="border border-gray-300 px-4 py-3 text-center">5 Weeks</td>
+                    <td class="border border-gray-300 px-4 py-3 text-right font-semibold">1,70,000</td>
+                </tr>
+                <tr class="bg-gray-50">
+                    <td class="border border-gray-300 px-4 py-3 font-semibold">Step 6</td>
+                    <td class="border border-gray-300 px-4 py-3">
+                        <p class="font-semibold">Testing & Deployment</p>
+                        <p class="text-xs text-gray-600">Quality assurance and production release</p>
+                    </td>
+                    <td class="border border-gray-300 px-4 py-3 text-center">3 Weeks</td>
+                    <td class="border border-gray-300 px-4 py-3 text-right font-semibold">50,000</td>
+                </tr>
+                <tr class="bg-blue-50">
+                    <td class="border border-blue-300 px-4 py-3 font-semibold">Step 7</td>
+                    <td class="border border-blue-300 px-4 py-3">
+                        <p class="font-semibold">Annual Maintenance (AMC)</p>
+                        <p class="text-xs text-gray-600">Bug fixes, security updates, support</p>
+                    </td>
+                    <td class="border border-blue-300 px-4 py-3 text-center">12 Months</td>
+                    <td class="border border-blue-300 px-4 py-3 text-right font-semibold">70,000</td>
+                </tr>
+                <tr class="bg-gradient-to-r from-green-500 to-green-600 text-white font-bold">
+                    <td class="border border-green-600 px-4 py-3" colspan="2">TOTAL PROJECT COST</td>
+                    <td class="border border-green-600 px-4 py-3 text-center">5-6 Months</td>
+                    <td class="border border-green-600 px-4 py-3 text-right text-xl">8,00,000</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="grid grid-cols-2 gap-6 avoid-break">
+            <div class="bg-blue-50 border-2 border-blue-300 rounded-lg p-4">
+                <h3 class="font-bold text-blue-900 mb-3">Development Cost</h3>
+                <div class="text-3xl font-bold text-blue-600">৳ 7,30,000</div>
+                <p class="text-sm text-gray-600 mt-1">Steps 1-6 (5-6 Months)</p>
+            </div>
+            <div class="bg-green-50 border-2 border-green-300 rounded-lg p-4">
+                <h3 class="font-bold text-green-900 mb-3">AMC Cost</h3>
+                <div class="text-3xl font-bold text-green-600">৳ 70,000</div>
+                <p class="text-sm text-gray-600 mt-1">12 Months Support</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Resource Allocation -->
+    <div class="a4-page p-12 page-break">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b-4 border-blue-600 pb-2">Resource Allocation</h2>
+        
+        <div class="mb-6 avoid-break">
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">Team Composition</h3>
+            <table class="w-full border-collapse text-sm">
+                <thead>
+                    <tr class="bg-blue-600 text-white">
+                        <th class="border border-blue-500 px-3 py-2 text-left">Role</th>
+                        <th class="border border-blue-500 px-3 py-2 text-center">Allocation</th>
+                        <th class="border border-blue-500 px-3 py-2 text-center">Person-Weeks</th>
+                        <th class="border border-blue-500 px-3 py-2 text-right">Hourly Rate</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="border border-gray-300 px-3 py-2">Project Manager (PM)</td>
+                        <td class="border border-gray-300 px-3 py-2 text-center">50%</td>
+                        <td class="border border-gray-300 px-3 py-2 text-center">10 weeks</td>
+                        <td class="border border-gray-300 px-3 py-2 text-right">৳ 625/hr</td>
+                    </tr>
+                    <tr class="bg-gray-50">
+                        <td class="border border-gray-300 px-3 py-2">Tech Lead / Architect</td>
+                        <td class="border border-gray-300 px-3 py-2 text-center">100%</td>
+                        <td class="border border-gray-300 px-3 py-2 text-center">20 weeks</td>
+                        <td class="border border-gray-300 px-3 py-2 text-right">৳ 750/hr</td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-300 px-3 py-2">Backend Developer (2 FTE)</td>
+                        <td class="border border-gray-300 px-3 py-2 text-center">100%</td>
+                        <td class="border border-gray-300 px-3 py-2 text-center">40 weeks</td>
+                        <td class="border border-gray-300 px-3 py-2 text-right">৳ 625/hr</td>
+                    </tr>
+                    <tr class="bg-gray-50">
+                        <td class="border border-gray-300 px-3 py-2">API Developer</td>
+                        <td class="border border-gray-300 px-3 py-2 text-center">100%</td>
+                        <td class="border border-gray-300 px-3 py-2 text-center">20 weeks</td>
+                        <td class="border border-gray-300 px-3 py-2 text-right">৳ 625/hr</td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-300 px-3 py-2">Frontend Developer (2 FTE)</td>
+                        <td class="border border-gray-300 px-3 py-2 text-center">100%</td>
+                        <td class="border border-gray-300 px-3 py-2 text-center">40 weeks</td>
+                        <td class="border border-gray-300 px-3 py-2 text-right">৳ 500/hr</td>
+                    </tr>
+                    <tr class="bg-gray-50">
+                        <td class="border border-gray-300 px-3 py-2">Mobile Developer (Android)</td>
+                        <td class="border border-gray-300 px-3 py-2 text-center">100%</td>
+                        <td class="border border-gray-300 px-3 py-2 text-center">20 weeks</td>
+                        <td class="border border-gray-300 px-3 py-2 text-right">৳ 500/hr</td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-300 px-3 py-2">Mobile Developer (iOS)</td>
+                        <td class="border border-gray-300 px-3 py-2 text-center">100%</td>
+                        <td class="border border-gray-300 px-3 py-2 text-center">20 weeks</td>
+                        <td class="border border-gray-300 px-3 py-2 text-right">৳ 500/hr</td>
+                    </tr>
+                    <tr class="bg-gray-50">
+                        <td class="border border-gray-300 px-3 py-2">UI/UX Designer</td>
+                        <td class="border border-gray-300 px-3 py-2 text-center">75%</td>
+                        <td class="border border-gray-300 px-3 py-2 text-center">15 weeks</td>
+                        <td class="border border-gray-300 px-3 py-2 text-right">৳ 500/hr</td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-300 px-3 py-2">QA Engineer</td>
+                        <td class="border border-gray-300 px-3 py-2 text-center">100%</td>
+                        <td class="border border-gray-300 px-3 py-2 text-center">20 weeks</td>
+                        <td class="border border-gray-300 px-3 py-2 text-right">৳ 500/hr</td>
+                    </tr>
+                    <tr class="bg-gray-50">
+                        <td class="border border-gray-300 px-3 py-2">DevOps Engineer</td>
+                        <td class="border border-gray-300 px-3 py-2 text-center">50%</td>
+                        <td class="border border-gray-300 px-3 py-2 text-center">10 weeks</td>
+                        <td class="border border-gray-300 px-3 py-2 text-right">৳ 500/hr</td>
+                    </tr>
+                    <tr class="bg-blue-100 font-semibold">
+                        <td class="border border-blue-300 px-3 py-2">Total Team Effort</td>
+                        <td class="border border-blue-300 px-3 py-2 text-center">—</td>
+                        <td class="border border-blue-300 px-3 py-2 text-center">215 PW</td>
+                        <td class="border border-blue-300 px-3 py-2 text-right">Blended: ৳ 84.88/hr</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded-r-lg avoid-break">
+            <h4 class="font-semibold text-yellow-900 mb-2">💡 Pricing Note</h4>
+            <p class="text-sm text-gray-700">
+                The quoted price of <span class="font-bold">৳ 7,30,000</span> represents a <span class="font-bold text-red-600">38% competitive discount</span> 
+                from the calculated market rate of ৳ 11,75,000. This reflects CodeStorm Hub's commitment to client value and long-term partnership.
+            </p>
+        </div>
+    </div>
+
+    <!-- Project Timeline -->
+    <div class="a4-page p-12 page-break">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b-4 border-blue-600 pb-2">Project Timeline & Milestones</h2>
+        
+        <div class="bg-blue-50 border-2 border-blue-300 rounded-lg p-4 mb-6 avoid-break">
+            <div class="grid grid-cols-3 gap-4 text-center">
+                <div>
+                    <p class="text-sm text-gray-600 mb-1">Project Start</p>
+                    <p class="text-xl font-bold text-blue-800">01-Jan-2026</p>
+                </div>
+                <div>
+                    <p class="text-sm text-gray-600 mb-1">Development End</p>
+                    <p class="text-xl font-bold text-blue-800">31-May-2026</p>
+                </div>
+                <div>
+                    <p class="text-sm text-gray-600 mb-1">AMC Period</p>
+                    <p class="text-xl font-bold text-blue-800">01-Jun-2026 to 31-May-2027</p>
+                </div>
+            </div>
+        </div>
+        
+        <table class="w-full border-collapse text-sm avoid-break">
+            <thead>
+                <tr class="bg-gradient-to-r from-purple-600 to-purple-700 text-white">
+                    <th class="border border-purple-500 px-3 py-2 text-left">Milestone</th>
+                    <th class="border border-purple-500 px-3 py-2 text-left">Deliverable</th>
+                    <th class="border border-purple-500 px-3 py-2 text-center">Start Date</th>
+                    <th class="border border-purple-500 px-3 py-2 text-center">End Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="border border-gray-300 px-3 py-2 font-semibold">M1</td>
+                    <td class="border border-gray-300 px-3 py-2">Approved Requirements & UI/UX Design</td>
+                    <td class="border border-gray-300 px-3 py-2 text-center">01-Jan-2026</td>
+                    <td class="border border-gray-300 px-3 py-2 text-center">21-Jan-2026</td>
+                </tr>
+                <tr class="bg-gray-50">
+                    <td class="border border-gray-300 px-3 py-2 font-semibold">M2</td>
+                    <td class="border border-gray-300 px-3 py-2">Backend & Database Completion</td>
+                    <td class="border border-gray-300 px-3 py-2 text-center">22-Jan-2026</td>
+                    <td class="border border-gray-300 px-3 py-2 text-center">11-Mar-2026</td>
+                </tr>
+                <tr>
+                    <td class="border border-gray-300 px-3 py-2 font-semibold">M3</td>
+                    <td class="border border-gray-300 px-3 py-2">API Integration & Documentation</td>
+                    <td class="border border-gray-300 px-3 py-2 text-center">12-Mar-2026</td>
+                    <td class="border border-gray-300 px-3 py-2 text-center">08-Apr-2026</td>
+                </tr>
+                <tr class="bg-gray-50">
+                    <td class="border border-gray-300 px-3 py-2 font-semibold">M4</td>
+                    <td class="border border-gray-300 px-3 py-2">Web Application Completion</td>
+                    <td class="border border-gray-300 px-3 py-2 text-center">09-Apr-2026</td>
+                    <td class="border border-gray-300 px-3 py-2 text-center">13-May-2026</td>
+                </tr>
+                <tr>
+                    <td class="border border-gray-300 px-3 py-2 font-semibold">M5</td>
+                    <td class="border border-gray-300 px-3 py-2">Mobile Apps (Android & iOS)</td>
+                    <td class="border border-gray-300 px-3 py-2 text-center">09-Apr-2026</td>
+                    <td class="border border-gray-300 px-3 py-2 text-center">13-May-2026</td>
+                </tr>
+                <tr class="bg-gray-50">
+                    <td class="border border-gray-300 px-3 py-2 font-semibold">M6</td>
+                    <td class="border border-gray-300 px-3 py-2">Testing, Bug Fixing & UAT</td>
+                    <td class="border border-gray-300 px-3 py-2 text-center">14-May-2026</td>
+                    <td class="border border-gray-300 px-3 py-2 text-center">27-May-2026</td>
+                </tr>
+                <tr>
+                    <td class="border border-gray-300 px-3 py-2 font-semibold">M7</td>
+                    <td class="border border-gray-300 px-3 py-2">Final Deployment & Handover</td>
+                    <td class="border border-gray-300 px-3 py-2 text-center">28-May-2026</td>
+                    <td class="border border-gray-300 px-3 py-2 text-center">31-May-2026</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="mt-6 text-sm text-gray-600 avoid-break">
+            <p><span class="font-semibold">Note:</span> Milestones 4 and 5 (Web & Mobile) run in parallel starting from Week 15.</p>
+        </div>
+    </div>
+
+    <!-- Payment Terms -->
+    <div class="a4-page p-12 page-break">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b-4 border-blue-600 pb-2">Payment Terms</h2>
+        
+        <div class="grid grid-cols-3 gap-4 mb-6 avoid-break">
+            <div class="bg-gradient-to-br from-blue-500 to-blue-600 text-white p-6 rounded-xl text-center">
+                <p class="text-sm mb-2">Payment 1</p>
+                <p class="text-3xl font-bold mb-1">30%</p>
+                <p class="text-xl font-semibold">৳ 2,40,000</p>
+                <p class="text-xs mt-2 opacity-90">Project Initiation</p>
+            </div>
+            <div class="bg-gradient-to-br from-green-500 to-green-600 text-white p-6 rounded-xl text-center">
+                <p class="text-sm mb-2">Payment 2</p>
+                <p class="text-3xl font-bold mb-1">40%</p>
+                <p class="text-xl font-semibold">৳ 3,20,000</p>
+                <p class="text-xs mt-2 opacity-90">Mid Development</p>
+            </div>
+            <div class="bg-gradient-to-br from-purple-500 to-purple-600 text-white p-6 rounded-xl text-center">
+                <p class="text-sm mb-2">Payment 3</p>
+                <p class="text-3xl font-bold mb-1">30%</p>
+                <p class="text-xl font-semibold">৳ 2,40,000</p>
+                <p class="text-xs mt-2 opacity-90">Final Delivery</p>
+            </div>
+        </div>
+        
+        <div class="space-y-4 text-sm avoid-break">
+            <div class="border-l-4 border-blue-600 pl-4 bg-blue-50 p-3 rounded-r">
+                <h4 class="font-bold text-blue-900 mb-2">Payment 1: Project Initiation (30% - ৳ 2,40,000)</h4>
+                <p><span class="font-semibold">Trigger:</span> Contract signing and project kickoff</p>
+                <p><span class="font-semibold">Due Date:</span> 15 January 2026</p>
+                <p><span class="font-semibold">Deliverables:</span> Signed contract, kickoff meeting, environment setup</p>
+            </div>
+            
+            <div class="border-l-4 border-green-600 pl-4 bg-green-50 p-3 rounded-r">
+                <h4 class="font-bold text-green-900 mb-2">Payment 2: Mid-Development (40% - ৳ 3,20,000)</h4>
+                <p><span class="font-semibold">Trigger:</span> Completion of Milestones 2 & 3 (Backend + API)</p>
+                <p><span class="font-semibold">Due Date:</span> 23 April 2026</p>
+                <p><span class="font-semibold">Deliverables:</span> Functional backend, API documentation, demo</p>
+            </div>
+            
+            <div class="border-l-4 border-purple-600 pl-4 bg-purple-50 p-3 rounded-r">
+                <h4 class="font-bold text-purple-900 mb-2">Payment 3: Final Delivery (30% - ৳ 2,40,000)</h4>
+                <p><span class="font-semibold">Trigger:</span> UAT sign-off and production deployment</p>
+                <p><span class="font-semibold">Due Date:</span> 15 June 2026</p>
+                <p><span class="font-semibold">Deliverables:</span> Production deployment, handover docs, training</p>
+            </div>
+        </div>
+        
+        <div class="mt-6 bg-gray-100 border-2 border-gray-300 rounded-lg p-4 avoid-break">
+            <h4 class="font-bold text-gray-900 mb-3">Payment Mode & Terms</h4>
+            <div class="grid grid-cols-2 gap-4 text-sm">
+                <div>
+                    <p class="text-gray-600 mb-1">Payment Due:</p>
+                    <p class="font-semibold">Within 15 days of invoice</p>
+                </div>
+                <div>
+                    <p class="text-gray-600 mb-1">Accepted Methods:</p>
+                    <p class="font-semibold">Bank Transfer / Mobile Banking / Cheque</p>
+                </div>
+                <div>
+                    <p class="text-gray-600 mb-1">Late Payment Fee:</p>
+                    <p class="font-semibold">2% per week (max 10%)</p>
+                </div>
+                <div>
+                    <p class="text-gray-600 mb-1">Grace Period:</p>
+                    <p class="font-semibold">5 business days</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-6 bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded-r avoid-break">
+            <h4 class="font-semibold text-yellow-900 mb-2">⚠️ Important Note</h4>
+            <p class="text-sm text-gray-700">
+                If payment is overdue by more than 30 days, CodeStorm Hub reserves the right to suspend development 
+                work or AMC support until payment is received. Interest of 12% per annum will be charged on overdue amounts beyond 30 days.
+            </p>
+        </div>
+    </div>
+
+    <!-- AMC Details -->
+    <div class="a4-page p-12 page-break">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b-4 border-blue-600 pb-2">Annual Maintenance Contract (AMC)</h2>
+        
+        <div class="bg-green-50 border-2 border-green-400 rounded-lg p-6 mb-6 avoid-break">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h3 class="text-2xl font-bold text-green-900 mb-2">12 Months Support Included</h3>
+                    <p class="text-gray-700">01 June 2026 to 31 May 2027</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-4xl font-bold text-green-600">৳ 70,000</p>
+                    <p class="text-sm text-gray-600">৳ 17,500 per quarter</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mb-6 avoid-break">
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">Service Level Agreement (SLA)</h3>
+            <table class="w-full border-collapse text-sm">
+                <thead>
+                    <tr class="bg-blue-600 text-white">
+                        <th class="border border-blue-500 px-3 py-2 text-left">Priority</th>
+                        <th class="border border-blue-500 px-3 py-2 text-left">Definition</th>
+                        <th class="border border-blue-500 px-3 py-2 text-center">Response</th>
+                        <th class="border border-blue-500 px-3 py-2 text-center">Resolution</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="border border-gray-300 px-3 py-2"><span class="bg-red-100 text-red-800 px-2 py-1 rounded text-xs font-bold">CRITICAL</span></td>
+                        <td class="border border-gray-300 px-3 py-2">System down, data loss risk</td>
+                        <td class="border border-gray-300 px-3 py-2 text-center font-semibold">4 hours</td>
+                        <td class="border border-gray-300 px-3 py-2 text-center font-semibold">24 hours</td>
+                    </tr>
+                    <tr class="bg-gray-50">
+                        <td class="border border-gray-300 px-3 py-2"><span class="bg-orange-100 text-orange-800 px-2 py-1 rounded text-xs font-bold">HIGH</span></td>
+                        <td class="border border-gray-300 px-3 py-2">Important feature broken</td>
+                        <td class="border border-gray-300 px-3 py-2 text-center font-semibold">8 hours</td>
+                        <td class="border border-gray-300 px-3 py-2 text-center font-semibold">48 hours</td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-300 px-3 py-2"><span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs font-bold">MEDIUM</span></td>
+                        <td class="border border-gray-300 px-3 py-2">Minor feature issues</td>
+                        <td class="border border-gray-300 px-3 py-2 text-center font-semibold">24 hours</td>
+                        <td class="border border-gray-300 px-3 py-2 text-center font-semibold">5 days</td>
+                    </tr>
+                    <tr class="bg-gray-50">
+                        <td class="border border-gray-300 px-3 py-2"><span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs font-bold">LOW</span></td>
+                        <td class="border border-gray-300 px-3 py-2">Cosmetic issues, enhancements</td>
+                        <td class="border border-gray-300 px-3 py-2 text-center font-semibold">48 hours</td>
+                        <td class="border border-gray-300 px-3 py-2 text-center font-semibold">10 days</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="grid grid-cols-2 gap-6 avoid-break">
+            <div>
+                <h4 class="font-semibold text-green-800 mb-3">✅ Included Services</h4>
+                <ul class="space-y-2 text-sm text-gray-700">
+                    <li>✓ Bug fixes and error resolution</li>
+                    <li>✓ Security patches and updates</li>
+                    <li>✓ Server monitoring & optimization</li>
+                    <li>✓ Database backup verification</li>
+                    <li>✓ Mobile OS compatibility updates</li>
+                    <li>✓ SSL certificate renewal</li>
+                    <li>✓ Email & ticket support</li>
+                    <li>✓ Monthly health reports</li>
+                    <li>✓ Up to 12 hours/month</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold text-red-800 mb-3">❌ Not Included</h4>
+                <ul class="space-y-2 text-sm text-gray-700">
+                    <li>✗ New feature development</li>
+                    <li>✗ Major UI/UX redesign</li>
+                    <li>✗ Third-party integrations</li>
+                    <li>✗ Data migration services</li>
+                    <li>✗ Custom reporting features</li>
+                    <li>✗ Infrastructure scaling</li>
+                    <li>✗ Client code modifications</li>
+                    <li>✗ Training beyond handover</li>
+                    <li>✗ Overage: ৳ 1,500/hour</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terms & Conditions -->
+    <div class="a4-page p-12 page-break">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b-4 border-blue-600 pb-2">Terms & Conditions</h2>
+        
+        <div class="space-y-4 text-sm avoid-break">
+            <div>
+                <h4 class="font-semibold text-gray-800 mb-2">1. Intellectual Property Rights</h4>
+                <p class="text-gray-700">All intellectual property rights, including source code, designs, and documentation, will be transferred to the client upon receipt of full payment.</p>
+            </div>
+            
+            <div>
+                <h4 class="font-semibold text-gray-800 mb-2">2. Confidentiality</h4>
+                <p class="text-gray-700">All client data, documents, and business information will be treated as strictly confidential. CodeStorm Hub will not disclose any information to third parties without written consent.</p>
+            </div>
+            
+            <div>
+                <h4 class="font-semibold text-gray-800 mb-2">3. Revisions & Scope Changes</h4>
+                <p class="text-gray-700">Two (2) minor revision cycles are included in the quoted price. Major scope changes or additional features will require a revised quotation and separate approval.</p>
+            </div>
+            
+            <div>
+                <h4 class="font-semibold text-gray-800 mb-2">4. Client Responsibilities</h4>
+                <p class="text-gray-700">Client agrees to:</p>
+                <ul class="list-disc list-inside ml-4 mt-1 space-y-1 text-gray-700">
+                    <li>Provide timely feedback and approvals within 3 business days</li>
+                    <li>Provide all necessary content, images, and documentation</li>
+                    <li>Provide access to third-party services (payment gateways, hosting)</li>
+                    <li>Arrange hosting infrastructure or approve recommended provider</li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 class="font-semibold text-gray-800 mb-2">5. Warranty & Support</h4>
+                <p class="text-gray-700">CodeStorm Hub warrants that the delivered software will function according to agreed specifications. The AMC covers bug fixes and maintenance for 12 months from delivery date. AMC does not include new feature development.</p>
+            </div>
+            
+            <div>
+                <h4 class="font-semibold text-gray-800 mb-2">6. Limitation of Liability</h4>
+                <p class="text-gray-700">CodeStorm Hub's liability is limited to the total project cost. We are not liable for indirect, consequential, or incidental damages arising from the use or inability to use the software.</p>
+            </div>
+            
+            <div>
+                <h4 class="font-semibold text-gray-800 mb-2">7. Force Majeure</h4>
+                <p class="text-gray-700">Neither party shall be liable for delays or failures due to circumstances beyond reasonable control, including natural disasters, war, terrorism, strikes, or government restrictions.</p>
+            </div>
+            
+            <div>
+                <h4 class="font-semibold text-gray-800 mb-2">8. Termination</h4>
+                <p class="text-gray-700">Either party may terminate this agreement with 30 days written notice. Upon termination, client shall pay for all work completed to date. All deliverables completed and paid for remain property of the client.</p>
+            </div>
+            
+            <div>
+                <h4 class="font-semibold text-gray-800 mb-2">9. Governing Law</h4>
+                <p class="text-gray-700">This quotation and resulting contract shall be governed by the laws of Bangladesh. Any disputes shall be resolved through arbitration in Dhaka, Bangladesh.</p>
+            </div>
+            
+            <div>
+                <h4 class="font-semibold text-gray-800 mb-2">10. Validity</h4>
+                <p class="text-gray-700">This quotation is valid for 30 days from the date of issue. After this period, pricing and terms may be subject to revision.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Acceptance Page -->
+    <div class="a4-page p-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-8 border-b-4 border-blue-600 pb-2">Acceptance & Signature</h2>
+        
+        <div class="bg-blue-50 border-2 border-blue-300 rounded-lg p-6 mb-8">
+            <p class="text-gray-700 leading-relaxed">
+                By signing below, both parties agree to the terms, pricing, and conditions outlined in this quotation. 
+                This quotation, upon acceptance, forms a binding contract between <span class="font-semibold">MSC Home Rental & Real Estate</span> 
+                and <span class="font-semibold">CodeStorm Hub</span>.
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-2 gap-8 mb-12">
+            <div class="border-2 border-gray-300 rounded-lg p-6">
+                <h3 class="font-bold text-gray-900 mb-6 text-center">For Client</h3>
+                <div class="space-y-6">
+                    <div>
+                        <p class="text-sm text-gray-600 mb-2">Name:</p>
+                        <div class="border-b-2 border-gray-300 pb-2">_______________________________</div>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-600 mb-2">Designation:</p>
+                        <div class="border-b-2 border-gray-300 pb-2">_______________________________</div>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-600 mb-2">Signature:</p>
+                        <div class="border-b-2 border-gray-300 pb-8"></div>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-600 mb-2">Date:</p>
+                        <div class="border-b-2 border-gray-300 pb-2">_______________________________</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-2 border-blue-300 rounded-lg p-6 bg-blue-50">
+                <h3 class="font-bold text-gray-900 mb-6 text-center">For Vendor</h3>
+                <div class="space-y-6">
+                    <div>
+                        <p class="text-sm text-gray-600 mb-2">Name:</p>
+                        <div class="border-b-2 border-blue-300 pb-2">_______________________________</div>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-600 mb-2">Designation:</p>
+                        <div class="border-b-2 border-blue-300 pb-2">_______________________________</div>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-600 mb-2">Signature:</p>
+                        <div class="border-b-2 border-blue-300 pb-8"></div>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-600 mb-2">Date:</p>
+                        <div class="border-b-2 border-blue-300 pb-2">_______________________________</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center border-t-2 border-gray-200 pt-8">
+            <div class="mb-4">
+                <h3 class="text-xl font-bold text-gray-900 mb-2">CodeStorm Hub</h3>
+                <p class="text-gray-600">Professional Software Solutions</p>
+            </div>
+            <div class="text-sm text-gray-600 space-y-1">
+                <p>📍 Dhaka, Bangladesh</p>
+                <p>📧 contact@codestormhub.dev | 📞 +880-1970279556</p>
+                <p class="mt-4 text-xs">© 2026 CodeStorm Hub. All rights reserved. | This quotation is confidential and proprietary.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Print Button (visible on screen only) -->
+    <div class="no-print fixed bottom-8 right-8 z-50">
+        <button onclick="window.print()" class="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-xl shadow-2xl flex items-center space-x-3 transform transition hover:scale-105">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+            </svg>
+            <span class="font-semibold">Print / Save as PDF</span>
+        </button>
+    </div>
+</body>
+</html>

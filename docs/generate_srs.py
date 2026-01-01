@@ -1,0 +1,90 @@
+#!/usr/bin/env python3
+import re
+
+# Read SRS markdown
+with open('SRS_MSC_HOME_Enhanced.md', 'r', encoding='utf-8') as f:
+    md = f.read()
+
+# HTML template start
+html = '''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SRS - MSC Home Platform | CodeStorm Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+    <style>
+        @page { size: A4; margin: 1.5cm; }
+        @media print {
+            body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .no-print { display: none; }
+            .page-break { page-break-after: always; }
+            .avoid-break { page-break-inside: avoid; }
+        }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+        .a4-page { width: 210mm; min-height: 297mm; margin: 0 auto 20px; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        @media screen { body { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px 0; } }
+        .gradient-text { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .section-header { border-left: 4px solid #667eea; padding-left: 1rem; margin: 2rem 0 1rem 0; }
+    </style>
+</head>
+<body>
+'''
+
+# Cover page
+html += '''
+    <div class="a4-page p-12 page-break">
+        <div class="h-full flex flex-col">
+            <div class="border-b-4 border-purple-600 pb-6 mb-8">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <div class="w-20 h-20 bg-gradient-to-br from-purple-600 to-blue-600 rounded-xl flex items-center justify-center mr-4">
+                            <span class="text-white text-3xl font-bold">CH</span>
+                        </div>
+                        <div>
+                            <h1 class="text-3xl font-bold gradient-text">CodeStorm Hub</h1>
+                            <p class="text-gray-600">Professional Software Solutions</p>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <div class="bg-purple-600 text-white px-4 py-2 rounded-lg inline-block">
+                            <p class="text-sm font-semibold">SRS DOCUMENT</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-grow flex flex-col justify-center text-center mb-8">
+                <h1 class="text-5xl font-bold text-gray-900 mb-4">Software Requirements<br/>Specification</h1>
+                <div class="w-32 h-1 bg-gradient-to-r from-purple-600 to-blue-600 mx-auto mb-6"></div>
+                <h2 class="text-3xl font-semibold gradient-text mb-6">MSC Home Rental & Real Estate Platform</h2>
+                <p class="text-xl text-gray-700">Comprehensive Requirements Documentation</p>
+                <p class="text-lg text-gray-600 mt-2">Web Application + Android & iOS Mobile Applications</p>
+            </div>
+            <div class="bg-gradient-to-r from-purple-50 to-blue-50 border-2 border-purple-200 rounded-xl p-6">
+                <div class="grid grid-cols-2 gap-4 text-sm">
+                    <div><p class="text-purple-700 font-semibold">Document ID:</p><p class="text-gray-900 font-medium">SRS_MSC_HOME_V3</p></div>
+                    <div><p class="text-purple-700 font-semibold">Version:</p><p class="text-gray-900 font-medium">3.0 (Enhanced)</p></div>
+                    <div><p class="text-purple-700 font-semibold">Date:</p><p class="text-gray-900">01 January 2026</p></div>
+                    <div><p class="text-purple-700 font-semibold">Status:</p><p class="text-green-600 font-semibold">✓ Ready for Development</p></div>
+                </div>
+            </div>
+            <div class="mt-8 text-center text-sm text-gray-600">
+                <p class="font-semibold text-gray-900 mb-2">Prepared By:</p>
+                <p class="font-medium">CodeStorm Hub Development Team</p>
+                <p>Dhaka, Bangladesh</p>
+                <p class="mt-3">📧 contact@codestormhub.dev | 📞 +880-1970279556</p>
+                <p class="mt-4 text-xs text-gray-500">© 2026 CodeStorm Hub. Confidential & Proprietary.</p>
+            </div>
+        </div>
+    </div>
+'''
+
+# Save to file (will continue with more sections)
+with open('SRS_Professional_New.html', 'w', encoding='utf-8') as f:
+    f.write(html)
+    
+print(f"Generated HTML start: {len(html)} bytes")
