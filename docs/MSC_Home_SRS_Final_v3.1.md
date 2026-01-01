@@ -2909,7 +2909,7 @@ This section summarizes the comprehensive feature set implemented in the MSC Hom
 **Payment Gateway Integration:**
 - SSLCOMMERZ Developer Documentation: https://developer.sslcommerz.com/
 - SSLCOMMERZ API v4: https://developer.sslcommerz.com/doc/v4/
-- bKash Merchant Integration: https://developer.bka sh.com/
+- bKash Merchant Integration: https://developer.bkash.com/
 - Nagad Merchant API: https://developer.nagad.com.bd/
 
 **Verification & eKYC Services:**
@@ -3003,13 +3003,13 @@ contact@codestormhub.dev
 
 | Role | Name | Signature | Date |
 |------|------|-----------|------|
-| Product Owner | | | |
-| Technical Architect | | | |
-| Project Manager | | | |
-| Quality Assurance Lead | | | |
-| Client Representative | | | |
+| Product Owner | [Name] | [Signature/Digital Sign] | [DD/MM/YYYY] |
+| Technical Architect | [Name] | [Signature/Digital Sign] | [DD/MM/YYYY] |
+| Project Manager | [Name] | [Signature/Digital Sign] | [DD/MM/YYYY] |
+| Quality Assurance Lead | [Name] | [Signature/Digital Sign] | [DD/MM/YYYY] |
+| Client Representative | [Name] | [Signature/Digital Sign] | [DD/MM/YYYY] |
 
-**Document Status:** APPROVED FOR IMPLEMENTATION
+**Document Status:** PENDING APPROVAL (To be updated upon client sign-off)
 
 ---
 
