@@ -41,22 +41,141 @@ MSC Home Rental & Real Estate Platform is a comprehensive digital solution desig
 > **Note:** This document consolidates requirements based on market research, user studies, and Bangladesh real estate industry best practices. All requirements have been validated for technical feasibility and business value.
 
 ## Table of Contents
-1. Introduction  
-2. Product Overview  
-3. Stakeholders & User Actors (incl. Roles & Permissions)  
-4. Personas  
-5. System Modules & Scope  
-6. Assumptions, Constraints, Dependencies  
-7. Functional Requirements (FR)  
-8. Business Rules (BR)  
-9. User Stories (US)  
-10. Data Requirements  
-11. ERD  
-12. Transaction Step Tracking  
-13. Diagrams (ERD/State/Sequence/Flow)  
-14. Non-Functional Requirements (NFR)  
-15. MVP Scope & Prioritized Backlog  
-16. Appendices (Traceability & Glossary)
+
+### 1. Introduction
+   - 1.1 Purpose
+   - 1.2 Scope
+   - 1.3 Definitions (Bangladesh Context)
+
+### 2. Product Overview
+   - 2.1 Problem Summary
+   - 2.2 Product Vision
+   - 2.3 Research Signals (Market Validation)
+
+### 3. Stakeholders & User Actors
+   - 3.1 Primary Actors
+   - 3.2 Secondary Actors
+   - 3.3 Roles & Permissions (RBAC + Relationship-Based Access)
+
+### 4. Personas
+   - 4.1 Seller Persona (Rakib Hasan)
+   - 4.2 Buyer Persona (Sumaiya Akter)
+   - 4.3 Agent Persona
+
+### 5. System Modules & Scope
+   - Authentication & Account Management
+   - User Profile & Verification
+   - Marketplace & Listings
+   - Communication & Appointments
+   - Transaction Management
+   - Payment Integration
+   - Legal & Financial Support
+   - Admin & Moderation
+
+### 6. Assumptions, Constraints, Dependencies
+   - 6.1 Assumptions
+   - 6.2 Constraints
+   - 6.3 Dependencies
+
+### 7. Functional Requirements (FR-1 to FR-93)
+   - 7.1 Authentication & Account (FR-1 to FR-4)
+   - 7.2 User Profile & Professional Data (FR-5 to FR-7)
+   - 7.3 Verification & Trust (FR-8 to FR-11)
+   - 7.4 Listings & Media (FR-12 to FR-18)
+   - 7.5 Search & Discovery (FR-19 to FR-22)
+   - 7.6 Communication & Appointments (FR-23 to FR-26)
+   - 7.7 Offers, Orders, Transactions (FR-27 to FR-32)
+   - 7.8 Payments (FR-33 to FR-35)
+   - 7.9 Legal Support (FR-36 to FR-38)
+   - 7.10 Financial Support (FR-39 to FR-40)
+   - 7.11 Reviews & Reputation (FR-41 to FR-43)
+   - 7.12 Notifications (FR-44 to FR-45)
+   - 7.13 Community + Content (FR-46 to FR-49) [P2]
+   - 7.14 Admin/Moderation (FR-50 to FR-51)
+   - 7.15 Transparency, Guides, and FAQs (FR-52 to FR-55)
+   - 7.16 Safety, Abuse Reporting, and Disputes (FR-56 to FR-57)
+   - 7.17 Real Estate Company / Project Listings (FR-58 to FR-59)
+   - 7.18 Monetization & Billing (FR-60 to FR-61)
+   - 7.19 Service Provider Marketplace (FR-62 to FR-65)
+   - 7.20 Government Land Portals (FR-66 to FR-69)
+   - 7.21 Payment Gateway Integration (FR-70 to FR-74)
+   - 7.22 Operational & Safety Requirements (FR-75 to FR-93)
+
+### 8. Business Rules (BR-1 to BR-43)
+   - 8.1 Verification (BR-1 to BR-4)
+   - 8.2 Accuracy Score (BR-5 to BR-7)
+   - 8.3 Cost Transparency (BR-8 to BR-9)
+   - 8.4 Offers/Transactions (BR-10 to BR-14)
+   - 8.5 Payments (BR-15 to BR-17)
+   - 8.6 Buyer Protection / Disputes (BR-18 to BR-19)
+   - 8.7 Reviews (BR-20 to BR-21)
+   - 8.8 Service Provider Marketplace (BR-22 to BR-23)
+   - 8.9 Payment Gateway Validation & Risk (BR-24 to BR-27)
+   - 8.10 Listing Lifecycle & Moderation (BR-28 to BR-31)
+   - 8.11 Document Vault Access Policy (BR-32 to BR-35)
+   - 8.12 Messaging Safety & Abuse Handling (BR-36 to BR-38)
+   - 8.13 Notifications (BR-39 to BR-40)
+   - 8.14 Cancellations, Refunds, and Holds (BR-41 to BR-43)
+
+### 9. User Stories & Real-Life Scenarios
+   - 9.1 Buyer Stories (US-B1 to US-B7)
+   - 9.2 Seller / Agent Stories (US-S1 to US-S5)
+   - 9.3 Legal Agent Stories (US-L1)
+   - 9.4 Admin / Verifier Stories (US-A1 to US-A2)
+   - 9.5 User Story Summary Matrix
+
+### 10. Data Requirements
+   - 10.1 Core Entities (MVP)
+   - 10.2 Bangladesh-Specific Document Types
+   - 10.3 Additional Entities / Tables
+
+### 11. Entity Relationship Diagrams (ERD)
+   - 11.1 Core Marketplace ERD
+   - 11.2 Extended Operational ERD
+   - 11.3 Auth, Social Login & Credentials ERD
+   - 11.4 Community, Contacts & Content ERD [P2]
+
+### 12. Transaction Step Tracking
+   - 12.1 Offer State Machine
+   - 12.2 Transaction State Machine (Buy/Sell)
+   - 12.3 Transaction State Machine (Rent)
+   - 12.4 Bangladesh Transaction Step Checklist (Bayna → Dalil → Namjari → Tax)
+
+### 13. Diagrams (ERD/State/Sequence/Flow/Architecture)
+   - 13.1 Listing Lifecycle State Diagram
+   - 13.2 Verification Flow Sequence Diagram
+   - 13.3 Payment Flow with OTP/3DS
+   - 13.4 System Context (External Integrations)
+   - 13.5 Hosted Checkout + IPN + Validation
+   - 13.6 Dispute Lifecycle State Diagram
+   - 13.7 Document Vault Access Decision Flow
+   - 13.8 Notification Delivery Sequence
+   - 13.9 Portal Tracking Assistance (Manual Link-Out)
+   - 13.10 Use Case Diagram - Core Platform Features
+   - 13.11 High-Level Architecture Diagram
+   - 13.12 Data Flow Diagram - Property Search & Transaction
+   - 13.13 Component Interaction Diagram - Verification Flow
+   - 13.14 Deployment Architecture Diagram
+
+### 14. Non-Functional Requirements (NFR)
+   - 14.1 Security
+   - 14.2 Performance
+   - 14.3 Reliability
+   - 14.4 Privacy
+   - 14.5 Accessibility & Localization
+
+### 15. MVP Scope & Prioritized Backlog
+   - 15.1 MVP Goals (P0)
+   - 15.2 Key Enhancements
+
+### 16. Appendices (Traceability, Glossary & Standards)
+   - 16.1 Traceability Matrix (Slide-by-slide)
+   - 16.2 Feature Implementation Summary
+   - 16.3 Technical Standards & Compliance
+   - 16.4 External References & Resources
+   - 16.5 Glossary of Terms (40+ terms)
+   - 16.6 Document Revision History
+   - 16.7 Approval & Sign-Off
 
 ---
 
