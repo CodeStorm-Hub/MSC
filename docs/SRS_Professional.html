@@ -3,76 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Software Requirements Specification - MSC Home Platform</title>
+    <title>Software Requirements Specification - MSC Home Platform | CodeStorm Hub</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true, theme: 'default', securityLevel: 'loose' });
+    </script>
     <style>
-        @page {
-            size: A4;
-            margin: 1.5cm;
-        }
-        
+        @page { size: A4; margin: 1.5cm; }
         @media print {
-            body {
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-            .no-print {
-                display: none;
-            }
-            .page-break {
-                page-break-after: always;
-            }
-            .avoid-break {
-                page-break-inside: avoid;
-            }
+            body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .no-print { display: none; }
+            .page-break { page-break-after: always; }
+            .avoid-break { page-break-inside: avoid; }
         }
-        
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-        }
-        
-        .a4-page {
-            width: 210mm;
-            min-height: 297mm;
-            margin: 0 auto 20px;
-            background: white;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        
-        @media screen {
-            body {
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                padding: 30px 0;
-            }
-        }
-        
-        .gradient-text {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .section-header {
-            border-left: 4px solid #667eea;
-            padding-left: 1rem;
-            margin: 2rem 0 1rem 0;
-        }
-        
-        .mermaid {
-            background: white;
-            padding: 1rem;
-            border-radius: 8px;
-            margin: 1rem 0;
-        }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+        .a4-page { width: 210mm; min-height: 297mm; margin: 0 auto 20px; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.1); padding: 2.5rem; }
+        @media screen { body { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px 0; } }
+        .gradient-text { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .section-header { border-left: 4px solid #667eea; padding-left: 1rem; margin: 2rem 0 1rem 0; }
+        pre.mermaid { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 8px; padding: 1rem; margin: 1rem 0; }
+        .fr-card { background: white; border: 1px solid #e5e7eb; border-radius: 8px; padding: 1rem; margin-bottom: 1rem; }
+        .fr-card:hover { box-shadow: 0 2px 8px rgba(102, 126, 234, 0.15); }
     </style>
 </head>
 <body>
+
     <!-- Cover Page -->
-    <div class="a4-page p-12 page-break">
+    <div class="a4-page page-break">
         <div class="h-full flex flex-col">
-            <!-- Header -->
             <div class="border-b-4 border-purple-600 pb-6 mb-8">
                 <div class="flex items-center justify-between">
                     <div class="flex items-center">
@@ -91,47 +50,21 @@
                     </div>
                 </div>
             </div>
-            
-            <!-- Title -->
             <div class="flex-grow flex flex-col justify-center text-center mb-8">
-                <h1 class="text-5xl font-bold text-gray-900 mb-4">
-                    Software Requirements<br/>Specification
-                </h1>
+                <h1 class="text-5xl font-bold text-gray-900 mb-4">Software Requirements<br/>Specification</h1>
                 <div class="w-32 h-1 bg-gradient-to-r from-purple-600 to-blue-600 mx-auto mb-6"></div>
-                <h2 class="text-3xl font-semibold gradient-text mb-6">
-                    MSC Home Rental & Real Estate Platform
-                </h2>
-                <p class="text-xl text-gray-700">
-                    Comprehensive Requirements Documentation
-                </p>
-                <p class="text-lg text-gray-600 mt-2">
-                    Web Application + Android & iOS Mobile Applications
-                </p>
+                <h2 class="text-3xl font-semibold gradient-text mb-6">MSC Home Rental & Real Estate Platform</h2>
+                <p class="text-xl text-gray-700">Comprehensive Requirements Documentation</p>
+                <p class="text-lg text-gray-600 mt-2">Web + Android + iOS Applications</p>
             </div>
-            
-            <!-- Document Info -->
             <div class="bg-gradient-to-r from-purple-50 to-blue-50 border-2 border-purple-200 rounded-xl p-6">
                 <div class="grid grid-cols-2 gap-4 text-sm">
-                    <div>
-                        <p class="text-purple-700 font-semibold">Document ID:</p>
-                        <p class="text-gray-900 font-medium">SRS_MSC_HOME_V3</p>
-                    </div>
-                    <div>
-                        <p class="text-purple-700 font-semibold">Version:</p>
-                        <p class="text-gray-900 font-medium">3.0 (Enhanced)</p>
-                    </div>
-                    <div>
-                        <p class="text-purple-700 font-semibold">Date:</p>
-                        <p class="text-gray-900">01 January 2026</p>
-                    </div>
-                    <div>
-                        <p class="text-purple-700 font-semibold">Status:</p>
-                        <p class="text-green-600 font-semibold">✓ Ready for Development</p>
-                    </div>
+                    <div><p class="text-purple-700 font-semibold">Document ID:</p><p class="text-gray-900 font-medium">SRS_MSC_HOME_V3</p></div>
+                    <div><p class="text-purple-700 font-semibold">Version:</p><p class="text-gray-900 font-medium">3.0 (Enhanced)</p></div>
+                    <div><p class="text-purple-700 font-semibold">Date:</p><p class="text-gray-900">01 January 2026</p></div>
+                    <div><p class="text-purple-700 font-semibold">Status:</p><p class="text-green-600 font-semibold">✓ Ready for Development</p></div>
                 </div>
             </div>
-            
-            <!-- Footer -->
             <div class="mt-8 text-center text-sm text-gray-600">
                 <p class="font-semibold text-gray-900 mb-2">Prepared By:</p>
                 <p class="font-medium">CodeStorm Hub Development Team</p>
@@ -142,81 +75,755 @@
         </div>
     </div>
 
-    <!-- Document Control & TOC Page -->
-    <div class="a4-page p-12 page-break">
-        <h2 class="text-3xl font-bold text-gray-900 mb-6 section-header">Document Control</h2>
-        
-        <!-- Version History -->
-        <div class="mb-8 avoid-break">
-            <h3 class="text-xl font-semibold text-gray-800 mb-4">Version History</h3>
-            <table class="w-full border-collapse text-sm">
-                <thead>
-                    <tr class="bg-gradient-to-r from-purple-600 to-blue-600 text-white">
-                        <th class="border border-purple-300 px-3 py-2 text-left">Version</th>
-                        <th class="border border-purple-300 px-3 py-2 text-left">Date</th>
-                        <th class="border border-purple-300 px-3 py-2 text-left">Author</th>
-                        <th class="border border-purple-300 px-3 py-2 text-left">Changes</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="border border-gray-300 px-3 py-2">1.0</td>
-                        <td class="border border-gray-300 px-3 py-2">Dec 2025</td>
-                        <td class="border border-gray-300 px-3 py-2">MSC Team</td>
-                        <td class="border border-gray-300 px-3 py-2">Initial SRS based on UX case study and market research</td>
-                    </tr>
-                    <tr class="bg-gray-50">
-                        <td class="border border-gray-300 px-3 py-2">2.2</td>
-                        <td class="border border-gray-300 px-3 py-2">Dec 2025</td>
-                        <td class="border border-gray-300 px-3 py-2">MSC Team</td>
-                        <td class="border border-gray-300 px-3 py-2">Added Bangladesh-specific workflows and payment integration</td>
-                    </tr>
-                    <tr>
-                        <td class="border border-gray-300 px-3 py-2 font-bold">3.0</td>
-                        <td class="border border-gray-300 px-3 py-2">01-Jan-2026</td>
-                        <td class="border border-gray-300 px-3 py-2 font-semibold">CodeStorm Hub</td>
-                        <td class="border border-gray-300 px-3 py-2">Comprehensive enhancement: RBAC, payment flows, API specs, diagrams, operational requirements</td>
-                    </tr>
-                </tbody>
-            </table>
+    <!-- Table of Contents -->
+    <div class="a4-page page-break">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6 section-header">Table of Contents</h2>
+        <div class="space-y-3 text-sm">
+            <div class="flex justify-between border-b border-gray-200 pb-2">
+                <span class="font-semibold text-gray-700">1. Introduction</span>
+                <span class="text-gray-500">Page 3</span>
+            </div>
+            <div class="flex justify-between border-b border-gray-200 pb-2">
+                <span class="font-semibold text-gray-700">2. Product Overview</span>
+                <span class="text-gray-500">Page 4</span>
+            </div>
+            <div class="flex justify-between border-b border-gray-200 pb-2">
+                <span class="font-semibold text-gray-700">3. Stakeholders & User Actors</span>
+                <span class="text-gray-500">Page 5</span>
+            </div>
+            <div class="flex justify-between border-b border-gray-200 pb-2">
+                <span class="font-semibold text-gray-700">4. System Modules & Scope</span>
+                <span class="text-gray-500">Page 6</span>
+            </div>
+            <div class="flex justify-between border-b border-gray-200 pb-2">
+                <span class="font-semibold text-gray-700">5. Functional Requirements (93 FRs)</span>
+                <span class="text-gray-500">Page 7</span>
+            </div>
+            <div class="flex justify-between border-b border-gray-200 pb-2">
+                <span class="font-semibold text-gray-700">6. User Stories</span>
+                <span class="text-gray-500">Page 15</span>
+            </div>
+            <div class="flex justify-between border-b border-gray-200 pb-2">
+                <span class="font-semibold text-gray-700">7. System Diagrams (14 diagrams)</span>
+                <span class="text-gray-500">Page 18</span>
+            </div>
+            <div class="flex justify-between border-b border-gray-200 pb-2">
+                <span class="font-semibold text-gray-700">8. Data Requirements & ERD</span>
+                <span class="text-gray-500">Page 25</span>
+            </div>
+            <div class="flex justify-between border-b border-gray-200 pb-2">
+                <span class="font-semibold text-gray-700">9. Non-Functional Requirements</span>
+                <span class="text-gray-500">Page 28</span>
+            </div>
+            <div class="flex justify-between border-b border-gray-200 pb-2">
+                <span class="font-semibold text-gray-700">10. SRS Review & Gap Analysis</span>
+                <span class="text-gray-500">Page 30</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Executive Summary -->
+    <div class="a4-page page-break">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6 section-header">Executive Summary</h2>
+        <div class="bg-gradient-to-r from-blue-50 to-purple-50 border-l-4 border-blue-600 p-6 rounded-r-lg mb-6">
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">Project Overview</h3>
+            <p class="text-gray-700 leading-relaxed mb-4">
+                <strong>MSC Home</strong> is a comprehensive rental and real estate platform designed specifically for the Bangladesh market. 
+                The platform addresses critical gaps in the current real estate ecosystem including trust deficits, incomplete property information, 
+                difficult verification processes, and limited access to legal and financial services.
+            </p>
         </div>
         
-        <!-- Approval Sign-off -->
-        <div class="mb-8 avoid-break">
-            <h3 class="text-xl font-semibold text-gray-800 mb-4">Approval Sign-off</h3>
-            <div class="grid grid-cols-2 gap-4">
-                <div class="border-2 border-gray-300 rounded-lg p-4">
-                    <p class="font-semibold text-gray-800 mb-2">Product Owner:</p>
-                    <div class="border-b-2 border-gray-300 pb-6 mb-2"></div>
-                    <p class="text-xs text-gray-500">Signature & Date</p>
-                </div>
-                <div class="border-2 border-gray-300 rounded-lg p-4">
-                    <p class="font-semibold text-gray-800 mb-2">Tech Lead:</p>
-                    <div class="border-b-2 border-gray-300 pb-6 mb-2"></div>
-                    <p class="text-xs text-gray-500">Signature & Date</p>
-                </div>
-                <div class="border-2 border-gray-300 rounded-lg p-4">
-                    <p class="font-semibold text-gray-800 mb-2">Project Manager:</p>
-                    <div class="border-b-2 border-gray-300 pb-6 mb-2"></div>
-                    <p class="text-xs text-gray-500">Signature & Date</p>
-                </div>
-                <div class="border-2 border-gray-300 rounded-lg p-4">
-                    <p class="font-semibold text-gray-800 mb-2">Client Representative:</p>
-                    <div class="border-b-2 border-gray-300 pb-6 mb-2"></div>
-                    <p class="text-xs text-gray-500">Signature & Date</p>
-                </div>
+        <div class="grid grid-cols-2 gap-4 mb-6">
+            <div class="border border-gray-200 rounded-lg p-4 avoid-break">
+                <h4 class="font-semibold text-purple-700 mb-2">Key Statistics</h4>
+                <ul class="text-sm space-y-1 text-gray-700">
+                    <li>• 93 Functional Requirements</li>
+                    <li>• 14 System Diagrams</li>
+                    <li>• 8+ User Roles (RBAC)</li>
+                    <li>• 3 Platforms (Web, Android, iOS)</li>
+                </ul>
+            </div>
+            <div class="border border-gray-200 rounded-lg p-4 avoid-break">
+                <h4 class="font-semibold text-blue-700 mb-2">Research Insights</h4>
+                <ul class="text-sm space-y-1 text-gray-700">
+                    <li>• 97.6% demand advanced search</li>
+                    <li>• 78.3% prioritize trustworthiness</li>
+                    <li>• 90.4% interested in loans</li>
+                    <li>• 95.2% want post-transaction ratings</li>
+                </ul>
             </div>
         </div>
         
-        <!-- Audience -->
-        <div class="avoid-break bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r">
-            <h3 class="text-lg font-semibold text-blue-900 mb-3">Intended Audience</h3>
-            <ul class="space-y-2 text-sm text-gray-700">
-                <li><span class="font-semibold text-blue-800">Product Team:</span> Requirements validation and backlog management</li>
-                <li><span class="font-semibold text-blue-800">Engineering Team:</span> Implementation reference and technical specifications</li>
-                <li><span class="font-semibold text-blue-800">QA Team:</span> Test case development and acceptance criteria</li>
-                <li><span class="font-semibold text-blue-800">Delivery Team:</span> Project planning and resource allocation</li>
-                <li><span class="font-semibold text-blue-800">Partners:</span> Integration requirements and API specifications</li>
+        <div class="avoid-break">
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">Core Features</h3>
+            <div class="grid grid-cols-2 gap-3 text-sm">
+                <div class="flex items-start">
+                    <span class="text-green-600 mr-2">✓</span>
+                    <span class="text-gray-700">Identity & Professional Verification</span>
+                </div>
+                <div class="flex items-start">
+                    <span class="text-green-600 mr-2">✓</span>
+                    <span class="text-gray-700">Verified Property Listings</span>
+                </div>
+                <div class="flex items-start">
+                    <span class="text-green-600 mr-2">✓</span>
+                    <span class="text-gray-700">Advanced Search & Map Integration</span>
+                </div>
+                <div class="flex items-start">
+                    <span class="text-green-600 mr-2">✓</span>
+                    <span class="text-gray-700">Secure Payment Gateway</span>
+                </div>
+                <div class="flex items-start">
+                    <span class="text-green-600 mr-2">✓</span>
+                    <span class="text-gray-700">Legal Support Directory</span>
+                </div>
+                <div class="flex items-start">
+                    <span class="text-green-600 mr-2">✓</span>
+                    <span class="text-gray-700">Financial/Loan Services</span>
+                </div>
+                <div class="flex items-start">
+                    <span class="text-green-600 mr-2">✓</span>
+                    <span class="text-gray-700">Document Vault & Tracking</span>
+                </div>
+                <div class="flex items-start">
+                    <span class="text-green-600 mr-2">✓</span>
+                    <span class="text-gray-700">Ratings & Reviews System</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Introduction -->
+    <div class="a4-page page-break">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6 section-header">1. Introduction</h2>
+        <div class="prose max-w-none">
+            <p class="mb-2 text-gray-700">### 1.1 Purpose</p>
+<p class="mb-2 text-gray-700">Define comprehensive, implementable requirements for <strong>MSC Home Rental & Real Estate</strong>, a verified property marketplace for Bangladesh that includes <strong>communication</strong>, <strong>legal & financial support</strong>, <strong>secure payments</strong>, and <strong>reputation-based trust</strong>.</p>
+<p class="mb-2 text-gray-700">### 1.2 Scope</p>
+<p class="mb-2 text-gray-700">MSC Home supports (MVP-first):</p>
+<ul class="list-disc list-inside space-y-1 ml-4 text-gray-700">
+<li>Account creation + professional mode switching</li>
+<li>Identity + professional verification (badges)</li>
+<li>Verified property listings + listing <strong>Accuracy Score</strong></li>
+<li>Advanced search + map-based search + favorites</li>
+<li>In-platform chat + audio/video + appointment booking</li>
+<li>Offers/negotiation → order → payment → transaction tracking</li>
+<li>Legal support directory + booking/case tracking (MVP: manual workflow supported)</li>
+<li>Financial/loan support directory + requests (MVP: lead workflow supported)</li>
+<li>Post-transaction ratings/reviews</li>
+</ul>
+<p class="mb-2 text-gray-700">Deferred / optional (P2):</p>
+<ul class="list-disc list-inside space-y-1 ml-4 text-gray-700">
+<li>Community features (groups/pages/posts)</li>
+<li>Blogs/videos publishing (moderated)</li>
+</ul>
+<p class="mb-2 text-gray-700">### 1.3 Definitions (BD-context)</p>
+<ul class="list-disc list-inside space-y-1 ml-4 text-gray-700">
+<li><strong>Accuracy Score:</strong> Completeness score shown on listings; computed from required/optional field completeness.</li>
+<li><strong>Verified Badge:</strong> Profile indicator after successful verification approval.</li>
+<li><strong>Verified Listing:</strong> A listing marked verified after ownership + information verification checks.</li>
+<li><strong>Bayna / Baina Nama:</strong> Sale agreement / agreement to sell, commonly used in Bangladesh property transactions.</li>
+<li><strong>Dalil:</strong> Registered deed at the Sub-Registrar office.</li>
+<li><strong>Namjari (Mutation):</strong> Mutation process updating ownership records.</li>
+<li><strong>RBAC:</strong> Role-based access control.</li>
+<li><strong>KYC/eKYC:</strong> Identity verification.</li>
+</ul>
+<p class="mb-2 text-gray-700">---</p>
+        </div>
+        <div class="mt-6 bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r avoid-break">
+            <h3 class="text-lg font-semibold text-blue-900 mb-2">Key Definitions (BD Context)</h3>
+            <ul class="text-sm space-y-1 text-gray-700">
+                <li><strong>Bayna/Baina Nama:</strong> Sale agreement commonly used in Bangladesh property transactions</li>
+                <li><strong>Dalil:</strong> Registered deed at the Sub-Registrar office</li>
+                <li><strong>Namjari (Mutation):</strong> Process of updating ownership records</li>
+                <li><strong>eKYC:</strong> Electronic Know Your Customer - Digital identity verification</li>
             </ul>
         </div>
     </div>
+
+    <!-- Product Overview -->
+    <div class="a4-page page-break">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6 section-header">2. Product Overview</h2>
+        <div class="prose max-w-none">
+            <p class="mb-2 text-gray-700">### 2.1 Problem Summary</p>
+<p class="mb-2 text-gray-700">Bangladesh’s real estate market suffers from:</p>
+<ul class="list-disc list-inside space-y-1 ml-4 text-gray-700">
+<li>Low trust, hidden property details, unfair pricing</li>
+<li>Difficulty verifying legal papers / seriousness of parties</li>
+<li>Loan affordability constraints</li>
+<li>Incomplete online information and poor advertising</li>
+</ul>
+<p class="mb-2 text-gray-700">### 2.2 Product Vision</p>
+<p class="mb-2 text-gray-700">MSC Home provides a secure, verified, transparent environment for buyers/sellers/agents/companies and integrates legal + financial partners for safer, faster transactions.</p>
+<p class="mb-2 text-gray-700">### 2.3 Research Signals (Cross-validated from Slides OCR)</p>
+<p class="mb-2 text-gray-700">From the case study survey/journey artifacts:</p>
+<ul class="list-disc list-inside space-y-1 ml-4 text-gray-700">
+<li><strong>Advanced Search</strong> demand: <strong>97.6%</strong></li>
+<li>Importance of <strong>trustworthiness</strong>: <strong>78.3%</strong></li>
+<li>Interest in <strong>affordable loans</strong>: <strong>90.4%</strong></li>
+<li>Interest in <strong>secure payments</strong>: <strong>69.9%</strong></li>
+<li>Desire to <strong>rate buyers/sellers</strong> after transaction: <strong>95.2%</strong></li>
+</ul>
+<p class="mb-2 text-gray-700">Feature-preference breakdown:</p>
+<ul class="list-disc list-inside space-y-1 ml-4 text-gray-700">
+<li>Secure payments: <strong>69.9%</strong></li>
+<li>Affordable loans: <strong>37.3%</strong></li>
+<li>Legal support: <strong>27.7%</strong></li>
+<li>Virtual tours: <strong>24.1%</strong></li>
+</ul>
+<p class="mb-2 text-gray-700">Implication: the MVP must strongly prioritize <strong>search</strong>, <strong>verification/trust</strong>, <strong>payments</strong>, and <strong>post-transaction reviews</strong>.</p>
+<p class="mb-2 text-gray-700">---</p>
+        </div>
+    </div>
+
+    <!-- Functional Requirements -->
+    <div class="a4-page page-break">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6 section-header">5. Functional Requirements</h2>
+        <p class="text-gray-700 mb-4">
+            This section details all 93 functional requirements organized by category. Each requirement includes 
+            a unique identifier (FR-XX), description, and priority.
+        </p>
+        
+        <div class="bg-gradient-to-r from-purple-50 to-blue-50 border border-purple-200 rounded-lg p-4 mb-4 avoid-break">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Requirements Summary</h3>
+            <div class="grid grid-cols-3 gap-4 text-sm">
+                <div><span class="font-semibold">Total FRs:</span> 93</div>
+                <div><span class="font-semibold">Critical (P0):</span> 28</div>
+                <div><span class="font-semibold">High (P1):</span> 42</div>
+            </div>
+        </div>
+
+        <div class="fr-card avoid-break">
+            <div class="flex items-start justify-between mb-2">
+                <h4 class="font-semibold text-gray-900">FR-1: Register</h4>
+                <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">P0</span>
+            </div>
+            <p class="text-sm text-gray-700">Register via email/phone/password + social login.</p>
+        </div>
+
+        <div class="fr-card avoid-break">
+            <div class="flex items-start justify-between mb-2">
+                <h4 class="font-semibold text-gray-900">FR-2: Login/Logout</h4>
+                <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">P0</span>
+            </div>
+            <p class="text-sm text-gray-700">Login/Logout + forgot password.</p>
+        </div>
+
+        <div class="fr-card avoid-break">
+            <div class="flex items-start justify-between mb-2">
+                <h4 class="font-semibold text-gray-900">FR-3: Professional Mode Switch</h4>
+                <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">P0</span>
+            </div>
+            <p class="text-sm text-gray-700">Professional Mode Switch (social user ↔ professional role flow).</p>
+        </div>
+
+        <div class="fr-card avoid-break">
+            <div class="flex items-start justify-between mb-2">
+                <h4 class="font-semibold text-gray-900">FR-4: OTP Login</h4>
+                <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">P0</span>
+            </div>
+            <p class="text-sm text-gray-700">OTP Login via phone (optional in v1.1; required by BD market fit).</p>
+        </div>
+
+        <div class="fr-card avoid-break">
+            <div class="flex items-start justify-between mb-2">
+                <h4 class="font-semibold text-gray-900">FR-5: Profile Management</h4>
+                <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">P0</span>
+            </div>
+            <p class="text-sm text-gray-700">Profile Management (name, contact, photo).</p>
+        </div>
+
+        <div class="fr-card avoid-break">
+            <div class="flex items-start justify-between mb-2">
+                <h4 class="font-semibold text-gray-900">FR-6: Professional Profile</h4>
+                <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">P0</span>
+            </div>
+            <p class="text-sm text-gray-700">Professional Profile captures bank details, BIN/TIN, NID/licenses, financial statement; role-specific docs (BAR certificate, institute credential report).</p>
+        </div>
+
+        <div class="fr-card avoid-break">
+            <div class="flex items-start justify-between mb-2">
+                <h4 class="font-semibold text-gray-900">FR-7: Reputation Summary</h4>
+                <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">P1</span>
+            </div>
+            <p class="text-sm text-gray-700">Reputation Summary (rating averages, verified badges, response time metrics).</p>
+        </div>
+
+        <div class="fr-card avoid-break">
+            <div class="flex items-start justify-between mb-2">
+                <h4 class="font-semibold text-gray-900">FR-8: Submit Verification</h4>
+                <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">P0</span>
+            </div>
+            <p class="text-sm text-gray-700">Submit Verification request with documents.</p>
+        </div>
+
+        <div class="fr-card avoid-break">
+            <div class="flex items-start justify-between mb-2">
+                <h4 class="font-semibold text-gray-900">FR-9: Review Workflow</h4>
+                <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">P0</span>
+            </div>
+            <p class="text-sm text-gray-700">Review Workflow approve/reject + reason (admin/verifier).</p>
+        </div>
+
+        <div class="fr-card avoid-break">
+            <div class="flex items-start justify-between mb-2">
+                <h4 class="font-semibold text-gray-900">FR-10: Verified Badge</h4>
+                <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">P0</span>
+            </div>
+            <p class="text-sm text-gray-700">Verified Badge visible on profile/listings.</p>
+        </div>
+
+        <div class="fr-card avoid-break">
+            <div class="flex items-start justify-between mb-2">
+                <h4 class="font-semibold text-gray-900">FR-11: e-KYC Provider Check</h4>
+                <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">P1</span>
+            </div>
+            <p class="text-sm text-gray-700">e-KYC Provider Check (e.g., NID verification via an external provider) with fallback to manual verification.</p>
+        </div>
+
+        <div class="fr-card avoid-break">
+            <div class="flex items-start justify-between mb-2">
+                <h4 class="font-semibold text-gray-900">FR-12: Create Listing</h4>
+                <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">P0</span>
+            </div>
+            <p class="text-sm text-gray-700">Create Listing with location/area/price/terms/media/docs.</p>
+        </div>
+
+        <div class="fr-card avoid-break">
+            <div class="flex items-start justify-between mb-2">
+                <h4 class="font-semibold text-gray-900">FR-13: Listing Verification</h4>
+                <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">P0</span>
+            </div>
+            <p class="text-sm text-gray-700">Listing Verification (ownership + info verification steps).</p>
+        </div>
+
+        <div class="fr-card avoid-break">
+            <div class="flex items-start justify-between mb-2">
+                <h4 class="font-semibold text-gray-900">FR-14: Virtual Tours</h4>
+                <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">P1</span>
+            </div>
+            <p class="text-sm text-gray-700">Virtual Tours (as media or external link).</p>
+        </div>
+
+        <div class="fr-card avoid-break">
+            <div class="flex items-start justify-between mb-2">
+                <h4 class="font-semibold text-gray-900">FR-15: Favorites</h4>
+                <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">P0</span>
+            </div>
+            <p class="text-sm text-gray-700">Favorites (save listings).</p>
+        </div>
+    </div>
+
+    <!-- Functional Requirements (continued) -->
+    <div class="a4-page page-break">
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">Functional Requirements (Continued)</h3>
+
+        <div class="fr-card avoid-break">
+            <div class="flex items-start justify-between mb-2">
+                <h4 class="font-semibold text-gray-900">FR-16: Document Vault</h4>
+                <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">P0</span>
+            </div>
+            <p class="text-sm text-gray-700">Document Vault for sensitive docs (deeds, mutation, tax receipts) with strict access.</p>
+        </div>
+
+        <div class="fr-card avoid-break">
+            <div class="flex items-start justify-between mb-2">
+                <h4 class="font-semibold text-gray-900">FR-17: Unit Converter</h4>
+                <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">P1</span>
+            </div>
+            <p class="text-sm text-gray-700">Unit Converter (SqFt ↔ Katha/Decimal/Shotok).</p>
+        </div>
+
+        <div class="fr-card avoid-break">
+            <div class="flex items-start justify-between mb-2">
+                <h4 class="font-semibold text-gray-900">FR-18: Market Value Guidance</h4>
+                <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">P1</span>
+            </div>
+            <p class="text-sm text-gray-700">Market Value Guidance (manual inputs by agents/admin + optional analytics later) as suggested by the UX journey maps.</p>
+        </div>
+
+        <div class="fr-card avoid-break">
+            <div class="flex items-start justify-between mb-2">
+                <h4 class="font-semibold text-gray-900">FR-19: Advanced Search</h4>
+                <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">P0</span>
+            </div>
+            <p class="text-sm text-gray-700">Advanced Search filters: location/price/area + verified-only.</p>
+        </div>
+
+        <div class="fr-card avoid-break">
+            <div class="flex items-start justify-between mb-2">
+                <h4 class="font-semibold text-gray-900">FR-20: Map-Based Search</h4>
+                <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">P1</span>
+            </div>
+            <p class="text-sm text-gray-700">Map-Based Search.</p>
+        </div>
+
+        <div class="fr-card avoid-break">
+            <div class="flex items-start justify-between mb-2">
+                <h4 class="font-semibold text-gray-900">FR-21: Saved Searches + Alerts</h4>
+                <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">P1</span>
+            </div>
+            <p class="text-sm text-gray-700">Saved Searches + Alerts (notify when a matching listing is published).</p>
+        </div>
+
+        <div class="fr-card avoid-break">
+            <div class="flex items-start justify-between mb-2">
+                <h4 class="font-semibold text-gray-900">FR-22: Compare Listings</h4>
+                <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">P1</span>
+            </div>
+            <p class="text-sm text-gray-700">Compare Listings up to N items side-by-side.</p>
+        </div>
+
+        <div class="fr-card avoid-break">
+            <div class="flex items-start justify-between mb-2">
+                <h4 class="font-semibold text-gray-900">FR-23: Live Chat</h4>
+                <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">P0</span>
+            </div>
+            <p class="text-sm text-gray-700">Live Chat between buyer ↔ seller/agent.</p>
+        </div>
+
+        <div class="fr-card avoid-break">
+            <div class="flex items-start justify-between mb-2">
+                <h4 class="font-semibold text-gray-900">FR-24: Audio/Video Call</h4>
+                <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">P1</span>
+            </div>
+            <p class="text-sm text-gray-700">Audio/Video Call (integrated SDK).</p>
+        </div>
+
+        <div class="fr-card avoid-break">
+            <div class="flex items-start justify-between mb-2">
+                <h4 class="font-semibold text-gray-900">FR-25: Appointment Booking</h4>
+                <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">P0</span>
+            </div>
+            <p class="text-sm text-gray-700">Appointment Booking for agents/legal/financial.</p>
+        </div>
+
+        <div class="fr-card avoid-break">
+            <div class="flex items-start justify-between mb-2">
+                <h4 class="font-semibold text-gray-900">FR-26: Purpose Capture</h4>
+                <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">P0</span>
+            </div>
+            <p class="text-sm text-gray-700">Purpose Capture for contact (message purpose).</p>
+        </div>
+
+        <div class="fr-card avoid-break">
+            <div class="flex items-start justify-between mb-2">
+                <h4 class="font-semibold text-gray-900">FR-27: Submit Offer</h4>
+                <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">P0</span>
+            </div>
+            <p class="text-sm text-gray-700">Submit Offer securely.</p>
+        </div>
+
+        <div class="fr-card avoid-break">
+            <div class="flex items-start justify-between mb-2">
+                <h4 class="font-semibold text-gray-900">FR-28: Negotiate</h4>
+                <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">P0</span>
+            </div>
+            <p class="text-sm text-gray-700">Negotiate (counter/accept/reject/withdraw).</p>
+        </div>
+
+        <div class="fr-card avoid-break">
+            <div class="flex items-start justify-between mb-2">
+                <h4 class="font-semibold text-gray-900">FR-29: Transaction Step Tracking</h4>
+                <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">P0</span>
+            </div>
+            <p class="text-sm text-gray-700">Transaction Step Tracking visible to both parties.</p>
+        </div>
+
+        <div class="fr-card avoid-break">
+            <div class="flex items-start justify-between mb-2">
+                <h4 class="font-semibold text-gray-900">FR-30: Place Order</h4>
+                <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">P0</span>
+            </div>
+            <p class="text-sm text-gray-700">Place Order for property/service.</p>
+        </div>
+    </div>
+
+    <!-- System Diagrams -->
+    <div class="a4-page page-break">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6 section-header">7. System Diagrams</h2>
+        <p class="text-gray-700 mb-4">
+            The following diagrams illustrate the system architecture, data flow, and key workflows.
+        </p>
+
+        <div class="avoid-break mb-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">Diagram 1</h3>
+            <pre class="mermaid">
+erDiagram
+    USER ||--o{ USER_ROLE : has
+    ROLE ||--o{ USER_ROLE : assigned
+
+    USER ||--o{ VERIFICATION_REQUEST : submits
+    VERIFICATION_REQUEST ||--o{ DOCUMENT : includes
+    USER ||--o{ DOCUMENT : uploads
+    VERIFICATION_REQUEST ||--o| VERIFICATION_DECISION : resolved_by
+
+    USER ||--o{ PROPERTY_LISTING : creates
+    PROPERTY_LISTING ||--o{ LISTING_MEDIA : has
+    USER ||--o{ FAVORITE : saves
+    PROPERTY_LISTING ||--o{ FAVORITE : saved
+
+    PROPERTY_LISTING ||--o{ OFFER : receives
+    USER ||--o{ OFFER : makes
+
+    OFFER ||--o| TRANSACTION : accepted_creates
+    TRANSACTION ||--o{ TRANSACTION_STEP : tracks
+    TRANSACTION ||--o{ ORDER : generates
+    ORDER ||--o{ PAYMENT : has
+
+    USER ||--o{ REVIEW : writes
+    TRANSACTION ||--o{ REVIEW : after_completion
+
+    USER ||--o{ APPOINTMENT : books
+    USER ||--o{ APPOINTMENT : receives
+
+    CHAT_THREAD ||--o{ MESSAGE : contains
+    CHAT_THREAD ||--o{ CHAT_PARTICIPANT : has
+    USER ||--o{ CHAT_PARTICIPANT : joins
+
+    AUDIT_LOG }o--|| USER : actor
+
+    USER {
+        string id PK
+        string phone UK
+        string email UK
+        string name
+        boolean is_verified
+        datetime created_at
+    }
+    PROPERTY_LISTING {
+        string id PK
+        string owner_user_id FK
+        string title
+        string location_text
+        float price
+        float area_sqft
+        boolean is_verified
+        int accuracy_score
+        string status
+    }
+    TRANSACTION {
+        string id PK
+        string offer_id FK
+        string status
+        datetime created_at
+    }
+    PAYMENT {
+        string id PK
+        string order_id FK
+        string provider
+        string status
+        float amount
+    }
+
+            </pre>
+        </div>
+
+        <div class="avoid-break mb-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">Diagram 2</h3>
+            <pre class="mermaid">
+erDiagram
+    PROPERTY_LISTING ||--o{ LISTING_STATUS_HISTORY : has
+    PROPERTY_LISTING ||--o{ LISTING_VERIFICATION_CHECK : verified_by
+
+    USER ||--o{ DOCUMENT_ACCESS_REQUEST : requests
+    PROPERTY_LISTING ||--o{ DOCUMENT_ACCESS_REQUEST : for_listing
+    DOCUMENT_ACCESS_REQUEST ||--o| DOCUMENT_ACCESS_GRANT : approved_creates
+    USER ||--o{ DOCUMENT_ACCESS_GRANT : grants
+    DOCUMENT_ACCESS_GRANT ||--o{ DOCUMENT_ACCESS_GRANT_ITEM : includes
+    DOCUMENT_ACCESS_GRANT_ITEM }o--|| DOCUMENT : allows
+
+    ORDER ||--o{ DISPUTE : may_have
+    DISPUTE ||--o{ DISPUTE_EVIDENCE : includes
+    DISPUTE_EVIDENCE }o--|| DOCUMENT : evidence
+    PAYMENT ||--o{ REFUND : may_have
+
+    USER ||--o{ NOTIFICATION_PREFERENCE : sets
+    USER ||--o{ NOTIFICATION : receives
+
+    USER ||--o{ MODERATION_CASE : reports
+    MODERATION_CASE }o--|| USER : handled_by
+
+    TRANSACTION ||--o{ LAND_PORTAL_REFERENCE : tracks
+    LAND_PORTAL_REFERENCE ||--o{ LAND_PORTAL_STATUS_SNAPSHOT : snapshots
+
+    LISTING_STATUS_HISTORY {
+        string id PK
+        string listing_id FK
+        string from_status
+        string to_status
+        string reason_code
+        string actor_user_id FK
+        datetime created_at
+    }
+    DOCUMENT_ACCESS_GRANT {
+        string id PK
+        string request_id FK
+        string granter_user_id FK
+        boolean can_download
+        datetime expires_at
+        datetime revoked_at
+    }
+    DISPUTE {
+        string id PK
+        string order_id FK
+        string opened_by_user_id FK
+        string status
+        datetime opened_at
+        datetime resolved_at
+    }
+    REFUND {
+        string id PK
+        string payment_id FK
+        string provider_refund_id
+        float amount
+        string status
+    }
+
+            </pre>
+        </div>
+
+        <div class="avoid-break mb-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">Diagram 3</h3>
+            <pre class="mermaid">
+stateDiagram-v2
+    [*] --> SUBMITTED
+    SUBMITTED --> COUNTERED: seller_counter
+    COUNTERED --> COUNTERED: buyer_or_seller_counter
+    SUBMITTED --> ACCEPTED: seller_accept
+    COUNTERED --> ACCEPTED: buyer_accept
+    SUBMITTED --> REJECTED: seller_reject
+    COUNTERED --> REJECTED: buyer_or_seller_reject
+    SUBMITTED --> WITHDRAWN: buyer_withdraw
+    COUNTERED --> WITHDRAWN: buyer_withdraw
+    ACCEPTED --> [*]
+    REJECTED --> [*]
+    WITHDRAWN --> [*]
+
+            </pre>
+        </div>
+    </div>
+
+    <!-- System Diagrams (continued) -->
+    <div class="a4-page page-break">
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">System Diagrams (Continued)</h3>
+
+        <div class="avoid-break mb-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">Diagram 4</h3>
+            <pre class="mermaid">
+stateDiagram-v2
+    [*] --> INITIATED
+    INITIATED --> DOCS_PENDING: offer_accepted
+    DOCS_PENDING --> LEGAL_REVIEW: docs_uploaded
+    LEGAL_REVIEW --> FINANCE_PROCESSING: loan_requested
+    LEGAL_REVIEW --> PAYMENT_PENDING: no_loan
+    FINANCE_PROCESSING --> PAYMENT_PENDING: loan_approved_or_cash_ready
+    PAYMENT_PENDING --> IN_PROGRESS: token_or_payment_confirmed
+    IN_PROGRESS --> COMPLETED: dalil_uploaded_and_handover_confirmed
+    INITIATED --> CANCELLED: cancel
+    DOCS_PENDING --> CANCELLED: cancel
+    LEGAL_REVIEW --> CANCELLED: cancel
+    FINANCE_PROCESSING --> CANCELLED: cancel
+    PAYMENT_PENDING --> CANCELLED: cancel
+    IN_PROGRESS --> CANCELLED: cancel
+    COMPLETED --> [*]
+    CANCELLED --> [*]
+
+            </pre>
+        </div>
+
+        <div class="avoid-break mb-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">Diagram 5</h3>
+            <pre class="mermaid">
+stateDiagram-v2
+    [*] --> INITIATED
+    INITIATED --> DOCS_PENDING: offer_accepted
+    DOCS_PENDING --> PAYMENT_PENDING: lease_terms_confirmed
+    PAYMENT_PENDING --> IN_PROGRESS: deposit_or_rent_paid
+    IN_PROGRESS --> COMPLETED: handover_confirmed
+    INITIATED --> CANCELLED: cancel
+    DOCS_PENDING --> CANCELLED: cancel
+    PAYMENT_PENDING --> CANCELLED: cancel
+    IN_PROGRESS --> CANCELLED: cancel
+    COMPLETED --> [*]
+    CANCELLED --> [*]
+
+            </pre>
+        </div>
+
+        <div class="avoid-break mb-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">Diagram 6</h3>
+            <pre class="mermaid">
+stateDiagram-v2
+    [*] --> DRAFT
+    DRAFT --> SUBMITTED: submit_for_review
+    SUBMITTED --> UNDER_REVIEW: queued
+    UNDER_REVIEW --> PUBLISHED: approve
+    UNDER_REVIEW --> CHANGES_REQUESTED: request_changes
+    UNDER_REVIEW --> REJECTED: reject
+
+    CHANGES_REQUESTED --> DRAFT: edit
+    CHANGES_REQUESTED --> SUBMITTED: resubmit
+
+    PUBLISHED --> PAUSED: pause
+    PAUSED --> PUBLISHED: resume
+    PUBLISHED --> UNDER_REVIEW: reverification_trigger
+    PUBLISHED --> ARCHIVED: archive
+    PAUSED --> ARCHIVED: archive
+
+    REJECTED --> ARCHIVED: archive
+    ARCHIVED --> [*]
+
+            </pre>
+        </div>
+    </div>
+
+    <!-- SRS Review & Gap Analysis -->
+    <div class="a4-page page-break">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6 section-header">10. SRS Review & Gap Analysis</h2>
+        <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded-r mb-6 avoid-break">
+            <h3 class="text-lg font-semibold text-yellow-900 mb-2">Critical Findings</h3>
+            <p class="text-sm text-gray-700 mb-3">
+                A comprehensive review has identified 12 critical gaps and areas requiring immediate attention before development kickoff.
+            </p>
+            <div class="grid grid-cols-2 gap-3 text-sm">
+                <div><span class="font-semibold">P0 Blockers:</span> 4 items</div>
+                <div><span class="font-semibold">P1 Pre-MVP:</span> 6 items</div>
+                <div><span class="font-semibold">P2 Post-MVP:</span> 4 items</div>
+                <div><span class="font-semibold">Total FRs Reviewed:</span> 93</div>
+            </div>
+        </div>
+        
+        <div class="avoid-break mb-4">
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">Top Priority Action Items</h3>
+            <ol class="list-decimal list-inside space-y-2 text-sm text-gray-700">
+                <li>Define search performance SLAs and targets (P0)</li>
+                <li>Complete payment reconciliation workflow specification (P0)</li>
+                <li>Document comprehensive API specifications with schemas (P0)</li>
+                <li>Define data retention and privacy policy (P0)</li>
+                <li>Establish monitoring and alerting acceptance criteria (P1)</li>
+                <li>Create comprehensive test cases for payment flows (P1)</li>
+            </ol>
+        </div>
+        
+        <div class="avoid-break">
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">Recommended Non-Functional Targets</h3>
+            <ul class="list-disc list-inside space-y-1 text-sm text-gray-700">
+                <li>Search latency: &lt;2s at P95 percentile</li>
+                <li>Payment webhook processing: &lt;30s</li>
+                <li>Core services uptime: 99.5%</li>
+                <li>Backup RPO: 1 hour, RTO: 4 hours</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Print Button -->
+    <div class="no-print fixed bottom-8 right-8 z-50">
+        <button onclick="window.print()" 
+                class="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-4 rounded-xl shadow-2xl transform hover:scale-105 transition-all">
+            📄 Print / Save as PDF
+        </button>
+    </div>
+</body>
+</html>

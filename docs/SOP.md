@@ -902,9 +902,10 @@ if (featureFlags.isEnabled('NEW_SEARCH_ALGORITHM')) {
 TIMESTAMP=$(date +%Y%m%d_%H%M%S)
 BACKUP_DIR="/backups/database"
 DB_NAME="msc_home"
+MYSQL_CNF="/etc/mysql/backup.cnf"  # Protected option file containing [client] user/password
 
-# Full database dump
-mysqldump -u backup_user -p${DB_PASSWORD} ${DB_NAME} | gzip > ${BACKUP_DIR}/msc_db_${TIMESTAMP}.sql.gz
+# Full database dump using secure credentials from option file (no password on command line)
+mysqldump --defaults-extra-file="${MYSQL_CNF}" "${DB_NAME}" | gzip > "${BACKUP_DIR}/msc_db_${TIMESTAMP}.sql.gz"
 
 # Upload to cloud storage
 aws s3 cp ${BACKUP_DIR}/msc_db_${TIMESTAMP}.sql.gz s3://msc-backups/database/
