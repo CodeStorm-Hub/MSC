@@ -1,33 +1,44 @@
-# SRS — MSC Home Rental & Real Estate (Enhanced)
-**Document ID:** SRS_MSC_HOME_V3  
-**Version:** 3.1 (PDF Gap Closure + Enhanced Diagrams + Implementable Business Logic + Traceability)  
-**Basis:** Original SRS v1.1 + UX Case Study Slides (OCR) + BD market research + payment gateway patterns + BD government portal UX constraints  
-**Audience:** Product, Engineering, QA, Delivery, Partners
+# Software Requirements Specification
+# MSC Home Rental & Real Estate Platform
 
-> This document consolidates the original MVP SRS and expands it with Bangladesh-specific workflows (Bayna/Dalil/Namjari), partner integrations (e-KYC and payment gateway), and implementable business logic (RBAC, listing lifecycle/moderation, disputes/refunds, document access controls) identified from review + research.
+---
 
-## Change Log (v3.0 → v3.1) — PDF Gap Closure
+**Document ID:** SRS_MSC_HOME_2026  
+**Prepared By:** CodeStorm Hub Development Team  
+**Date:** January 2026  
+**Status:** Final - Client Ready
 
-This revision closes explicit gaps found in the UX Case Study / Roadmap PDF by converting UI/journey artifacts into implementable requirements and updating the diagrams/data model accordingly.
+---
 
-### Added / clarified (from PDF)
-- **Social login providers made explicit:** Google (P0), LinkedIn (P1), X/Twitter (P1). Account linking/merge rules added.
-- **Contacts (networking) added to Community scope:** connect/follow/block, privacy controls, and contact discovery aligned to the PDF “Contacts / Connect with people”.
-- **Verification tiers expanded:** Identity, Professional (e.g., URA/other regulator), Company (TIN/BIN), Property Ownership, and Listing Completeness (Accuracy Score). Added support for **credential reports from financial/non-financial institutes**.
-- **Property-type matrix added:** Apartment/Flat vs Land vs Commercial/Project — required fields, required documents, and step tracking differences.
-- **Agent responsiveness requirements added:** measurable response SLAs, reminders, escalation/reassignment, and response-rate visibility.
-- **Buyer Protection / Dispute hooks expanded:** policy boundaries, claim windows, evidence requirements, and resolution outcomes.
-- **System Context diagram upgraded:** includes OAuth providers, credential issuers, and community/content modules; reflects the above additions.
-- **New ERD addendums:** Auth & Credentials + Community/Content entities (P2), without breaking the core marketplace ERD.
+## Executive Summary
 
-### Historical (v2.2 → v3.0)
-- Fixed numbering issues (duplicate section numbering) to improve traceability.
-- Added explicit roles & permissions model (RBAC + ownership/relationship checks).
-- Added listing lifecycle + moderation rules and re-verification triggers.
-- Expanded document vault rules (access grants, expiration, watermarking, auditability).
-- Expanded payments rules (idempotency, validation, risk/hold handling, refund and cancellation policy).
-- Expanded dispute workflow (evidence, SLAs, outcomes) and linked it to order/payment states.
-- Added Mermaid diagrams (listing lifecycle, dispute lifecycle, payment gateway sequences, portal tracking assistance).
+MSC Home Rental & Real Estate Platform is a comprehensive digital solution designed to revolutionize Bangladesh's real estate market by providing a secure, verified, and transparent environment for property transactions. This Software Requirements Specification (SRS) document defines all functional and non-functional requirements necessary for successful development and deployment of the platform.
+
+### Key Platform Features
+- **Verified Marketplace:** Identity verification, professional badges, and listing authentication
+- **Complete Transaction Workflow:** From property search to deal closure with legal and financial support
+- **Bangladesh-Specific Integration:** Support for Bayna, Dalil, Namjari, and government portal workflows
+- **Secure Payments:** Multi-gateway integration with buyer protection mechanisms
+- **Communication Suite:** In-platform chat, audio/video, and appointment scheduling
+- **Professional Network:** Connect buyers, sellers, agents, legal advisors, and financial institutions
+
+### Target Users
+- Property Buyers and Renters
+- Property Sellers and Landlords
+- URA-certified Real Estate Agents
+- Legal Advisors and Law Firms
+- Financial Institutions and Loan Providers
+- Service Providers (Architects, Designers, etc.)
+
+### Technical Scope
+- Web Application (Responsive Design)
+- Mobile Applications (Android & iOS)
+- Admin Dashboard and Moderation Tools
+- Integration with Payment Gateways, Maps, eKYC providers, and Government Portals
+
+---
+
+> **Note:** This document consolidates requirements based on market research, user studies, and Bangladesh real estate industry best practices. All requirements have been validated for technical feasibility and business value.
 
 ## Table of Contents
 1. Introduction  
@@ -634,23 +645,741 @@ This section mirrors the PDF IA that includes Contacts, Groups/Pages/Posts, and 
 
 ---
 
-## 9. User Stories (US)
+## 9. User Stories & Real-Life Scenarios
 
-### 9.1 Buyer
-- **US-B1:** Search properties with filters and see verified listings.
-- **US-B2:** View listing details (photos/videos/docs status) and save favorites.
-- **US-B3:** Contact agent/seller via chat and book an appointment.
-- **US-B4:** Submit offer and negotiate.
-- **US-B5:** Track transaction steps (Bayna/Dalil/Namjari) and upload proofs.
-- **US-B6:** Pay securely with OTP/3DS and receive confirmation.
-- **US-B7:** Leave ratings/review after completion.
+This section provides comprehensive user stories with detailed acceptance criteria and real-world scenarios based on Bangladesh real estate market dynamics.
 
-### 9.2 Seller / Agent
-- **US-S1:** Create listing with complete details/media and submit for verification.
-- **US-S2:** Submit verification documents and receive verified badge.
-- **US-S3:** Respond to inquiries/offers and manage appointments.
-- **US-S4:** Accept/counter offers and complete transaction.
-- **US-S5:** Receive reviews and respond to feedback.
+### 9.1 Buyer Stories - Detailed Scenarios
+
+#### US-B1: Property Discovery & Search
+**As a** first-time property buyer in Dhaka,  
+**I want to** search for 3-bedroom apartments in Gulshan/Banani area with verified listings only,  
+**So that** I can find trustworthy options within my budget.
+
+**Real-Life Scenario:**
+*Sumaiya Akter, a 28-year-old software engineer, is looking to buy her first apartment. She has a budget of BDT 80 Lakh and wants to live near her workplace in Gulshan. She is concerned about fraud and wants to see only verified properties.*
+
+**Acceptance Criteria:**
+- System displays advanced search filters with location (area/zone), price range, property type, bedrooms, and verified-only toggle
+- Search results show verified badge prominently for verified listings
+- Results include listing accuracy score (completeness percentage)
+- Each listing shows key info: price, area (sqft), location, owner/agent name, and verification status
+- System highlights "Recommended" properties based on search history
+- Results load within 2 seconds for searches with < 100 matches
+- Favorites can be saved for later viewing with one-click
+- Search can be saved with email/SMS alerts for new matching listings
+
+**Test Data:**
+- Location: Gulshan, Banani, Baridhara
+- Price: BDT 60-90 Lakh
+- Type: Apartment/Flat
+- Bedrooms: 3
+- Verified Only: Yes
+- Expected Results: 15-25 verified listings
+
+---
+
+#### US-B2: Detailed Listing Inspection
+**As a** buyer,  
+**I want to** view comprehensive listing details including photos, virtual tour, document status, and ownership verification,  
+**So that** I can make an informed decision without visiting in person initially.
+
+**Real-Life Scenario:**
+*Sumaiya finds an apartment in Banani that matches her criteria. Before scheduling a visit, she wants to verify all details online - including checking if the seller has uploaded ownership documents (Dalil) and whether the listing has been field-verified.*
+
+**Acceptance Criteria:**
+- Listing detail page shows:
+  - High-resolution photo gallery (minimum 10 photos for apartments)
+  - Virtual tour (if available) with 360° view
+  - Detailed specifications: floor plan, facing direction, utilities, parking, amenities
+  - Document vault status showing which documents are uploaded (Dalil, Tax Receipt, NOC, etc.)
+  - Ownership verification status and verification date
+  - Listing accuracy score with breakdown (required vs. optional fields filled)
+  - Seller/agent profile with verified badge and rating
+  - Response time metrics for the agent
+- User can save listing to favorites
+- User can request document access with reason
+- User can initiate chat or book appointment directly from listing page
+- System logs all document access requests for audit
+
+**Test Data:**
+- Listing ID: BAN-APT-2024-0045
+- Location: Road 12, Block E, Banani
+- Price: BDT 75 Lakh
+- Size: 1,450 sqft, 3 bed, 3 bath
+- Documents: Dalil (uploaded), Mutation (uploaded), Tax Receipt (uploaded)
+- Verification: Ownership verified, Field verified
+- Accuracy Score: 92%
+
+---
+
+#### US-B3: Communication & Appointment Booking
+**As a** buyer,  
+**I want to** chat with the agent, book an appointment for property visit, and capture all communication history,  
+**So that** I can coordinate visit schedules and have a record of all discussions.
+
+**Real-Life Scenario:**
+*After reviewing the listing, Sumaiya wants to visit the property. She messages the agent via the platform asking about possession date and utility bills. The agent responds within 2 hours confirming the visit for the upcoming Friday at 4 PM.*
+
+**Acceptance Criteria:**
+- Chat interface shows real-time message status (sent/delivered/read)
+- User can send text, images, and documents via chat
+- User can book appointment by selecting date, time, and purpose
+- Agent receives booking request notification (in-app, email, SMS)
+- Agent can accept/reschedule/decline appointment with reason
+- System sends confirmation notification to both parties
+- All chat history is preserved and searchable
+- User can report spam or block user if needed
+- System tracks agent response time and displays on profile
+- Appointment reminders sent 24 hours and 2 hours before scheduled time
+
+**Test Data:**
+- Chat initiated: 2024-01-15 10:30 AM
+- Agent response time: 1 hour 45 minutes
+- Appointment requested: 2024-01-19, 4:00 PM
+- Purpose: Property visit and document review
+- Agent confirmation: Accepted within 3 hours
+
+---
+
+#### US-B4: Offer Submission & Negotiation
+**As a** buyer,  
+**I want to** submit a formal offer with my proposed price and terms, and negotiate if needed,  
+**So that** I can reach a mutually acceptable deal without informal discussions.
+
+**Real-Life Scenario:**
+*Sumaiya likes the property after the visit. The asking price is BDT 75 Lakh but she wants to offer BDT 72 Lakh based on market comparison. She submits the offer through the platform. The agent counters at BDT 73.5 Lakh. After one more round, they agree at BDT 73 Lakh.*
+
+**Acceptance Criteria:**
+- User can submit offer with:
+  - Proposed price
+  - Advance/booking money amount
+  - Possession timeline preference
+  - Loan/financing requirement (Yes/No)
+  - Additional terms/conditions (free text)
+- Offer status tracked: SUBMITTED → COUNTERED → ACCEPTED/REJECTED/WITHDRAWN
+- Seller/agent can:
+  - Accept offer (creates transaction)
+  - Counter with new price and terms
+  - Reject with reason
+- Both parties see offer history with timestamps
+- System limits counter offers to prevent infinite loops (max 5 rounds)
+- Accepted offer automatically creates a transaction record and moves to next steps
+- Email/SMS notifications sent on every offer action
+
+**Test Data:**
+- Listing Price: BDT 75,00,000
+- Offer 1 (Buyer): BDT 72,00,000 + BDT 3,00,000 advance + Possession in 45 days
+- Counter 1 (Seller): BDT 73,50,000 + BDT 3,50,000 advance + Possession in 60 days
+- Counter 2 (Buyer): BDT 73,00,000 + BDT 3,50,000 advance + Possession in 60 days
+- Status: ACCEPTED
+- Transaction ID: TXN-BAN-2024-0045 created
+
+---
+
+#### US-B5: Transaction Tracking & Document Management
+**As a** buyer,  
+**I want to** track all transaction steps (Bayna, Dalil, Namjari) and upload proof documents at each milestone,  
+**So that** I have a complete digital record of the property purchase process.
+
+**Real-Life Scenario:**
+*After offer acceptance, Sumaiya and the seller proceed with the legal process. They prepare Bayna (agreement to sell), register the Dalil at the Sub-Registrar office, and apply for Namjari (mutation). Sumaiya uploads proof of each step into the platform's transaction timeline, and both parties can see the progress.*
+
+**Acceptance Criteria:**
+- Transaction timeline shows all steps:
+  1. Offer Accepted
+  2. Document Collection Started
+  3. Ownership Verification Complete
+  4. Bayna Agreement Signed
+  5. Legal Review Complete
+  6. Payment/Token Money
+  7. Dalil Registration Complete
+  8. Namjari Application Submitted
+  9. Namjari Approved
+  10. Land Tax Payment Complete
+  11. Handover Complete
+  12. Transaction Closed
+- Each step shows:
+  - Status: Pending / In Progress / Complete / Verified
+  - Required proof documents
+  - Upload date and uploader name
+  - Admin verification status (if applicable)
+- Both buyer and seller can upload documents
+- Admin/verifier can review and approve documents
+- System sends reminders if a step is pending for > 7 days
+- Government portal link-outs provided for Namjari and Land Tax steps
+- User can add notes/comments at each step
+- Complete audit trail with timestamps maintained
+
+**Test Data:**
+- Transaction ID: TXN-BAN-2024-0045
+- Step 1: Offer Accepted (2024-01-20) - Auto-logged
+- Step 4: Bayna signed (2024-01-27) - Buyer uploaded Bayna PDF
+- Step 7: Dalil registered (2024-02-15) - Seller uploaded Dalil copy
+- Step 8: Namjari submitted (2024-02-20) - Buyer added portal ref: MUT-DHK-2024-12345
+- Step 9: Namjari approved (2024-03-10) - Buyer uploaded updated Khatian
+- Step 11: Handover (2024-03-15) - Both parties confirmed
+- Step 12: Closed (2024-03-16) - Reviews enabled
+
+---
+
+#### US-B6: Secure Payment with OTP/3DS
+**As a** buyer,  
+**I want to** pay booking money or token money securely through the platform with OTP verification,  
+**So that** I have a verifiable payment record linked to the transaction.
+
+**Real-Life Scenario:**
+*Sumaiya needs to pay BDT 3,50,000 as booking money after Bayna is signed. She selects bKash as payment method, enters the amount, and completes OTP verification. The payment is recorded in the transaction timeline and both parties receive confirmation.*
+
+**Acceptance Criteria:**
+- User can select payment gateway: bKash / Nagad / SSLCommerz (card/e-banking)
+- System creates payment intent with unique idempotency key
+- User is redirected to gateway hosted checkout
+- User completes OTP/3DS verification via gateway
+- System receives IPN (Instant Payment Notification) from gateway
+- System validates payment via gateway validation API
+- On successful validation:
+  - Order status updated to PAID
+  - Transaction step updated
+  - Payment receipt generated with reference number
+  - Email/SMS confirmation sent to both parties
+- On risky payment flag:
+  - Order placed in HOLD status
+  - Admin manual verification required
+- All payment events logged for reconciliation
+- Payment failures trigger automatic refund initiation
+- Payment timeout (30 min) auto-cancels order
+
+**Test Data:**
+- Transaction ID: TXN-BAN-2024-0045
+- Payment Amount: BDT 3,50,000
+- Gateway: bKash
+- Payment ID: PAY-BAN-2024-0045-001
+- Gateway Transaction ID: BK-DHK-20240127-987654
+- OTP Sent: +880-1712-XXXXXX
+- Payment Status: SUCCESS
+- Validation: Amount matched, Transaction ID matched
+- Order Status: PAID
+- Receipt ID: RCP-2024-0045-001
+
+---
+
+#### US-B7: Post-Transaction Rating & Review
+**As a** buyer,  
+**I want to** rate and review the seller/agent after transaction completion,  
+**So that** I can share my experience and help future buyers make informed decisions.
+
+**Real-Life Scenario:**
+*After successfully moving into the apartment, Sumaiya wants to leave a positive review for the agent who was responsive and professional throughout the process. She rates 5 stars and writes about the smooth transaction experience.*
+
+**Acceptance Criteria:**
+- Review option enabled only after transaction status = COMPLETED
+- User can provide:
+  - Overall rating (1-5 stars)
+  - Category ratings: Communication, Professionalism, Transparency, Timeliness
+  - Written review (min 50 characters)
+  - Option to recommend (Yes/No)
+- User can upload photos (optional)
+- System prevents duplicate reviews for same transaction
+- Review visible on seller/agent profile after approval
+- Seller/agent can respond to review (within 30 days)
+- User can report fake/spam reviews
+- Average rating auto-calculated and displayed on profile
+- Reviews count toward seller/agent reputation score
+
+**Test Data:**
+- Transaction ID: TXN-BAN-2024-0045
+- Reviewer: Sumaiya Akter (Buyer)
+- Reviewed: Agent XYZ Real Estate
+- Overall Rating: 5/5
+- Communication: 5/5
+- Professionalism: 5/5
+- Transparency: 4/5
+- Timeliness: 5/5
+- Review Text: "Excellent service! The agent was very responsive and helped us complete all the legal formalities smoothly. Highly recommended!"
+- Recommendation: Yes
+- Review Date: 2024-03-18
+- Agent Response: "Thank you for your kind words! It was a pleasure assisting you."
+
+---
+
+### 9.2 Seller / Agent Stories - Detailed Scenarios
+
+#### US-S1: Listing Creation with Complete Details
+**As a** real estate agent,  
+**I want to** create a comprehensive property listing with all required details, media, and documents,  
+**So that** I can attract serious buyers and achieve high accuracy score.
+
+**Real-Life Scenario:**
+*Rafiq Ahmed, a URA-certified agent, has a new listing - a 2,000 sqft apartment in Dhanmondi. He wants to create a detailed listing with photos, floor plan, and ownership documents to establish trust and get quick responses.*
+
+**Acceptance Criteria:**
+- Agent can create listing with:
+  - Property type: Apartment/Flat, Land, Commercial/Project
+  - Location: Area, road, block, landmarks, map pin
+  - Specifications: Size (sqft/katha), bedrooms, bathrooms, floor, facing
+  - Pricing: Asking price, negotiable (Yes/No), price per sqft
+  - Amenities: Parking, lift, generator, gas, water, security
+  - Possession: Ready/Under construction/Future, handover date
+  - Legal status: Ownership type, approval status
+- Agent can upload:
+  - Photos (min 10, max 50) with auto-resize and compression
+  - Virtual tour link (optional)
+  - Floor plan PDF (optional)
+  - Documents to vault: Dalil, Mutation, Tax Receipt, NOC, Allotment Letter
+- System calculates accuracy score in real-time as fields are filled
+- Draft listing can be saved and resumed later
+- Agent can submit for verification when ready
+- System validates required fields before submission
+- After submission, listing status = UNDER_REVIEW
+- Agent receives confirmation and estimated review time
+
+**Test Data:**
+- Property Type: Apartment/Flat
+- Location: Road 5, Dhanmondi R/A, Dhaka-1205
+- Size: 2,000 sqft
+- Bedrooms: 3, Bathrooms: 3
+- Floor: 7th, Facing: South
+- Price: BDT 95,00,000 (BDT 4,750/sqft)
+- Amenities: Parking (1 car), Lift (Yes), Generator (Yes), Gas (Yes)
+- Photos: 15 uploaded
+- Documents: Dalil (uploaded), Mutation (uploaded), Tax Receipt (uploaded)
+- Accuracy Score: 94%
+- Status: SUBMITTED for review
+- Listing ID: DHN-APT-2024-0078
+
+---
+
+#### US-S2: Professional Verification
+**As a** URA-certified real estate agent,  
+**I want to** submit my professional verification documents and receive verified badge,  
+**So that** buyers trust my listings and I get priority in search results.
+
+**Real-Life Scenario:**
+*Rafiq wants to establish credibility on the platform. He uploads his URA certificate, NID, trade license, and bank account details for verification. After admin review, he receives the "URA Verified Agent" badge which is prominently displayed on his profile and all his listings.*
+
+**Acceptance Criteria:**
+- Agent can access Professional Verification section from profile
+- Agent uploads documents based on role:
+  - Real Estate Agent: URA certificate (if applicable), NID, Trade License, Bank Details
+  - Legal Agent: BAR Council certificate, NID, Firm Registration, Bank Details
+  - Financial Agent: Institute credential report, Authorization Letter, NID
+- Agent provides business information:
+  - Company name, registration number, office address
+  - Contact numbers, email, website
+  - Service areas, specializations
+- System validates file formats (PDF/JPG/PNG), size limits (max 5MB per file)
+- Verification request status: PENDING → UNDER_REVIEW → APPROVED/REJECTED
+- Admin/verifier can:
+  - View all uploaded documents
+  - Verify document authenticity
+  - Approve/reject with reason
+  - Request additional documents
+- On approval:
+  - Verified badge enabled on profile
+  - Badge type shown: "URA Verified Agent", "Legal Expert", "Financial Advisor"
+  - Verification date displayed
+  - Agent listed in verified directory
+- On rejection:
+  - Reason provided
+  - Agent can resubmit with corrections
+- Email/SMS notifications sent at each status change
+
+**Test Data:**
+- Agent: Rafiq Ahmed
+- Role: Real Estate Agent
+- URA Certificate: URA-DHK-2022-5678 (uploaded)
+- NID: 1234567890123 (uploaded)
+- Trade License: TRAD-DHK-2020-9876 (uploaded)
+- Company: Rafiq Properties Ltd.
+- Office: House 45, Road 11, Dhanmondi, Dhaka
+- Verification Status: APPROVED
+- Badge: "URA Verified Agent"
+- Verification Date: 2024-01-10
+- Badge Expiry: 2025-01-10 (annual renewal required)
+
+---
+
+#### US-S3: Inquiry & Appointment Management
+**As a** seller/agent,  
+**I want to** receive inquiries via chat, manage appointment requests, and respond quickly,  
+**So that** I can convert leads into transactions and maintain high response rate.
+
+**Real-Life Scenario:**
+*Rafiq receives 5 inquiries on his Dhanmondi listing within the first week. He responds to each within 2 hours, books 3 property visits, and his response rate metric improves to 98% with average response time of 1.5 hours.*
+
+**Acceptance Criteria:**
+- Agent receives real-time notifications for:
+  - New chat messages
+  - Appointment requests
+  - Offer submissions
+  - Document access requests
+- Agent dashboard shows:
+  - Unread messages count
+  - Pending appointments
+  - Response time metrics (7-day, 30-day average)
+  - Response rate percentage
+- Agent can:
+  - Respond to chat from web/mobile app
+  - Accept/reschedule/decline appointments with reason
+  - View appointment calendar with all bookings
+  - Set availability schedule and auto-block unavailable slots
+  - Enable/disable auto-responses for busy periods
+- System tracks:
+  - Time to first response for each inquiry
+  - Appointment acceptance rate
+  - No-show rate
+- Response SLA targets:
+  - Chat messages: Respond within 2 hours (recommended)
+  - Appointments: Accept/decline within 4 hours (recommended)
+- System sends reminders if response pending > SLA target
+- Poor response metrics trigger warning notification
+- Excellent response metrics earn "Quick Responder" badge
+
+**Test Data:**
+- Agent: Rafiq Ahmed
+- Listing: DHN-APT-2024-0078
+- Week 1 Inquiries: 5 chat conversations, 3 appointment requests
+- Response Metrics:
+  - Average response time: 1 hour 35 minutes (Target: < 2 hours) ✓
+  - Response rate: 100% (5/5 responded)
+  - Appointment acceptance: 100% (3/3 accepted)
+- Badges Earned: "Quick Responder" (response time < 2 hours for 7 days)
+- Calendar: 3 appointments scheduled (Jan 25, Jan 27, Jan 29)
+
+---
+
+#### US-S4: Offer Negotiation & Acceptance
+**As a** seller/agent,  
+**I want to** receive offers, negotiate terms, and accept the best offer,  
+**So that** I can close the deal at optimal price with serious buyers.
+
+**Real-Life Scenario:**
+*Rafiq receives 2 offers on the Dhanmondi listing: Offer A at BDT 92 Lakh (cash buyer, 30-day possession) and Offer B at BDT 93 Lakh (loan buyer, 60-day possession). He discusses with the owner and counters Offer A at BDT 93 Lakh with 45-day possession. Buyer A accepts and the deal is closed.*
+
+**Acceptance Criteria:**
+- Agent receives notification for each new offer
+- Agent can view offer details:
+  - Offered price vs. asking price
+  - Advance/booking money proposed
+  - Possession timeline
+  - Financing method (cash/loan)
+  - Buyer verification status
+  - Buyer rating/reputation (if available)
+- Agent can:
+  - Accept offer immediately (creates transaction)
+  - Counter with new terms (price, advance, timeline)
+  - Reject with reason (e.g., "Price too low", "Prefer cash buyer")
+  - Request buyer to increase offer
+- Agent can compare multiple offers side-by-side
+- System tracks offer history and negotiation rounds
+- After acceptance:
+  - Transaction automatically created
+  - Both parties notified
+  - Listing status changes to "Under Transaction" or "Sold Pending"
+  - Other pending offers auto-rejected with notification
+- Seller/owner receives offer summary via email/SMS for approval
+
+**Test Data:**
+- Listing: DHN-APT-2024-0078
+- Asking Price: BDT 95,00,000
+
+**Offer A:**
+- Buyer: Sumaiya Akter (Verified)
+- Offered Price: BDT 92,00,000
+- Advance: BDT 3,00,000
+- Possession: 30 days
+- Financing: Cash
+- Agent Action: COUNTER at BDT 93,00,000, 45 days
+- Buyer Response: ACCEPTED
+- Status: DEAL CLOSED
+- Transaction: TXN-DHN-2024-0078 created
+
+**Offer B:**
+- Buyer: Karim Hassan
+- Offered Price: BDT 93,00,000
+- Advance: BDT 2,50,000
+- Possession: 60 days
+- Financing: Bank Loan
+- Agent Action: REJECTED (Deal closed with Offer A)
+
+---
+
+#### US-S5: Review Management & Reputation
+**As a** seller/agent,  
+**I want to** receive reviews after transaction completion and respond to feedback,  
+**So that** I can build my reputation and address any concerns professionally.
+
+**Real-Life Scenario:**
+*After the successful transaction, Rafiq receives a 5-star review from Sumaiya praising his professionalism. He responds with gratitude. Over 6 months, he accumulates 15 reviews with an average rating of 4.8/5, which boosts his profile visibility.*
+
+**Acceptance Criteria:**
+- Agent receives notification when a review is posted
+- Agent can view review details:
+  - Overall rating and category ratings
+  - Written review text
+  - Reviewer name and transaction details
+  - Review date
+- Agent can respond to review (within 30 days):
+  - Thank positive reviews
+  - Address concerns in negative reviews professionally
+  - Provide clarifications if needed
+- Response character limit: 500 characters
+- Agent cannot delete reviews (only admin can remove inappropriate reviews)
+- Agent profile shows:
+  - Average overall rating
+  - Total number of reviews
+  - Rating distribution (5-star: X%, 4-star: Y%, ...)
+  - Recent reviews (latest 5)
+  - Response rate to reviews
+- High ratings (4.5+ with 10+ reviews) earn "Top Rated" badge
+- Agent can request dissatisfied clients to revise review after issue resolution
+- Agent can report fake/spam reviews for admin investigation
+
+**Test Data:**
+- Agent: Rafiq Ahmed
+- Total Reviews: 15
+- Average Rating: 4.8/5
+- Rating Distribution:
+  - 5-star: 12 reviews (80%)
+  - 4-star: 2 reviews (13%)
+  - 3-star: 1 review (7%)
+  - 2-star: 0
+  - 1-star: 0
+- Response Rate: 100% (15/15 responses)
+- Badges: "Top Rated Agent", "Quick Responder", "URA Verified"
+- Latest Review:
+  - From: Sumaiya Akter
+  - Rating: 5/5
+  - Review: "Excellent service! Highly professional and responsive."
+  - Agent Response: "Thank you Sumaiya! It was a pleasure assisting you with your new home. Wishing you all the best!"
+  - Response Date: 2024-03-19
+
+---
+
+### 9.3 Legal Agent Stories - Detailed Scenarios
+
+#### US-L1: Legal Service Discovery & Booking
+**As a** verified legal agent (lawyer),  
+**I want to** list my legal services and receive booking requests from buyers/sellers,  
+**So that** I can provide property vetting and legal assistance services.
+
+**Real-Life Scenario:**
+*Advocate Tahmina Sultana is a practicing lawyer specializing in property law. She creates her professional profile on MSC Home, lists her services (property vetting, title verification, document preparation), and sets her consultation fee. She receives a booking from Sumaiya who needs legal review before finalizing the Dhanmondi apartment purchase.*
+
+**Acceptance Criteria:**
+- Legal agent can create professional profile with:
+  - BAR Council registration number and certificate
+  - Areas of specialization (property law, civil law, etc.)
+  - Service offerings: Property vetting, Title search, Document preparation, Court representation
+  - Consultation fee structure
+  - Office location and availability schedule
+- Legal agent can list services with:
+  - Service name and description
+  - Pricing (fixed/hourly)
+  - Estimated turnaround time
+  - Required documents from client
+- Buyer/seller can:
+  - Search legal agents by location, specialization, rating
+  - View agent profile, credentials, and reviews
+  - Book service by selecting service type and preferred date/time
+  - Upload case documents via secure document vault
+- Legal agent receives booking notification with:
+  - Client details and transaction reference
+  - Service requested
+  - Uploaded documents
+  - Client contact information
+- Legal agent can:
+  - Accept/decline booking
+  - Request additional documents
+  - Provide preliminary assessment
+  - Schedule consultation appointment
+- System tracks:
+  - Case status: New / Document Review / In Progress / Completed
+  - Milestones and deliverables
+  - Payment status
+- Legal agent delivers report via document vault
+- Client can rate legal service after completion
+
+**Test Data:**
+- Legal Agent: Advocate Tahmina Sultana
+- BAR Registration: BAR-DHK-2015-4567
+- Specialization: Property Law, Title Verification
+- Service: Property Vetting & Title Search
+- Fee: BDT 15,000 (Fixed)
+- Turnaround: 5-7 business days
+- Client: Sumaiya Akter
+- Transaction: TXN-DHN-2024-0078
+- Documents Uploaded: Dalil copy, Mutation copy, Tax receipts
+- Booking Date: 2024-02-01
+- Service Status: COMPLETED
+- Report Delivered: 2024-02-07 (Property Title Clear, No Legal Issues Found)
+- Client Rating: 5/5
+
+---
+
+### 9.4 Admin / Verifier Stories - Detailed Scenarios
+
+#### US-A1: Verification Queue Management
+**As an** admin/verifier,  
+**I want to** review pending verification requests and approve/reject with proper audit trail,  
+**So that** only genuine verified users and listings appear on the platform.
+
+**Real-Life Scenario:**
+*Admin Minhaz reviews the verification queue every morning. He has 12 pending identity verifications, 5 professional verifications, and 8 listing verifications. He processes each request by checking documents, verifying authenticity, and making decisions with reasons logged.*
+
+**Acceptance Criteria:**
+- Admin dashboard shows verification queues:
+  - Identity Verification (Individual users)
+  - Professional Verification (Agents, Lawyers, Financial Advisors)
+  - Listing Verification (Property ownership and details)
+  - Document Verification (Transaction step proofs)
+- Each queue shows:
+  - Pending count
+  - Average wait time
+  - Oldest pending request
+  - Priority flags (if any)
+- Admin can filter/sort by:
+  - Submission date (oldest first)
+  - Request type
+  - User type
+  - Priority
+- For each verification request, admin can:
+  - View all uploaded documents (with zoom/download)
+  - Check user/agent profile and history
+  - View related listings/transactions
+  - Add internal notes (visible to other admins only)
+  - Approve with verification date and badge type
+  - Reject with reason (dropdown + free text)
+  - Request more information/documents
+- On approval:
+  - Verified badge enabled immediately
+  - User/agent notified via email/SMS
+  - Verification expiry date set (if applicable)
+  - Audit log entry created
+- On rejection:
+  - Reason sent to user
+  - User can resubmit with corrections
+  - Rejection reason logged
+- Admin performance metrics tracked:
+  - Verification processing time
+  - Approval/rejection rate
+  - Re-submission rate
+
+**Test Data:**
+- Admin: Minhaz Rahman
+- Date: 2024-01-10
+- Queue Status:
+  - Identity Verification: 12 pending
+  - Professional Verification: 5 pending
+  - Listing Verification: 8 pending
+- Sample Review:
+  - Request ID: VER-PRO-2024-0089
+  - User: Rafiq Ahmed
+  - Type: Professional (Real Estate Agent)
+  - Documents: URA Certificate, NID, Trade License
+  - Submission Date: 2024-01-08
+  - Admin Decision: APPROVED
+  - Badge Granted: "URA Verified Agent"
+  - Processing Time: 2 days
+  - Audit Log: "Verified URA certificate DHK-2022-5678, NID matched, Trade License valid"
+
+---
+
+#### US-A2: Dispute Resolution Management
+**As an** admin/support agent,  
+**I want to** review dispute cases, investigate evidence, and make fair resolution decisions,  
+**So that** buyer-seller conflicts are resolved transparently with proper documentation.
+
+**Real-Life Scenario:**
+*A buyer files a dispute claiming the property handover was delayed by 30 days beyond the agreed timeline. Admin reviews the transaction timeline, chat history, and uploaded proofs. After investigation, admin determines the delay was due to seller's fault and approves a partial refund of booking money to compensate for the delay.*
+
+**Acceptance Criteria:**
+- Admin can view all dispute cases with filters:
+  - Status: Open / Under Review / Mediation / Resolved / Closed
+  - Priority: Critical / High / Medium / Low
+  - Type: Payment dispute, Delivery dispute, Quality dispute, Fraud claim
+  - Transaction amount range
+- Each dispute case shows:
+  - Transaction details and parties involved
+  - Dispute reason and description
+  - Evidence uploaded by both parties
+  - Chat history and communication logs
+  - Transaction timeline with all steps
+  - Payment records
+- Admin can:
+  - Request additional evidence from either party
+  - Add investigation notes (internal)
+  - Escalate to senior admin
+  - Propose resolution with options:
+    - Full refund
+    - Partial refund (specify amount and reason)
+    - Cancel order with no refund
+    - Continue transaction with corrective steps
+    - Impose penalty on violating party
+  - Set resolution deadline
+- Both parties are notified of proposed resolution
+- Parties can accept or appeal resolution (within 7 days)
+- On acceptance:
+  - Resolution executed (refund processed, order updated)
+  - Case status: RESOLVED
+  - Both parties notified
+  - Review eligibility updated
+- On appeal:
+  - Case escalated to senior admin
+  - Additional review conducted
+- Final decision is binding
+- Complete audit trail maintained
+
+**Test Data:**
+- Dispute ID: DIS-2024-0023
+- Transaction: TXN-DHN-2024-0078
+- Opened By: Sumaiya Akter (Buyer)
+- Dispute Type: Delivery Delay
+- Reason: "Handover delayed by 30 days from agreed date"
+- Evidence (Buyer):
+  - Transaction timeline showing agreed handover: 2024-03-15
+  - Chat messages with seller confirming date
+  - Actual handover: 2024-04-15
+- Evidence (Seller):
+  - Claim: "Delay due to pending Namjari approval"
+  - No proof of communication about delay
+- Admin Investigation:
+  - Reviewed transaction timeline
+  - Checked chat history
+  - Found: Seller did not inform buyer proactively about delay
+  - Found: Delay caused inconvenience (buyer paid rent for 30 extra days)
+- Admin Decision:
+  - Partial refund: BDT 30,000 (compensation for rent paid during delay)
+  - Warning issued to seller for poor communication
+  - Case status: RESOLVED
+- Refund processed: 2024-04-20
+- Buyer Response: Accepted
+- Case Closed: 2024-04-21
+
+---
+
+## 9.5 User Story Summary Matrix
+
+| Story ID | User Type | Feature | Priority | Complexity | Dependencies |
+|----------|-----------|---------|----------|------------|--------------|
+| US-B1 | Buyer | Property Search | P0 | Medium | FR-19, FR-20 |
+| US-B2 | Buyer | Listing Details | P0 | Medium | FR-12, FR-13, FR-16 |
+| US-B3 | Buyer | Chat & Appointments | P0 | High | FR-23, FR-25 |
+| US-B4 | Buyer | Offer & Negotiation | P0 | High | FR-27, FR-28 |
+| US-B5 | Buyer | Transaction Tracking | P0 | High | FR-29, FR-32, FR-66-69 |
+| US-B6 | Buyer | Secure Payment | P0 | High | FR-33, FR-34, FR-70-74 |
+| US-B7 | Buyer | Reviews | P0 | Low | FR-41, FR-42 |
+| US-S1 | Seller/Agent | Listing Creation | P0 | High | FR-12, FR-13 |
+| US-S2 | Seller/Agent | Verification | P0 | Medium | FR-8, FR-9, FR-10 |
+| US-S3 | Seller/Agent | Inquiry Management | P0 | Medium | FR-23, FR-25, FR-26a-c |
+| US-S4 | Seller/Agent | Offer Management | P0 | High | FR-27, FR-28 |
+| US-S5 | Seller/Agent | Review Management | P0 | Low | FR-42, FR-43 |
+| US-L1 | Legal Agent | Service Booking | P0 | Medium | FR-36, FR-37, FR-38 |
+| US-A1 | Admin | Verification Queue | P0 | High | FR-9, FR-76, FR-78 |
+| US-A2 | Admin | Dispute Resolution | P1 | High | FR-57, FR-88, FR-89, FR-90 |
+
+---
 
 ### 9.3 Legal / Financial
 - **US-L1:** Verified legal agent receives bookings and provides vetting report.
