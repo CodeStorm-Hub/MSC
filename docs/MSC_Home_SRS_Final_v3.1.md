@@ -248,7 +248,7 @@ Implication: the MVP must strongly prioritize **search**, **verification/trust**
 1. Buyer
 2. Renter
 3. Seller / Owner (flat owner, land owner)
-4. Realtor / Broker / Agent (**including URA-certified agent where applicable**)
+4. Real Estate Agent / Broker (**including URA-certified agent where applicable**)
 5. Legal Agent (Lawyer / Law firm)
 6. Financial Agent / Financial Institute (banks/NBFIs/loan partners)
 7. Service Provider (architect, interior/exterior designer, electrician, surveyor, etc.)
@@ -271,7 +271,7 @@ MSC Home uses:
 - **Guest:** not logged in.
 - **User (Consumer):** logged in buyer/renter/seller (non-professional).
 - **Professional:** verified or unverified professionals, sub-types:
-    - **Agent/Realtor (URA-certified where applicable)**
+    - **Real Estate Agent (URA-certified where applicable)**
     - **Developer/Company**
     - **Legal Agent**
     - **Financial Agent**
@@ -3001,27 +3001,7 @@ This section summarizes the comprehensive feature set implemented in the MSC Hom
 
 ---
 
-### 16.6 Document Revision History
-
-This section maintains the document evolution tracking for internal reference only (not for client presentation).
-
-**Current Version:** Final - Client Ready (January 2026)
-
-**Previous Iterations:**
-- Version 3.1: Added PDF gap closure, social login providers, property type matrix, agent responsiveness
-- Version 3.0: Enhanced with implementable business logic, RBAC, moderation workflows
-- Version 2.2: Added Bangladesh-specific workflows, payment gateway hardening
-- Version 1.1: Original MVP SRS based on UX case study
-
-**Document prepared by:**
-CodeStorm Hub Development Team
-Dhaka, Bangladesh
-contact@codestormhub.dev
-+880-1970279556
-
----
-
-### 16.7 Approval & Sign-Off
+### 16.6 Approval & Sign-Off
 
 **Document Approval:**
 
