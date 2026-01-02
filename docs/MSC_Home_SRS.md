@@ -6,7 +6,7 @@
 **Document ID:** SRS_MSC_HOME_2026  
 **Prepared By:** CodeStorm Hub Development Team  
 **Date:** January 2026  
-**Status:** Final - Client Ready
+**Status:** Review
 
 ---
 
@@ -164,18 +164,11 @@ MSC Home Rental & Real Estate Platform is a comprehensive digital solution desig
    - 14.4 Privacy
    - 14.5 Accessibility & Localization
 
-### 15. MVP Scope & Prioritized Backlog
-   - 15.1 MVP Goals (P0)
-   - 15.2 Key Enhancements
-
-### 16. Appendices (Traceability, Glossary & Standards)
-   - 16.1 Traceability Matrix (Slide-by-slide)
-   - 16.2 Feature Implementation Summary
-   - 16.3 Technical Standards & Compliance
-   - 16.4 External References & Resources
-   - 16.5 Glossary of Terms (40+ terms)
-   - 16.6 Document Revision History
-   - 16.7 Approval & Sign-Off
+### 15. Appendices (Traceability, Glossary & Standards)
+   - 15.1 Technical Standards & Compliance
+   - 15.2 External References & Resources
+   - 15.3 Glossary of Terms (40+ terms)
+   - 15.4 Approval & Sign-Off
 
 ---
 
@@ -2789,109 +2782,9 @@ Privacy requirements:
 
 ---
 
-## 15. MVP Scope & Prioritized Backlog
+## 15. Appendices (Traceability & Glossary)
 
-### 15.1 MVP Goals (P0)
-- Verified identities + verified listings
-- Search → view → contact → offer → transaction tracking → payment → reviews
-- Appointment booking
-- Basic legal/financial discovery (directory + booking/request)
-
-### 15.2 Key Enhancements (from Slides)
-- Buyer protection hooks
-- Verified seller badge prominence
-- Market value guidance
-- Accuracy score visibility
-
----
-
-## 16. Appendices (Traceability & Glossary)
-
-### 16.1 Traceability Matrix (Slide-by-slide)
-
-Source evidence:
-- Slide images: `docs/slides/1.png` … `docs/slides/41.png`
-- OCR extraction: `docs/slides/ocr/1.txt` … `docs/slides/ocr/41.txt`
-- OCR inventory: `docs/slides/ocr/_summary.csv`
-
-| Slide | Key OCR evidence (short) | Mapped SRS sections / requirements |
-|---:|---|---|
-| 1 | Title / branding | N/A (cover) |
-| 2 | Product positioning | Sections 1–2 |
-| 3 | “Project Overview” | Section 2 |
-| 4 | Multi-actor platform; documentation/legalization/valuation/verification | Sections 3–5; FR-8–18; FR-36–40 |
-| 5 | “Problem Statement” | Section 2.1 |
-| 6 | Trust gaps; hidden details; unfair pricing; seriousness; loan affordability; low tech adoption | Section 2.1; FR-19–22; FR-33–35; FR-39–40 |
-| 7 | “Possible Solution” | Section 2.2 |
-| 8 | Secure/verified/transparent; legal + financial partners; secure payments | FR-8–11; FR-33–35; FR-36–40 |
-| 9 | “Design Thinking Process” | Appendix (research basis) |
-| 10 | Design thinking steps | Appendix (research basis) |
-| 11 | “Qualitative Research” | Section 2.3 |
-| 12 | Interview notes | Section 2.3; FR-53; FR-58–59 |
-| 13 | Insights: unclear prices; slow completion; legal paper verification; weak rules | FR-18; FR-52–55; FR-58–59 |
-| 14 | Likes: easy search + loan help; dislikes: hidden costs + high prices + delays | FR-19–22; FR-39–40; BR-8–9 |
-| 15 | “Quantitative Research” | Section 2.3 |
-| 16 | Survey framing | Section 2.3 |
-| 17 | Feature preference: secure payments, loans, legal support, virtual tours | Section 2.3; FR-14; FR-33–35; FR-40; FR-36–38 |
-| 18 | Trust in verified platform; negotiation frequency | FR-8–10; FR-27–29; BR-10–14 |
-| 19 | Loan importance | FR-39–40 |
-| 20 | Advanced search necessity; ratings after transaction | FR-19–22; FR-41–43; BR-20–21 |
-| 21 | Key stats: advanced search 97.6%, trust 78.3%, loans 90.4%, payments 69.9%, ratings 95.2% | Section 2.3; prioritization across FRs |
-| 22 | “Brain Storming” | Section 5; FR-46–49 |
-| 23 | Brainstorm modules: groups/places/posts/people | FR-46–49 |
-| 24 | “User Persona” | Section 4 |
-| 25 | Seller persona | Section 4 |
-| 26 | Buyer persona | Section 4 |
-| 27 | “Empathy Mapping” | Section 4 |
-| 28 | Seller empathy map | Section 4 |
-| 29 | Buyer empathy map | Section 4 |
-| 30 | “User Journey Map” | Section 12; FR-52–57 |
-| 31 | Seller journey: verify identity/ownership; answer; negotiate; collect docs; close | FR-8–18; FR-27–32; Section 12 |
-| 32 | Improve seller journey: verified badge; ownership steps; FAQ templates; accuracy score; market value; respond to feedback | FR-52–55; BR-5–9; FR-18; FR-43 |
-| 33 | Buyer journey: verified listings; verify docs; offer; loans; legal advice; sign docs | FR-19–22; FR-27–32; FR-39–40; FR-36–38 |
-| 34 | Improve buyer journey: map search; buyer protection; track each step; access legal/finance experts; easier feedback | FR-20–22; FR-35; FR-57; FR-44–45 |
-| 35 | “User Flow” | Section 5; Section 15 backlog |
-| 36 | User flow mentions buying/selling + finance support + service providers | Sections 5, 7; FR-39–40; FR-62–65 |
-| 37 | (low OCR) | Covered by Section 15 backlog |
-| 38 | “Information Architecture” | Section 5 |
-| 39 | IA elements: auth, posts, community marketplace, contacts, blogs/videos, professional mode | FR-1–4; FR-46–49; Section 5 |
-| 40 | IA: groups/pages; appointment; message/video; pro roles | FR-23–26; FR-25; Section 5 |
-| 41 | Closing tagline | N/A |
-
-### 16.2 Feature Implementation Summary
-
-This section summarizes the comprehensive feature set implemented in the MSC Home platform, organized by functional area.
-
-| Feature Area | Implementation Status | Key Components | Bangladesh-Specific Enhancements |
-|--------------|---------------------|----------------|----------------------------------|
-| **Core Marketplace** | Complete | Property listings, search, filters, favorites | Property type matrix (Apartment/Land/Commercial), Unit converter (Sqft↔Katha) |
-| **Verification & Trust** | Complete with multiple tiers | Identity, Professional (URA), Company (TIN/BIN), Property Ownership, Listing Accuracy Score | Credential reports from BD financial/non-financial institutes, Optional e-KYC integration (Porichoy) |
-| **Search & Discovery** | Complete | Advanced filters, Map-based search, Saved searches with alerts, Listing comparison | Location-based search for BD cities (Dhaka, Chittagong, Sylhet, etc.) |
-| **Communication** | Complete | Live chat, Audio/video calls, Appointment booking, Response SLA tracking | Agent responsiveness metrics, Reminder/escalation system |
-| **Transaction Management** | Complete with BD workflows | Offers/negotiation, Transaction step tracking, Proof uploads per step | Bayna/Dalil/Namjari workflow, Government portal integration (link-out + reference capture) |
-| **Payments** | Complete with security hardening | Multi-gateway support (bKash/Nagad/SSLCommerz), OTP/3DS, IPN reconciliation | Bangladesh-specific payment methods, Risk hold mechanism |
-| **Document Vault** | Complete | Secure storage, Access control, Time-bound grants, Watermarking, Audit trail | BD property documents (Dalil, Mutation, Tax receipts, DCR, Khatian) |
-| **Legal Support** | Complete | Legal agent directory, Service booking, Case tracking | BAR Council verification, Property vetting services |
-| **Financial Support** | Complete | Financial agent directory, Loan assistance workflow, Lead management | Support for BD banks and NBFIs |
-| **Reviews & Reputation** | Complete | Mutual ratings, Written reviews, Response mechanism, Reputation scoring | Review gating after transaction completion |
-| **Admin & Moderation** | Complete | Verification queue, Listing moderation, Dispute resolution, User management | Re-verification triggers, Moderation cases with evidence |
-| **Community Features** | Planned (P2) | Groups, Pages, Posts, Contacts/Networking, Blogs/Videos | Deferred to post-MVP phase |
-| **Monetization** | Planned (P1) | Subscription plans, Featured listings, Service charges | Flexible pricing for BD market |
-| **Government Portal Integration** | Complete (Link-out model) | DLRMS, e-Namjari, Land Tax portals | Manual workflow with reference capture, Status snapshot tracking |
-
-**Key Achievements:**
-- ✅ 93 Functional Requirements (FR-1 to FR-93) fully specified
-- ✅ 43 Business Rules (BR-1 to BR-43) with Bangladesh context
-- ✅ 15 Detailed User Stories with real-life scenarios
-- ✅ 14 Comprehensive Diagrams (ERD, State, Sequence, Architecture)
-- ✅ Complete RBAC model with role-based and relationship-based access controls
-- ✅ Full payment gateway integration with security best practices
-- ✅ Bangladesh-specific legal workflows (Bayna, Dalil, Namjari)
-- ✅ Professional documentation meeting international SRS standards
-
----
-
-### 16.3 Technical Standards & Compliance
+### 15.1 Technical Standards & Compliance
 
 **SRS Documentation Standards:**
 - ✅ IEEE 830-1998 Software Requirements Specification template
@@ -2922,7 +2815,7 @@ This section summarizes the comprehensive feature set implemented in the MSC Hom
 
 ---
 
-### 16.4 External References & Resources
+### 15.2 External References & Resources
 
 **Bangladesh Government Services:**
 - Mutation / e-Namjari portal: https://mutation.land.gov.bd/ (status tracking, contact hotline 16122)
@@ -2952,7 +2845,7 @@ This section summarizes the comprehensive feature set implemented in the MSC Hom
 
 ---
 
-### 16.5 Glossary of Terms
+### 15.3 Glossary of Terms
 
 **General Real Estate Terms:**
 - **Listing:** A property advertised for sale or rent on the platform
@@ -3001,7 +2894,7 @@ This section summarizes the comprehensive feature set implemented in the MSC Hom
 
 ---
 
-### 16.6 Approval & Sign-Off
+### 15.4 Approval & Sign-Off
 
 **Document Approval:**
 
