@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Development Quotation - MSC Home Platform</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Print-specific page setup for A4 */
+        @page {
+            size: A4;
+            margin: 16mm 18mm;
+        }
+        
+        /* Print media styles */
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                margin: 0;
+                padding: 0;
+            }
+            
+            .no-print {
+                display: none !important;
+            }
+            
+            .page-break {
+                page-break-after: always;
+                break-after: page;
+            }
+            
+            .avoid-break {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+            
+            thead {
+                display: table-header-group;
+            }
+            
+            tbody {
+                display: table-row-group;
+            }
+            
+            tr {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+            
+            /* Remove screen-only styles */
+            .a4-container {
+                box-shadow: none;
+                max-width: none;
+            }
+            
+            /* Ensure backgrounds print */
+            .print-bg {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+        
+        /* Screen display styles */
+        @media screen {
+            body {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                padding: 2rem 1rem;
+                min-height: 100vh;
+            }
+            
+            .a4-container {
+                max-width: 210mm;
+                margin: 0 auto;
+                background: white;
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            }
+        }
+        
+        /* Typography optimizations */
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #1a202c;
+        }
+        
+        /* Custom table styles */
+        .custom-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .custom-table th {
+            background-color: #4a5568;
+            color: white;
+            font-weight: 600;
+            padding: 0.75rem;
+            text-align: left;
+        }
+        
+        .custom-table td {
+            padding: 0.75rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .custom-table tbody tr:hover {
+            background-color: #f7fafc;
+        }
+        
+        /* Signature line */
+        .signature-line {
+            border-bottom: 2px solid #2d3748;
+            min-width: 200px;
+            display: inline-block;
+            margin: 0 0.5rem;
+        }
+        
+        /* Checkbox styling for print */
+        .checkbox {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            border: 2px solid #4a5568;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <!--
+        Source file: docs/Quotation.md
+        Generator: quotation-html-generator agent
+        Date generated: 2026-01-02
+    -->
+    
+    <div class="a4-container">
+        <!-- Header Section -->
+        <header class="p-8 border-b-4 border-indigo-600 avoid-break">
+            <div class="flex justify-between items-start mb-6">
+                <!-- Vendor Logo/Brand -->
+                <div class="flex-1">
+                    <div class="flex items-center mb-2">
+                        <svg class="w-12 h-12 text-indigo-600 mr-3" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                        <div>
+                            <h1 class="text-3xl font-bold text-gray-800">CodeStorm Hub</h1>
+                            <p class="text-sm text-gray-600">Professional Software Development</p>
+                        </div>
+                    </div>
+                    <div class="text-sm text-gray-700 mt-2">
+                        <p><strong>Address:</strong> Dhaka, Bangladesh</p>
+                        <p><strong>Email:</strong> contact@codestormhub.dev</p>
+                        <p><strong>Phone:</strong> +880-1970279556</p>
+                    </div>
+                </div>
+                
+                <!-- Document Title & Quick Facts -->
+                <div class="text-right flex-1">
+                    <h2 class="text-2xl font-bold text-indigo-600 mb-2">Software Development</h2>
+                    <h2 class="text-2xl font-bold text-indigo-600 mb-4">Quotation</h2>
+                    <div class="bg-indigo-50 p-4 rounded-lg inline-block text-left">
+                        <p class="text-sm"><strong>Quotation No:</strong> MSC-QTN-RE-08L-2026</p>
+                        <p class="text-sm"><strong>Date:</strong> 01 January 2026</p>
+                        <p class="text-sm"><strong>Validity:</strong> 30 Days</p>
+                        <p class="text-sm"><strong>Currency:</strong> BDT</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project Title -->
+            <div class="text-center py-4 bg-gray-50 rounded-lg">
+                <h3 class="text-2xl font-bold text-gray-800">MSC Home Rental & Real Estate Platform</h3>
+                <p class="text-gray-600 mt-1">(Web Application + Android & iOS Mobile Applications)</p>
+            </div>
+        </header>
+
+        <!-- Quick Summary Box -->
+        <section class="p-8 bg-gradient-to-r from-indigo-50 to-purple-50 avoid-break">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="text-center">
+                    <p class="text-sm text-gray-600 font-medium">Total Cost</p>
+                    <p class="text-2xl font-bold text-indigo-600">BDT 8,00,000</p>
+                </div>
+                <div class="text-center">
+                    <p class="text-sm text-gray-600 font-medium">Development</p>
+                    <p class="text-2xl font-bold text-purple-600">BDT 7,30,000</p>
+                </div>
+                <div class="text-center">
+                    <p class="text-sm text-gray-600 font-medium">AMC (12 months)</p>
+                    <p class="text-2xl font-bold text-indigo-600">BDT 70,000</p>
+                </div>
+                <div class="text-center">
+                    <p class="text-sm text-gray-600 font-medium">Duration</p>
+                    <p class="text-2xl font-bold text-purple-600">5-6 Months</p>
+                </div>
+            </div>
+            <div class="mt-4 text-center">
+                <p class="text-lg font-semibold text-gray-700">In Words: <span class="text-indigo-600">Eight Lakh Bangladeshi Taka Only</span></p>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <main class="p-8">
+            
+            <!-- 1. Company and Client Details -->
+            <section class="mb-8 avoid-break">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 pb-2 border-b-2 border-gray-300">1. Company and Client Details</h2>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <!-- Software Vendor -->
+                    <div class="border rounded-lg p-4 bg-gray-50">
+                        <h3 class="text-lg font-semibold text-indigo-600 mb-3">Software Vendor</h3>
+                        <table class="w-full text-sm">
+                            <tr class="border-b">
+                                <td class="py-2 font-medium text-gray-700">Company Name</td>
+                                <td class="py-2 text-gray-900">CodeStorm Hub</td>
+                            </tr>
+                            <tr class="border-b">
+                                <td class="py-2 font-medium text-gray-700">Address</td>
+                                <td class="py-2 text-gray-900">Dhaka, Bangladesh</td>
+                            </tr>
+                            <tr class="border-b">
+                                <td class="py-2 font-medium text-gray-700">Email</td>
+                                <td class="py-2 text-gray-900">contact@codestormhub.dev</td>
+                            </tr>
+                            <tr>
+                                <td class="py-2 font-medium text-gray-700">Phone</td>
+                                <td class="py-2 text-gray-900">+880-1970279556</td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <!-- Client -->
+                    <div class="border rounded-lg p-4 bg-indigo-50">
+                        <h3 class="text-lg font-semibold text-indigo-600 mb-3">Client</h3>
+                        <table class="w-full text-sm">
+                            <tr class="border-b">
+                                <td class="py-2 font-medium text-gray-700">Client Name</td>
+                                <td class="py-2 text-gray-900">MSC Home Rental & Real Estate</td>
+                            </tr>
+                            <tr class="border-b">
+                                <td class="py-2 font-medium text-gray-700">Address</td>
+                                <td class="py-2 text-gray-900">Dhaka, Bangladesh</td>
+                            </tr>
+                            <tr class="border-b">
+                                <td class="py-2 font-medium text-gray-700">Contact Person</td>
+                                <td class="py-2"><span class="signature-line"></span></td>
+                            </tr>
+                            <tr class="border-b">
+                                <td class="py-2 font-medium text-gray-700">Email</td>
+                                <td class="py-2"><span class="signature-line"></span></td>
+                            </tr>
+                            <tr>
+                                <td class="py-2 font-medium text-gray-700">Phone</td>
+                                <td class="py-2"><span class="signature-line"></span></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. Quotation Details -->
+            <section class="mb-8 avoid-break">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 pb-2 border-b-2 border-gray-300">2. Quotation Details</h2>
+                <table class="custom-table">
+                    <thead>
+                        <tr>
+                            <th class="w-1/3">Item</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="font-medium">Quotation Number</td>
+                            <td>MSC-QTN-RE-08L-2026</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">Date of Issue</td>
+                            <td>01 January 2026</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">Validity Period</td>
+                            <td>30 Days</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">Pricing Model</td>
+                            <td>Fixed Price</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">Currency</td>
+                            <td>Bangladeshi Taka (BDT)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- 3. Project Summary & Objectives -->
+            <section class="mb-8 avoid-break">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 pb-2 border-b-2 border-gray-300">3. Project Summary & Objectives</h2>
+                <p class="mb-4 text-gray-700">
+                    The MSC Home Rental & Real Estate Platform is a <strong>multi-platform digital solution</strong> aimed at enabling 
+                    <strong>secure, verified, and transparent property buying, selling, and renting</strong>. The system follows a 
+                    <strong>Backend → API → Frontend (Web & Mobile)</strong> architecture to ensure scalability, security, and long-term maintainability.
+                </p>
+                <h3 class="text-lg font-semibold text-gray-800 mb-3">Objectives</h3>
+                <ul class="list-disc list-inside space-y-2 text-gray-700 ml-4">
+                    <li>Digitize real estate listing and transactions</li>
+                    <li>Enable verified buyers, sellers, and agents</li>
+                    <li>Provide centralized backend and API-driven access</li>
+                    <li>Support Web, Android, and iOS platforms</li>
+                    <li>Ensure system reliability through post-launch maintenance</li>
+                </ul>
+            </section>
+
+            <!-- 4. Scope of Work -->
+            <section class="mb-8 avoid-break">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 pb-2 border-b-2 border-gray-300">4. Scope of Work (SOW)</h2>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="text-lg font-semibold text-green-700 mb-3">✓ Included</h3>
+                        <ul class="list-disc list-inside space-y-1 text-gray-700 ml-4">
+                            <li>Backend system development</li>
+                            <li>REST API development</li>
+                            <li>Web application development</li>
+                            <li>Android & iOS mobile application development</li>
+                            <li>UI/UX design</li>
+                            <li>Testing, deployment, and documentation</li>
+                            <li>Annual Maintenance & Support (AMC – 12 months)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-red-700 mb-3">✗ Excluded</h3>
+                        <ul class="list-disc list-inside space-y-1 text-gray-700 ml-4">
+                            <li>Hosting and cloud infrastructure costs</li>
+                            <li>Third-party API/service fees (SMS, Payment Gateway, Maps)</li>
+                            <li>App Store and Play Store registration fees</li>
+                            <li>New feature development beyond approved scope</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Page Break -->
+            <div class="page-break"></div>
+
+            <!-- 5. Cost Distribution -->
+            <section class="mb-8">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 pb-2 border-b-2 border-gray-300">5. Cost Distribution, Purpose & Timeline (Including AMC)</h2>
+                <div class="overflow-x-auto">
+                    <table class="custom-table">
+                        <thead>
+                            <tr>
+                                <th class="text-center">Step</th>
+                                <th>Development Phase</th>
+                                <th>Purpose / Cause</th>
+                                <th>Timeline</th>
+                                <th class="text-right">Cost (BDT)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-center font-semibold">1</td>
+                                <td>Requirement Analysis & UI/UX Design</td>
+                                <td>Define system flow and user experience</td>
+                                <td>3 Weeks</td>
+                                <td class="text-right font-medium">70,000</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center font-semibold">2</td>
+                                <td>Backend Development</td>
+                                <td>Core business logic, roles, verification</td>
+                                <td>7 Weeks</td>
+                                <td class="text-right font-medium">2,10,000</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center font-semibold">3</td>
+                                <td>API Development</td>
+                                <td>Secure data communication for all platforms</td>
+                                <td>4 Weeks</td>
+                                <td class="text-right font-medium">1,00,000</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center font-semibold">4</td>
+                                <td>Web Application Development</td>
+                                <td>Browser-based access for users and admins</td>
+                                <td>5 Weeks</td>
+                                <td class="text-right font-medium">1,30,000</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center font-semibold">5</td>
+                                <td>Mobile Apps (Android & iOS)</td>
+                                <td>Mobile access for buyers, sellers & agents</td>
+                                <td>5 Weeks</td>
+                                <td class="text-right font-medium">1,70,000</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center font-semibold">6</td>
+                                <td>Testing & Deployment</td>
+                                <td>Quality assurance and production release</td>
+                                <td>3 Weeks</td>
+                                <td class="text-right font-medium">50,000</td>
+                            </tr>
+                            <tr class="bg-indigo-50">
+                                <td class="text-center font-semibold">7</td>
+                                <td><strong>Annual Maintenance (AMC – 12 Months)</strong></td>
+                                <td>Bug fixes, security updates, technical support</td>
+                                <td>12 Months</td>
+                                <td class="text-right font-medium">70,000</td>
+                            </tr>
+                            <tr class="bg-indigo-100 font-bold">
+                                <td colspan="3" class="text-right"><strong>Total</strong></td>
+                                <td>5–6 Months + AMC</td>
+                                <td class="text-right text-lg">8,00,000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Cost Summary Box -->
+            <section class="mb-8 avoid-break">
+                <div class="bg-indigo-50 border-2 border-indigo-200 rounded-lg p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Cost Summary</h3>
+                    <table class="w-full text-lg">
+                        <tr class="border-b-2">
+                            <td class="py-2 font-medium text-gray-700">Development Cost</td>
+                            <td class="py-2 text-right font-semibold">BDT 7,30,000</td>
+                        </tr>
+                        <tr class="border-b-2">
+                            <td class="py-2 font-medium text-gray-700">Annual Maintenance Cost (AMC)</td>
+                            <td class="py-2 text-right font-semibold">BDT 70,000</td>
+                        </tr>
+                        <tr class="bg-indigo-100">
+                            <td class="py-3 font-bold text-gray-900 text-xl">Grand Total</td>
+                            <td class="py-3 text-right font-bold text-indigo-600 text-2xl">BDT 8,00,000</td>
+                        </tr>
+                    </table>
+                    <p class="mt-4 text-center text-gray-700 font-medium">
+                        <strong>In Words:</strong> <span class="text-indigo-600">Eight Lakh Bangladeshi Taka Only</span>
+                    </p>
+                </div>
+            </section>
+
+            <!-- Page Break -->
+            <div class="page-break"></div>
+
+            <!-- 5A. Resource Allocation -->
+            <section class="mb-8">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 pb-2 border-b-2 border-gray-300">5A. Resource Allocation & Effort Breakdown by Role</h2>
+                <p class="mb-4 text-gray-700">
+                    This section details the team composition, effort allocation, and effective rates for each role across all project phases.
+                </p>
+                
+                <h3 class="text-lg font-semibold text-gray-800 mb-3">Team Composition & Per-Role Effort</h3>
+                <div class="overflow-x-auto">
+                    <table class="custom-table text-sm">
+                        <thead>
+                            <tr>
+                                <th>Role</th>
+                                <th class="text-center">Allocation</th>
+                                <th class="text-center">Person-Weeks</th>
+                                <th class="text-right">Hourly Rate (BDT)</th>
+                                <th class="text-right">Total Cost (BDT)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Project Manager (PM)</strong></td>
+                                <td class="text-center">50%</td>
+                                <td class="text-center">10 weeks</td>
+                                <td class="text-right">625</td>
+                                <td class="text-right font-medium">25,000</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Tech Lead / Architect</strong></td>
+                                <td class="text-center">100%</td>
+                                <td class="text-center">20 weeks</td>
+                                <td class="text-right">750</td>
+                                <td class="text-right font-medium">1,50,000</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Backend Developer</strong> (2 FTE)</td>
+                                <td class="text-center">100%</td>
+                                <td class="text-center">40 weeks</td>
+                                <td class="text-right">625</td>
+                                <td class="text-right font-medium">2,50,000</td>
+                            </tr>
+                            <tr>
+                                <td><strong>API Developer</strong></td>
+                                <td class="text-center">100%</td>
+                                <td class="text-center">20 weeks</td>
+                                <td class="text-right">625</td>
+                                <td class="text-right font-medium">1,25,000</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Frontend Developer (Web)</strong> (2 FTE)</td>
+                                <td class="text-center">100%</td>
+                                <td class="text-center">40 weeks</td>
+                                <td class="text-right">500</td>
+                                <td class="text-right font-medium">2,00,000</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Mobile Developer (Android)</strong></td>
+                                <td class="text-center">100%</td>
+                                <td class="text-center">20 weeks</td>
+                                <td class="text-right">500</td>
+                                <td class="text-right font-medium">1,00,000</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Mobile Developer (iOS)</strong></td>
+                                <td class="text-center">100%</td>
+                                <td class="text-center">20 weeks</td>
+                                <td class="text-right">500</td>
+                                <td class="text-right font-medium">1,00,000</td>
+                            </tr>
+                            <tr>
+                                <td><strong>UI/UX Designer</strong></td>
+                                <td class="text-center">75%</td>
+                                <td class="text-center">15 weeks</td>
+                                <td class="text-right">500</td>
+                                <td class="text-right font-medium">75,000</td>
+                            </tr>
+                            <tr>
+                                <td><strong>QA Engineer</strong></td>
+                                <td class="text-center">100%</td>
+                                <td class="text-center">20 weeks</td>
+                                <td class="text-right">500</td>
+                                <td class="text-right font-medium">1,00,000</td>
+                            </tr>
+                            <tr>
+                                <td><strong>DevOps Engineer</strong></td>
+                                <td class="text-center">50%</td>
+                                <td class="text-center">10 weeks</td>
+                                <td class="text-right">500</td>
+                                <td class="text-right font-medium">50,000</td>
+                            </tr>
+                            <tr class="bg-gray-100 font-bold">
+                                <td><strong>Total Team Effort</strong></td>
+                                <td class="text-center">-</td>
+                                <td class="text-center">215 person-weeks</td>
+                                <td class="text-right">-</td>
+                                <td class="text-right text-lg">11,75,000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="mt-4 p-4 bg-yellow-50 border-l-4 border-yellow-500 text-sm">
+                    <p class="text-gray-700">
+                        <strong>Note:</strong> The total calculated effort cost (BDT 11,75,000) is higher than the quoted price (BDT 7,30,000) 
+                        due to vendor efficiency, parallel workstreams, and competitive pricing strategy. The quoted price represents a 
+                        <strong class="text-yellow-700">38% discount</strong> to win client partnership and establish market presence.
+                    </p>
+                </div>
+
+                <div class="mt-6 avoid-break">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-3">Effective Hourly Rate (Derived from Quoted Price)</h3>
+                    <ul class="list-disc list-inside space-y-1 text-gray-700 ml-4">
+                        <li><strong>Total Development Cost:</strong> BDT 7,30,000</li>
+                        <li><strong>Total Person-Weeks:</strong> 215 weeks</li>
+                        <li><strong>Assuming 40-hour work week:</strong> 215 × 40 = 8,600 hours</li>
+                        <li><strong>Effective Blended Rate:</strong> BDT 7,30,000 ÷ 8,600 hours = <strong class="text-indigo-600">BDT 84.88/hour</strong></li>
+                    </ul>
+                    <p class="mt-2 text-sm text-gray-600 italic">
+                        This blended rate is significantly below market rates, reflecting CodeStorm Hub's commitment to client value and long-term partnership.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Page Break -->
+            <div class="page-break"></div>
+
+            <!-- 6. Project Milestones & Timeline -->
+            <section class="mb-8">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 pb-2 border-b-2 border-gray-300">6. Project Milestones & Timeline with Dates</h2>
+                <div class="mb-4 grid md:grid-cols-3 gap-4 text-sm">
+                    <div class="bg-green-50 p-3 rounded">
+                        <p class="font-semibold text-gray-700">Project Start Date</p>
+                        <p class="text-green-700 font-bold">01 January 2026</p>
+                    </div>
+                    <div class="bg-blue-50 p-3 rounded">
+                        <p class="font-semibold text-gray-700">Project End Date (Development)</p>
+                        <p class="text-blue-700 font-bold">31 May 2026 (5 months)</p>
+                    </div>
+                    <div class="bg-purple-50 p-3 rounded">
+                        <p class="font-semibold text-gray-700">AMC Period</p>
+                        <p class="text-purple-700 font-bold">01 June 2026 – 31 May 2027</p>
+                    </div>
+                </div>
+                
+                <div class="overflow-x-auto">
+                    <table class="custom-table text-sm">
+                        <thead>
+                            <tr>
+                                <th>Milestone</th>
+                                <th>Deliverable</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th class="text-center">Duration</th>
+                                <th>Status Gate</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="font-semibold">Milestone 1</td>
+                                <td>Approved Requirements & UI/UX Design</td>
+                                <td>01-Jan-2026</td>
+                                <td>21-Jan-2026</td>
+                                <td class="text-center">3 weeks</td>
+                                <td>Stakeholder sign-off on SRS & designs</td>
+                            </tr>
+                            <tr>
+                                <td class="font-semibold">Milestone 2</td>
+                                <td>Backend & Database Completion</td>
+                                <td>22-Jan-2026</td>
+                                <td>11-Mar-2026</td>
+                                <td class="text-center">7 weeks</td>
+                                <td>Backend API tests pass, DB schema approved</td>
+                            </tr>
+                            <tr>
+                                <td class="font-semibold">Milestone 3</td>
+                                <td>API Integration & Documentation</td>
+                                <td>12-Mar-2026</td>
+                                <td>08-Apr-2026</td>
+                                <td class="text-center">4 weeks</td>
+                                <td>API documentation complete, Postman collection validated</td>
+                            </tr>
+                            <tr>
+                                <td class="font-semibold">Milestone 4</td>
+                                <td>Web Application Completion</td>
+                                <td>09-Apr-2026</td>
+                                <td>13-May-2026</td>
+                                <td class="text-center">5 weeks</td>
+                                <td>Web app functional testing complete</td>
+                            </tr>
+                            <tr>
+                                <td class="font-semibold">Milestone 5</td>
+                                <td>Mobile Apps (Android & iOS) Completion</td>
+                                <td>09-Apr-2026</td>
+                                <td>13-May-2026</td>
+                                <td class="text-center">5 weeks*</td>
+                                <td>Mobile apps functional testing complete</td>
+                            </tr>
+                            <tr>
+                                <td class="font-semibold">Milestone 6</td>
+                                <td>Testing, Bug Fixing & UAT</td>
+                                <td>14-May-2026</td>
+                                <td>27-May-2026</td>
+                                <td class="text-center">2 weeks</td>
+                                <td>All critical bugs resolved, UAT sign-off</td>
+                            </tr>
+                            <tr>
+                                <td class="font-semibold">Milestone 7</td>
+                                <td>Final Deployment & Handover</td>
+                                <td>28-May-2026</td>
+                                <td>31-May-2026</td>
+                                <td class="text-center">1 week</td>
+                                <td>Production deployment, handover documentation</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <p class="mt-4 text-sm text-gray-600 italic">
+                    <strong>Note:</strong> Milestones 4 and 5 (Web & Mobile) run in parallel starting from Week 15.
+                </p>
+            </section>
+
+            <!-- Page Break -->
+            <div class="page-break"></div>
+
+            <!-- 7. Payment Terms -->
+            <section class="mb-8">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 pb-2 border-b-2 border-gray-300">7. Payment Terms</h2>
+                
+                <div class="overflow-x-auto mb-6">
+                    <table class="custom-table">
+                        <thead>
+                            <tr>
+                                <th>Stage</th>
+                                <th class="text-center">Percentage</th>
+                                <th class="text-right">Amount (BDT)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="font-medium">Project Initiation</td>
+                                <td class="text-center">30%</td>
+                                <td class="text-right font-bold text-lg">2,40,000</td>
+                            </tr>
+                            <tr>
+                                <td class="font-medium">Mid Development</td>
+                                <td class="text-center">40%</td>
+                                <td class="text-right font-bold text-lg">3,20,000</td>
+                            </tr>
+                            <tr>
+                                <td class="font-medium">Final Delivery</td>
+                                <td class="text-center">30%</td>
+                                <td class="text-right font-bold text-lg">2,40,000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="bg-gray-50 p-4 rounded-lg mb-6">
+                    <p class="text-gray-700"><strong>Payment Due:</strong> Within 15 days of invoice</p>
+                    <p class="text-gray-700"><strong>Payment Mode:</strong> Bank Transfer / Mobile Banking / Cheque</p>
+                </div>
+
+                <h3 class="text-lg font-semibold text-gray-800 mb-3">Detailed Payment Schedule</h3>
+
+                <!-- Payment 1 -->
+                <div class="border-l-4 border-indigo-500 pl-4 mb-4 avoid-break">
+                    <h4 class="font-semibold text-gray-800 mb-2">Payment 1: Project Initiation (30% - BDT 2,40,000)</h4>
+                    <p class="text-sm text-gray-700"><strong>Trigger:</strong> Contract signing and project kickoff</p>
+                    <p class="text-sm text-gray-700"><strong>Due Date:</strong> 15 January 2026</p>
+                    <div class="bg-gray-50 p-3 rounded mt-2 text-sm">
+                        <p><strong>Invoice Number:</strong> MSC-INV-001-2026</p>
+                        <p><strong>Invoice Date:</strong> 01 January 2026</p>
+                        <p><strong>Description:</strong> Project Initiation - 30% of Development Cost</p>
+                        <p><strong>Amount:</strong> BDT 2,40,000</p>
+                    </div>
+                </div>
+
+                <!-- Payment 2 -->
+                <div class="border-l-4 border-indigo-500 pl-4 mb-4 avoid-break">
+                    <h4 class="font-semibold text-gray-800 mb-2">Payment 2: Mid-Development (40% - BDT 3,20,000)</h4>
+                    <p class="text-sm text-gray-700"><strong>Trigger:</strong> Completion of Milestones 2 & 3 (Backend + API)</p>
+                    <p class="text-sm text-gray-700"><strong>Due Date:</strong> 23 April 2026</p>
+                    <div class="bg-gray-50 p-3 rounded mt-2 text-sm">
+                        <p><strong>Invoice Number:</strong> MSC-INV-002-2026</p>
+                        <p><strong>Invoice Date:</strong> 09 April 2026</p>
+                        <p><strong>Description:</strong> Mid-Development Completion - 40% of Development Cost</p>
+                        <p><strong>Amount:</strong> BDT 3,20,000</p>
+                        <p><strong>Cumulative Paid:</strong> BDT 5,60,000 (76.7%)</p>
+                    </div>
+                </div>
+
+                <!-- Payment 3 -->
+                <div class="border-l-4 border-indigo-500 pl-4 mb-4 avoid-break">
+                    <h4 class="font-semibold text-gray-800 mb-2">Payment 3: Final Delivery (30% - BDT 2,40,000)</h4>
+                    <p class="text-sm text-gray-700"><strong>Trigger:</strong> UAT sign-off and production deployment</p>
+                    <p class="text-sm text-gray-700"><strong>Due Date:</strong> 15 June 2026</p>
+                    <div class="bg-gray-50 p-3 rounded mt-2 text-sm">
+                        <p><strong>Invoice Number:</strong> MSC-INV-003-2026</p>
+                        <p><strong>Invoice Date:</strong> 01 June 2026</p>
+                        <p><strong>Description:</strong> Final Delivery & Deployment - 30% of Development Cost</p>
+                        <p><strong>Amount:</strong> BDT 2,40,000</p>
+                        <p><strong>Total Project Cost:</strong> BDT 8,00,000 (including AMC)</p>
+                    </div>
+                </div>
+
+                <h3 class="text-lg font-semibold text-gray-800 mb-3 mt-6">AMC Payment Terms</h3>
+                <div class="bg-indigo-50 p-4 rounded-lg mb-4">
+                    <p class="text-gray-700"><strong>AMC Annual Fee:</strong> BDT 70,000</p>
+                    <p class="text-gray-700"><strong>Payment Frequency:</strong> Quarterly (BDT 17,500 per quarter)</p>
+                    <p class="text-gray-700"><strong>First AMC Invoice:</strong> 01 June 2026</p>
+                    <p class="text-gray-700"><strong>AMC Period:</strong> 01 June 2026 – 31 May 2027</p>
+                </div>
+
+                <h4 class="font-semibold text-gray-800 mb-3">Quarterly AMC Payment Schedule</h4>
+                <table class="custom-table text-sm">
+                    <thead>
+                        <tr>
+                            <th>Quarter</th>
+                            <th>Period</th>
+                            <th>Invoice Date</th>
+                            <th>Due Date</th>
+                            <th class="text-right">Amount (BDT)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Q1</td>
+                            <td>June-Aug 2026</td>
+                            <td>01-Jun-2026</td>
+                            <td>15-Jun-2026</td>
+                            <td class="text-right font-medium">17,500</td>
+                        </tr>
+                        <tr>
+                            <td>Q2</td>
+                            <td>Sep-Nov 2026</td>
+                            <td>01-Sep-2026</td>
+                            <td>15-Sep-2026</td>
+                            <td class="text-right font-medium">17,500</td>
+                        </tr>
+                        <tr>
+                            <td>Q3</td>
+                            <td>Dec-Feb 2027</td>
+                            <td>01-Dec-2026</td>
+                            <td>15-Dec-2026</td>
+                            <td class="text-right font-medium">17,500</td>
+                        </tr>
+                        <tr>
+                            <td>Q4</td>
+                            <td>Mar-May 2027</td>
+                            <td>01-Mar-2027</td>
+                            <td>15-Mar-2027</td>
+                            <td class="text-right font-medium">17,500</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Page Break -->
+            <div class="page-break"></div>
+
+            <!-- 8. AMC Coverage -->
+            <section class="mb-8">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 pb-2 border-b-2 border-gray-300">8. AMC Coverage (Included)</h2>
+                <ul class="list-disc list-inside space-y-2 text-gray-700 ml-4 mb-6">
+                    <li>Bug fixing and minor issue resolution</li>
+                    <li>Security patches and system updates</li>
+                    <li>Backend & API support</li>
+                    <li>Android & iOS version compatibility updates</li>
+                    <li>Email and ticket-based technical support</li>
+                    <li>Up to 12 support hours per month</li>
+                </ul>
+
+                <h3 class="text-lg font-semibold text-gray-800 mb-3">AMC Service Level Agreement (SLA)</h3>
+                <div class="overflow-x-auto">
+                    <table class="custom-table text-sm">
+                        <thead>
+                            <tr>
+                                <th>Priority</th>
+                                <th>Definition</th>
+                                <th>Response Time</th>
+                                <th>Resolution Time</th>
+                                <th>Included Hours/Month</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-red-50">
+                                <td class="font-semibold">Critical</td>
+                                <td>System down, major functionality broken, data loss risk</td>
+                                <td>Within 4 hours</td>
+                                <td>Within 24 hours</td>
+                                <td>Unlimited during incident</td>
+                            </tr>
+                            <tr class="bg-orange-50">
+                                <td class="font-semibold">High</td>
+                                <td>Important feature not working, significant user impact</td>
+                                <td>Within 8 hours</td>
+                                <td>Within 48 hours</td>
+                                <td>Up to 6 hours/month</td>
+                            </tr>
+                            <tr class="bg-yellow-50">
+                                <td class="font-semibold">Medium</td>
+                                <td>Minor feature issues, workaround available</td>
+                                <td>Within 24 hours</td>
+                                <td>Within 5 business days</td>
+                                <td>Up to 4 hours/month</td>
+                            </tr>
+                            <tr class="bg-green-50">
+                                <td class="font-semibold">Low</td>
+                                <td>Cosmetic issues, enhancement requests, questions</td>
+                                <td>Within 48 hours</td>
+                                <td>Within 10 business days</td>
+                                <td>Up to 2 hours/month</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="mt-4 text-sm text-gray-600">
+                    <strong>Total Included Hours:</strong> 12 hours/month across all priorities (excluding Critical incidents)
+                </p>
+            </section>
+
+            <!-- 9. Terms & Conditions -->
+            <section class="mb-8 avoid-break">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 pb-2 border-b-2 border-gray-300">9. Terms & Conditions</h2>
+                <ul class="list-disc list-inside space-y-2 text-gray-700 ml-4">
+                    <li>Intellectual property rights transfer upon full payment</li>
+                    <li>Client data and documents treated as confidential</li>
+                    <li>Two (2) minor revision cycles included</li>
+                    <li>Major scope changes require revised quotation</li>
+                    <li>AMC valid for 12 months from delivery date</li>
+                    <li>AMC does not include new feature development</li>
+                </ul>
+            </section>
+
+            <!-- Page Break -->
+            <div class="page-break"></div>
+
+            <!-- 10. Acceptance & Signature -->
+            <section class="mb-8">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 pb-2 border-b-2 border-gray-300">10. Acceptance & Signature</h2>
+                <p class="mb-6 text-gray-700">By signing below, both parties agree to the terms and pricing outlined in this quotation.</p>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="border-2 border-gray-300 p-6 rounded-lg">
+                        <h3 class="font-bold text-gray-800 mb-4 text-center">For Client</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <p class="text-sm text-gray-600">Name</p>
+                                <div class="signature-line mt-1" style="width: 100%;"></div>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-600">Signature</p>
+                                <div class="signature-line mt-1" style="width: 100%;"></div>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-600">Date</p>
+                                <div class="signature-line mt-1" style="width: 100%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="border-2 border-indigo-300 p-6 rounded-lg bg-indigo-50">
+                        <h3 class="font-bold text-gray-800 mb-4 text-center">For Vendor</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <p class="text-sm text-gray-600">Name</p>
+                                <div class="signature-line mt-1" style="width: 100%;"></div>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-600">Signature</p>
+                                <div class="signature-line mt-1" style="width: 100%;"></div>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-600">Date</p>
+                                <div class="signature-line mt-1" style="width: 100%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 11. Project Handover Checklist -->
+            <section class="mb-8">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 pb-2 border-b-2 border-gray-300">11. Project Handover & Sign-off Checklist</h2>
+                <p class="mb-4 text-gray-700">This checklist must be completed before final project closure and AMC activation.</p>
+
+                <div class="space-y-6">
+                    <!-- Technical Deliverables -->
+                    <div class="avoid-break">
+                        <h3 class="text-lg font-semibold text-indigo-600 mb-3">Technical Deliverables</h3>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex items-start"><span class="checkbox"></span><span>Source code delivered via Git repository with access granted to client</span></div>
+                            <div class="flex items-start"><span class="checkbox"></span><span>Database schema documentation provided</span></div>
+                            <div class="flex items-start"><span class="checkbox"></span><span>API documentation (Swagger/Postman) published and accessible</span></div>
+                            <div class="flex items-start"><span class="checkbox"></span><span>Architecture diagram and technical documentation delivered</span></div>
+                            <div class="flex items-start"><span class="checkbox"></span><span>Deployment guide and server configuration documentation provided</span></div>
+                            <div class="flex items-start"><span class="checkbox"></span><span>All passwords and credentials securely transferred to client</span></div>
+                            <div class="flex items-start"><span class="checkbox"></span><span>Admin panel access credentials provided</span></div>
+                            <div class="flex items-start"><span class="checkbox"></span><span>Production environment URLs and access details documented</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Application Deliverables -->
+                    <div class="avoid-break">
+                        <h3 class="text-lg font-semibold text-indigo-600 mb-3">Application Deliverables</h3>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex items-start"><span class="checkbox"></span><span>Web application deployed to production and accessible</span></div>
+                            <div class="flex items-start"><span class="checkbox"></span><span>Android app uploaded to Google Play Store (or APK provided)</span></div>
+                            <div class="flex items-start"><span class="checkbox"></span><span>iOS app uploaded to Apple App Store (or TestFlight build provided)</span></div>
+                            <div class="flex items-start"><span class="checkbox"></span><span>All third-party integrations tested and functional in production</span></div>
+                            <div class="flex items-start"><span class="checkbox"></span><span>SSL certificate installed and HTTPS enabled</span></div>
+                            <div class="flex items-start"><span class="checkbox"></span><span>Domain configured and DNS propagated</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Testing & Quality Assurance -->
+                    <div class="avoid-break">
+                        <h3 class="text-lg font-semibold text-indigo-600 mb-3">Testing & Quality Assurance</h3>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex items-start"><span class="checkbox"></span><span>All test cases executed with pass status</span></div>
+                            <div class="flex items-start"><span class="checkbox"></span><span>UAT conducted and signed-off by client</span></div>
+                            <div class="flex items-start"><span class="checkbox"></span><span>No critical or high-priority bugs remaining</span></div>
+                            <div class="flex items-start"><span class="checkbox"></span><span>Performance testing completed with acceptable results</span></div>
+                            <div class="flex items-start"><span class="checkbox"></span><span>Security testing completed with no critical vulnerabilities</span></div>
+                            <div class="flex items-start"><span class="checkbox"></span><span>Cross-browser and cross-device testing completed</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Documentation & Training -->
+                    <div class="avoid-break">
+                        <h3 class="text-lg font-semibold text-indigo-600 mb-3">Documentation & Training</h3>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex items-start"><span class="checkbox"></span><span>User manuals for end users (buyers, sellers, agents) delivered</span></div>
+                            <div class="flex items-start"><span class="checkbox"></span><span>Admin manual for system administrators delivered</span></div>
+                            <div class="flex items-start"><span class="checkbox"></span><span>Training sessions conducted (8 hours total)</span></div>
+                            <div class="flex items-start"><span class="checkbox"></span><span>Training materials and recordings provided</span></div>
+                            <div class="flex items-start"><span class="checkbox"></span><span>FAQ document created</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Final Approvals -->
+                <div class="mt-8 p-6 bg-gray-50 border-2 border-gray-300 rounded-lg">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Final Approvals</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center">
+                            <span class="checkbox mr-3"></span>
+                            <span class="text-sm">Client Representative sign-off: <span class="signature-line ml-2" style="width: 200px;"></span> Date: <span class="signature-line ml-2" style="width: 120px;"></span></span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="checkbox mr-3"></span>
+                            <span class="text-sm">Project Manager sign-off: <span class="signature-line ml-2" style="width: 200px;"></span> Date: <span class="signature-line ml-2" style="width: 120px;"></span></span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="checkbox mr-3"></span>
+                            <span class="text-sm">Tech Lead sign-off: <span class="signature-line ml-2" style="width: 200px;"></span> Date: <span class="signature-line ml-2" style="width: 120px;"></span></span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="p-6 border-t-2 border-gray-300 text-center text-sm text-gray-600 mt-8">
+            <p class="font-semibold text-gray-800 mb-2">Prepared by CodeStorm Hub</p>
+            <p>Dhaka, Bangladesh</p>
+            <p class="mt-2">Email: contact@codestormhub.dev | Phone: +880-1970279556</p>
+            <p class="mt-4 text-xs text-gray-500">Document generated on 2026-01-02 | Source: docs/Quotation.md</p>
+        </footer>
+    </div>
+
+    <!-- Print Button (No Print) -->
+    <div class="no-print fixed bottom-6 right-6">
+        <button onclick="window.print()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg transition duration-300">
+            Print Quotation
+        </button>
+    </div>
+
+</body>
+</html>
