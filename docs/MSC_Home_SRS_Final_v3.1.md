@@ -1991,6 +1991,41 @@ It complements the state machines above and operationalizes **proof uploads per 
     - Output: Parties can rate/review each other and (optionally) the listing/agent.
     - Evidence: Review gating enforced (BR-20/BR-21).
 
+#### 12.4.1 BD Transaction Step Workflow Diagram
+
+```mermaid
+flowchart TD
+    START([Offer Accepted]) --> S1[📋 Step 1: Deal Initiated]
+    S1 --> S2[📁 Step 2: Document Collection]
+    S2 --> S3[✅ Step 3: Ownership Verification]
+    S3 --> S4{Bayna Required?}
+    S4 -->|Yes| S4A[📝 Step 4: Bayna Signed]
+    S4 -->|No| S5
+    S4A --> S5[⚖️ Step 5: Legal Review]
+    S5 --> S6[💰 Step 6: Payment/Token Money]
+    S6 --> S7[📄 Step 7: Dalil Registration]
+    S7 --> S8[🏛️ Step 8: Namjari Submission]
+    S8 --> S8A[Portal Link-out]
+    S8A --> S8B[Capture Reference]
+    S8B --> S9[✅ Step 9: Namjari Approved]
+    S9 --> S10{Tax Payment<br/>Required?}
+    S10 -->|Yes| S10A[💳 Step 10: Land Tax Payment]
+    S10 -->|No| S11
+    S10A --> S10B[Portal Link-out]
+    S10B --> S10C[Upload Receipt]
+    S10C --> S11[🏠 Step 11: Handover Complete]
+    S11 --> S12[⭐ Step 12: Transaction Closed]
+    S12 --> END([Reviews Enabled])
+    
+    style S1 fill:#e1f5e1
+    style S7 fill:#fff4e1
+    style S8 fill:#e1f0ff
+    style S9 fill:#e1f0ff
+    style S10A fill:#ffe1e1
+    style S11 fill:#f0e1ff
+    style S12 fill:#e1ffe1
+```
+
 ---
 
 ## 13. Diagrams (ERD/State/Sequence/Flow)
