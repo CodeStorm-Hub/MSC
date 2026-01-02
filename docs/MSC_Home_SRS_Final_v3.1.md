@@ -2427,11 +2427,6 @@ graph LR
     Admin --> UC26
     Admin --> UC27
 ```
-    Admin --> UC24
-    Admin --> UC25
-    Admin --> UC26
-    Admin --> UC27
-```
 
 ---
 
