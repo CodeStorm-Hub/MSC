@@ -15,6 +15,9 @@
     
     <!-- Mermaid.js for diagrams -->
     <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+
+    <!-- Phosphor Icons (for UI controls) -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
     
     <!-- Tailwind Configuration -->
     <script>
@@ -29,6 +32,14 @@
                         'brand-darker': '#070d18',
                         'brand-blue': '#0f1724',
                         'brand-accent': '#1a2a44',
+                        brand: {
+                            dark: '#0b1220',
+                            darker: '#070d18',
+                            blue: '#0f1724',
+                            accent: '#1a2a44',
+                            text: '#334155',
+                            light: '#f8fafc'
+                        },
                     }
                 }
             }
@@ -388,10 +399,134 @@
             transform: translateY(-2px);
             box-shadow: 0 15px 35px rgba(59, 130, 246, 0.4);
         }
+
+        /* Floating Actions (template-style) */
+        .fab-container {
+            position: fixed;
+            right: 2rem;
+            bottom: 2rem;
+            z-index: 50;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            align-items: flex-end;
+        }
+
+        /* AI Chat Panel Styles (template-style) */
+        .ai-panel {
+            position: fixed;
+            top: 0;
+            right: -500px;
+            width: 450px;
+            height: 100vh;
+            background: white;
+            box-shadow: -4px 0 15px rgba(0,0,0,0.1);
+            transition: right 0.3s ease-in-out;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .ai-panel.open {
+            right: 0;
+        }
+
+        .chat-message {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .chat-user {
+            background-color: #f1f5f9;
+            color: #0f1724;
+            align-self: flex-end;
+            margin-left: 2rem;
+        }
+
+        .chat-ai {
+            background-color: #eff6ff;
+            color: #1e3a8a;
+            border: 1px solid #dbeafe;
+            margin-right: 2rem;
+        }
+
+        .typing-indicator::after {
+            content: '...';
+            animation: ellipsis 1.5s infinite;
+        }
+
+        @keyframes ellipsis {
+            0% { content: '.'; }
+            33% { content: '..'; }
+            66% { content: '...'; }
+        }
     </style>
 </head>
 <body>
-    <div class="a4-container">
+    <!-- Floating Action Buttons -->
+    <div class="fab-container no-print">
+        <button onclick="toggleAIPanel()" class="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-full shadow-lg transition-all transform hover:scale-105 font-medium border-2 border-white/20">
+            <i class="ph ph-sparkle text-xl"></i>
+            AI Assistant
+        </button>
+
+        <button onclick="window.print()" class="flex items-center gap-2 bg-brand-accent hover:bg-brand-dark text-white px-6 py-3 rounded-full shadow-lg transition-all transform hover:scale-105 font-medium">
+            <i class="ph ph-printer text-xl"></i>
+            Print / Save PDF
+        </button>
+    </div>
+
+    <!-- AI Intelligence Hub Sidebar -->
+    <div id="aiPanel" class="ai-panel no-print font-sans">
+        <!-- Header -->
+        <div class="p-5 bg-brand-dark text-white flex justify-between items-center shadow-md">
+            <div class="flex items-center gap-2">
+                <i class="ph ph-sparkle text-yellow-400 text-xl"></i>
+                <h3 class="font-bold text-lg m-0 text-white">SRS Intelligence Hub</h3>
+            </div>
+            <button onclick="toggleAIPanel()" class="text-white/70 hover:text-white" aria-label="Close AI panel">
+                <i class="ph ph-x text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="p-4 border-b border-gray-100 bg-gray-50 flex gap-2 overflow-x-auto">
+            <button onclick="generateRiskAnalysis()" class="whitespace-nowrap px-3 py-1.5 bg-white border border-gray-200 rounded-full text-xs font-semibold text-brand-accent hover:bg-indigo-50 hover:border-indigo-200 transition-colors flex items-center gap-1">
+                <i class="ph ph-warning-circle"></i> Analyze Risks
+            </button>
+            <button onclick="generateTestCases()" class="whitespace-nowrap px-3 py-1.5 bg-white border border-gray-200 rounded-full text-xs font-semibold text-brand-accent hover:bg-indigo-50 hover:border-indigo-200 transition-colors flex items-center gap-1">
+                <i class="ph ph-check-square-offset"></i> Generate Test Cases
+            </button>
+            <button onclick="summarizeDoc()" class="whitespace-nowrap px-3 py-1.5 bg-white border border-gray-200 rounded-full text-xs font-semibold text-brand-accent hover:bg-indigo-50 hover:border-indigo-200 transition-colors flex items-center gap-1">
+                <i class="ph ph-file-text"></i> Summarize
+            </button>
+        </div>
+
+        <!-- Chat Area -->
+        <div id="chatContainer" class="flex-1 overflow-y-auto p-5 bg-white flex flex-col">
+            <div class="chat-message chat-ai">
+                <p class="m-0">Hello! I can help you spot risks, generate test cases, or answer questions about the requirements. Answers are based on the document text.</p>
+            </div>
+        </div>
+
+        <!-- Input Area -->
+        <div class="p-4 border-t border-gray-200 bg-white">
+            <div class="relative">
+                <input type="text" id="userInput" placeholder="Ask about requirements..."
+                    class="w-full pl-4 pr-12 py-3 rounded-xl border border-gray-300 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-sm"
+                    onkeypress="handleEnter(event)">
+                <button onclick="sendMessage()" class="absolute right-2 top-2 p-1.5 text-indigo-600 hover:bg-indigo-50 rounded-lg transition-colors" aria-label="Send message">
+                    <i class="ph ph-paper-plane-right text-xl"></i>
+                </button>
+            </div>
+            <p class="text-[10px] text-gray-400 mt-2 text-center">Powered by Gemini. Answers based on document content.</p>
+        </div>
+    </div>
+
+    <div class="a4-container" id="srsContent">
         <!-- Cover Page -->
         <div class="a4-page page-break print-bg" style="background: linear-gradient(135deg, #0b1220 0%, #1a2a44 100%); color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 100vh;">
             <div class="text-center space-y-8">
@@ -463,149 +598,204 @@
 <p><strong>Note:</strong> This document consolidates requirements based on market research, user studies, and Bangladesh real estate industry best practices. All requirements have been validated for technical feasibility and business value.</p>
 </blockquote>
 <h2 id="table-of-contents">Table of Contents</h2>
-<h3 id="1-introduction">1. Introduction</h3>
-<ul>
-<li>1.1 Purpose</li>
-<li>1.2 Scope</li>
-<li>1.3 Definitions (Bangladesh Context)</li>
-</ul>
-<h3 id="2-product-overview">2. Product Overview</h3>
-<ul>
-<li>2.1 Problem Summary</li>
-<li>2.2 Product Vision</li>
-<li>2.3 Research Signals (Market Validation)</li>
-</ul>
-<h3 id="3-stakeholders-user-actors">3. Stakeholders &amp; User Actors</h3>
-<ul>
-<li>3.1 Primary Actors</li>
-<li>3.2 Secondary Actors</li>
-<li>3.3 Roles &amp; Permissions (RBAC + Relationship-Based Access)</li>
-</ul>
-<h3 id="4-personas">4. Personas</h3>
-<ul>
-<li>4.1 Seller Persona (Rakib Hasan)</li>
-<li>4.2 Buyer Persona (Sumaiya Akter)</li>
-<li>4.3 Agent Persona</li>
-</ul>
-<h3 id="5-system-modules-scope">5. System Modules &amp; Scope</h3>
-<ul>
-<li>Authentication &amp; Account Management</li>
-<li>User Profile &amp; Verification</li>
-<li>Marketplace &amp; Listings</li>
-<li>Communication &amp; Appointments</li>
-<li>Transaction Management</li>
-<li>Payment Integration</li>
-<li>Legal &amp; Financial Support</li>
-<li>Admin &amp; Moderation</li>
-</ul>
-<h3 id="6-assumptions-constraints-dependencies">6. Assumptions, Constraints, Dependencies</h3>
-<ul>
-<li>6.1 Assumptions</li>
-<li>6.2 Constraints</li>
-<li>6.3 Dependencies</li>
-</ul>
-<h3 id="7-functional-requirements-fr-1-to-fr-93">7. Functional Requirements (FR-1 to FR-93)</h3>
-<ul>
-<li>7.1 Authentication &amp; Account (FR-1 to FR-4)</li>
-<li>7.2 User Profile &amp; Professional Data (FR-5 to FR-7)</li>
-<li>7.3 Verification &amp; Trust (FR-8 to FR-11)</li>
-<li>7.4 Listings &amp; Media (FR-12 to FR-18)</li>
-<li>7.5 Search &amp; Discovery (FR-19 to FR-22)</li>
-<li>7.6 Communication &amp; Appointments (FR-23 to FR-26)</li>
-<li>7.7 Offers, Orders, Transactions (FR-27 to FR-32)</li>
-<li>7.8 Payments (FR-33 to FR-35)</li>
-<li>7.9 Legal Support (FR-36 to FR-38)</li>
-<li>7.10 Financial Support (FR-39 to FR-40)</li>
-<li>7.11 Reviews &amp; Reputation (FR-41 to FR-43)</li>
-<li>7.12 Notifications (FR-44 to FR-45)</li>
-<li>7.13 Community + Content (FR-46 to FR-49) [P2]</li>
-<li>7.14 Admin/Moderation (FR-50 to FR-51)</li>
-<li>7.15 Transparency, Guides, and FAQs (FR-52 to FR-55)</li>
-<li>7.16 Safety, Abuse Reporting, and Disputes (FR-56 to FR-57)</li>
-<li>7.17 Real Estate Company / Project Listings (FR-58 to FR-59)</li>
-<li>7.18 Monetization &amp; Billing (FR-60 to FR-61)</li>
-<li>7.19 Service Provider Marketplace (FR-62 to FR-65)</li>
-<li>7.20 Government Land Portals (FR-66 to FR-69)</li>
-<li>7.21 Payment Gateway Integration (FR-70 to FR-74)</li>
-<li>7.22 Operational &amp; Safety Requirements (FR-75 to FR-93)</li>
-</ul>
-<h3 id="8-business-rules-br-1-to-br-43">8. Business Rules (BR-1 to BR-43)</h3>
-<ul>
-<li>8.1 Verification (BR-1 to BR-4)</li>
-<li>8.2 Accuracy Score (BR-5 to BR-7)</li>
-<li>8.3 Cost Transparency (BR-8 to BR-9)</li>
-<li>8.4 Offers/Transactions (BR-10 to BR-14)</li>
-<li>8.5 Payments (BR-15 to BR-17)</li>
-<li>8.6 Buyer Protection / Disputes (BR-18 to BR-19)</li>
-<li>8.7 Reviews (BR-20 to BR-21)</li>
-<li>8.8 Service Provider Marketplace (BR-22 to BR-23)</li>
-<li>8.9 Payment Gateway Validation &amp; Risk (BR-24 to BR-27)</li>
-<li>8.10 Listing Lifecycle &amp; Moderation (BR-28 to BR-31)</li>
-<li>8.11 Document Vault Access Policy (BR-32 to BR-35)</li>
-<li>8.12 Messaging Safety &amp; Abuse Handling (BR-36 to BR-38)</li>
-<li>8.13 Notifications (BR-39 to BR-40)</li>
-<li>8.14 Cancellations, Refunds, and Holds (BR-41 to BR-43)</li>
-</ul>
-<h3 id="9-user-stories-real-life-scenarios">9. User Stories &amp; Real-Life Scenarios</h3>
-<ul>
-<li>9.1 Buyer Stories (US-B1 to US-B7)</li>
-<li>9.2 Seller / Agent Stories (US-S1 to US-S5)</li>
-<li>9.3 Legal Agent Stories (US-L1)</li>
-<li>9.4 Admin / Verifier Stories (US-A1 to US-A2)</li>
-<li>9.5 User Story Summary Matrix</li>
-</ul>
-<h3 id="10-data-requirements">10. Data Requirements</h3>
-<ul>
-<li>10.1 Core Entities (MVP)</li>
-<li>10.2 Bangladesh-Specific Document Types</li>
-<li>10.3 Additional Entities / Tables</li>
-</ul>
-<h3 id="11-entity-relationship-diagrams-erd">11. Entity Relationship Diagrams (ERD)</h3>
-<ul>
-<li>11.1 Core Marketplace ERD</li>
-<li>11.2 Extended Operational ERD</li>
-<li>11.3 Auth, Social Login &amp; Credentials ERD</li>
-<li>11.4 Community, Contacts &amp; Content ERD [P2]</li>
-</ul>
-<h3 id="12-transaction-step-tracking">12. Transaction Step Tracking</h3>
-<ul>
-<li>12.1 Offer State Machine</li>
-<li>12.2 Transaction State Machine (Buy/Sell)</li>
-<li>12.3 Transaction State Machine (Rent)</li>
-<li>12.4 Bangladesh Transaction Step Checklist (Bayna → Dalil → Namjari → Tax)</li>
-</ul>
-<h3 id="13-diagrams-erdstatesequenceflowarchitecture">13. Diagrams (ERD/State/Sequence/Flow/Architecture)</h3>
-<ul>
-<li>13.1 Listing Lifecycle State Diagram</li>
-<li>13.2 Verification Flow Sequence Diagram</li>
-<li>13.3 Payment Flow with OTP/3DS</li>
-<li>13.4 System Context (External Integrations)</li>
-<li>13.5 Hosted Checkout + IPN + Validation</li>
-<li>13.6 Dispute Lifecycle State Diagram</li>
-<li>13.7 Document Vault Access Decision Flow</li>
-<li>13.8 Notification Delivery Sequence</li>
-<li>13.9 Portal Tracking Assistance (Manual Link-Out)</li>
-<li>13.10 Use Case Diagram - Core Platform Features</li>
-<li>13.11 High-Level Architecture Diagram</li>
-<li>13.12 Data Flow Diagram - Property Search &amp; Transaction</li>
-<li>13.13 Component Interaction Diagram - Verification Flow</li>
-<li>13.14 Deployment Architecture Diagram</li>
-</ul>
-<h3 id="14-non-functional-requirements-nfr">14. Non-Functional Requirements (NFR)</h3>
-<ul>
-<li>14.1 Security</li>
-<li>14.2 Performance</li>
-<li>14.3 Reliability</li>
-<li>14.4 Privacy</li>
-<li>14.5 Accessibility &amp; Localization</li>
-</ul>
-<h3 id="15-appendices-traceability-glossary-standards">15. Appendices (Traceability, Glossary &amp; Standards)</h3>
-<ul>
-<li>15.1 Technical Standards &amp; Compliance</li>
-<li>15.2 External References &amp; Resources</li>
-<li>15.3 Glossary of Terms (40+ terms)</li>
-<li>15.4 Approval &amp; Sign-Off</li>
-</ul>
+<nav class="toc avoid-break" aria-label="Table of contents">
+    <ul>
+        <li><a href="#executive-summary">Executive Summary</a></li>
+
+        <li>
+            <a href="#1-introduction_1">1. Introduction</a>
+            <ul>
+                <li><a href="#11-purpose">1.1 Purpose</a></li>
+                <li><a href="#12-scope">1.2 Scope</a></li>
+                <li><a href="#13-definitions-bd-context">1.3 Definitions (BD-context)</a></li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="#2-product-overview_1">2. Product Overview</a>
+            <ul>
+                <li><a href="#21-problem-summary">2.1 Problem Summary</a></li>
+                <li><a href="#22-product-vision">2.2 Product Vision</a></li>
+                <li><a href="#23-research-signals-cross-validated-from-slides-ocr">2.3 Research Signals (Cross-validated from Slides OCR)</a></li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="#3-stakeholders-user-actors_1">3. Stakeholders &amp; User Actors</a>
+            <ul>
+                <li><a href="#31-primary-actors">3.1 Primary Actors</a></li>
+                <li><a href="#32-secondary-actors">3.2 Secondary Actors</a></li>
+                <li><a href="#33-roles-permissions-rbac-relationship-based-access">3.3 Roles &amp; Permissions (RBAC + Relationship-Based Access)</a></li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="#4-personas_1">4. Personas</a>
+            <ul>
+                <li><a href="#41-seller-persona-rakib-hasan">4.1 Seller Persona (Rakib Hasan)</a></li>
+                <li><a href="#42-buyer-persona-sumaiya-akter">4.2 Buyer Persona (Sumaiya Akter)</a></li>
+                <li><a href="#43-agent-persona-inferred">4.3 Agent Persona (Inferred)</a></li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="#5-system-modules-scope_1">5. System Modules &amp; Scope</a>
+            <ul>
+                <li><a href="#5-system-modules-scope_1">Authentication &amp; Account</a></li>
+                <li><a href="#5-system-modules-scope_1">User Profile + Professional Mode</a></li>
+                <li><a href="#5-system-modules-scope_1">Verification &amp; Trust</a></li>
+                <li><a href="#5-system-modules-scope_1">Marketplace + Listings</a></li>
+                <li><a href="#5-system-modules-scope_1">Search + Discovery</a></li>
+                <li><a href="#5-system-modules-scope_1">Communication + Appointments</a></li>
+                <li><a href="#5-system-modules-scope_1">Offers/Transactions + Step Tracking</a></li>
+                <li><a href="#5-system-modules-scope_1">Payments</a></li>
+                <li><a href="#5-system-modules-scope_1">Legal + Financial Support</a></li>
+                <li><a href="#5-system-modules-scope_1">Admin/Moderation</a></li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="#6-assumptions-constraints-dependencies_1">6. Assumptions, Constraints, Dependencies</a>
+            <ul>
+                <li><a href="#61-assumptions">6.1 Assumptions</a></li>
+                <li><a href="#62-constraints">6.2 Constraints</a></li>
+                <li><a href="#63-dependencies">6.3 Dependencies</a></li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="#7-functional-requirements-fr">7. Functional Requirements (FR)</a>
+            <ul>
+                <li><a href="#71-authentication-account">7.1 Authentication &amp; Account</a></li>
+                <li><a href="#72-user-profile-professional-data">7.2 User Profile &amp; Professional Data</a></li>
+                <li><a href="#73-verification-trust-tiered">7.3 Verification &amp; Trust (Tiered)</a></li>
+                <li><a href="#74-listings-media">7.4 Listings &amp; Media</a></li>
+                <li><a href="#75-search-discovery">7.5 Search &amp; Discovery</a></li>
+                <li><a href="#76-communication-appointments">7.6 Communication &amp; Appointments</a></li>
+                <li><a href="#77-offers-orders-transactions">7.7 Offers, Orders, Transactions</a></li>
+                <li><a href="#78-payments">7.8 Payments</a></li>
+                <li><a href="#79-legal-support">7.9 Legal Support</a></li>
+                <li><a href="#710-financial-support">7.10 Financial Support</a></li>
+                <li><a href="#711-reviews-reputation">7.11 Reviews &amp; Reputation</a></li>
+                <li><a href="#712-notifications">7.12 Notifications</a></li>
+                <li><a href="#713-contacts-community-content-p2">7.13 Contacts, Community + Content (P2)</a></li>
+                <li><a href="#714-adminmoderation">7.14 Admin/Moderation</a></li>
+                <li><a href="#715-transparency-guides-and-faqs">7.15 Transparency, Guides, and FAQs</a></li>
+                <li><a href="#716-safety-abuse-reporting-and-disputes">7.16 Safety, Abuse Reporting, and Disputes</a></li>
+                <li><a href="#717-real-estate-company-project-listings-from-interview-insights">7.17 Real Estate Company / Project Listings</a></li>
+                <li><a href="#718-monetization-billing">7.18 Monetization &amp; Billing</a></li>
+                <li><a href="#719-service-provider-marketplace-gap-closure-from-v11">7.19 Service Provider Marketplace</a></li>
+                <li><a href="#720-government-land-portals-bd-context-link-out-tracking">7.20 Government Land Portals (BD-context)</a></li>
+                <li><a href="#721-payment-gateway-integration-sslcommerz-style-hardening">7.21 Payment Gateway Integration</a></li>
+                <li><a href="#722-operational-safety-requirements-v30-addendum">7.22 Operational &amp; Safety Requirements</a></li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="#8-business-rules-br">8. Business Rules (BR)</a>
+            <ul>
+                <li><a href="#81-verification">8.1 Verification</a></li>
+                <li><a href="#82-accuracy-score">8.2 Accuracy Score</a></li>
+                <li><a href="#83-cost-transparency">8.3 Cost Transparency</a></li>
+                <li><a href="#84-offerstransactions">8.4 Offers/Transactions</a></li>
+                <li><a href="#85-payments">8.5 Payments</a></li>
+                <li><a href="#86-buyer-protection-disputes">8.6 Buyer Protection / Disputes</a></li>
+                <li><a href="#87-reviews">8.7 Reviews</a></li>
+                <li><a href="#88-service-provider-marketplace">8.8 Service Provider Marketplace</a></li>
+                <li><a href="#89-payment-gateway-validation-risk">8.9 Payment Gateway Validation &amp; Risk</a></li>
+                <li><a href="#810-listing-lifecycle-moderation">8.10 Listing Lifecycle &amp; Moderation</a></li>
+                <li><a href="#811-document-vault-access-policy">8.11 Document Vault Access Policy</a></li>
+                <li><a href="#812-messaging-safety-abuse-handling">8.12 Messaging Safety &amp; Abuse Handling</a></li>
+                <li><a href="#813-notifications">8.13 Notifications</a></li>
+                <li><a href="#814-cancellations-refunds-and-holds">8.14 Cancellations, Refunds, and Holds</a></li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="#9-user-stories-real-life-scenarios_1">9. User Stories &amp; Real-Life Scenarios</a>
+            <ul>
+                <li><a href="#91-buyer-stories-detailed-scenarios">9.1 Buyer Stories - Detailed Scenarios</a></li>
+                <li><a href="#92-seller-agent-stories-detailed-scenarios">9.2 Seller / Agent Stories - Detailed Scenarios</a></li>
+                <li><a href="#93-legal-agent-stories-detailed-scenarios">9.3 Legal Agent Stories - Detailed Scenarios</a></li>
+                <li><a href="#94-admin-verifier-stories-detailed-scenarios">9.4 Admin / Verifier Stories - Detailed Scenarios</a></li>
+                <li><a href="#95-user-story-summary-matrix">9.5 User Story Summary Matrix</a></li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="#10-data-requirements_1">10. Data Requirements</a>
+            <ul>
+                <li><a href="#101-core-entities-mvp">10.1 Core Entities (MVP)</a></li>
+                <li><a href="#102-bd-specific-document-types-suggested">10.2 BD-specific Document Types (suggested)</a></li>
+                <li><a href="#103-additional-entities-tables-v30-gaps-closed">10.3 Additional Entities / Tables (v3.0 gaps closed)</a></li>
+            </ul>
+        </li>
+
+        <li><a href="#11-erd-mermaid">11. ERD (Mermaid)</a></li>
+
+        <li>
+            <a href="#12-transaction-step-tracking_1">12. Transaction Step Tracking</a>
+            <ul>
+                <li><a href="#121-offer-state-machine">12.1 Offer State Machine</a></li>
+                <li><a href="#122-transaction-state-machine-buysell">12.2 Transaction State Machine (Buy/Sell)</a></li>
+                <li><a href="#123-transaction-state-machine-rent">12.3 Transaction State Machine (Rent)</a></li>
+                <li><a href="#124-bd-transaction-step-checklist-bayna-dalil-namjari-tax">12.4 BD Transaction Step Checklist (Bayna → Dalil → Namjari → Tax)</a></li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="#13-diagrams-erdstatesequenceflow">13. Diagrams (ERD/State/Sequence/Flow)</a>
+            <ul>
+                <li><a href="#131-listing-lifecycle-draft-review-publish">13.1 Listing Lifecycle (Draft → Review → Publish)</a></li>
+                <li><a href="#132-verification-flow-user-adminverifier-badge">13.2 Verification Flow (User → Admin/Verifier → Badge)</a></li>
+                <li><a href="#133-payment-flow-gateway-otp3ds">13.3 Payment Flow (Gateway + OTP/3DS)</a></li>
+                <li><a href="#134-system-context-external-integrations">13.4 System Context (External Integrations)</a></li>
+                <li><a href="#135-hosted-checkout-ipn-validation-sslcommerz-style">13.5 Hosted Checkout + IPN + Validation</a></li>
+                <li><a href="#136-dispute-lifecycle-state-diagram">13.6 Dispute Lifecycle (State Diagram)</a></li>
+                <li><a href="#137-document-vault-access-decision-flow">13.7 Document Vault Access Decision (Flow)</a></li>
+                <li><a href="#138-notification-delivery-sequence">13.8 Notification Delivery (Sequence)</a></li>
+                <li><a href="#139-portal-tracking-assistance-manual-link-out">13.9 Portal Tracking Assistance (Manual Link-Out)</a></li>
+                <li><a href="#1310-use-case-diagram-core-platform-features">13.10 Use Case Diagram - Core Platform Features</a></li>
+                <li><a href="#1311-high-level-architecture-diagram">13.11 High-Level Architecture Diagram</a></li>
+                <li><a href="#1312-data-flow-diagram-property-search-transaction">13.12 Data Flow Diagram - Property Search &amp; Transaction</a></li>
+                <li><a href="#1313-component-interaction-diagram-verification-flow">13.13 Component Interaction Diagram - Verification Flow</a></li>
+                <li><a href="#1314-deployment-architecture-diagram">13.14 Deployment Architecture Diagram</a></li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="#14-non-functional-requirements-nfr_1">14. Non-Functional Requirements (NFR)</a>
+            <ul>
+                <li><a href="#141-security">14.1 Security</a></li>
+                <li>
+                    <a href="#142-performance">14.2 Performance</a>
+                    <ul>
+                        <li><a href="#1421-scalability">14.2.1 Scalability</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#143-reliability">14.3 Reliability</a>
+                    <ul>
+                        <li><a href="#1431-availability-recovery">14.3.1 Availability &amp; Recovery</a></li>
+                        <li><a href="#1432-observability">14.3.2 Observability</a></li>
+                    </ul>
+                </li>
+                <li><a href="#144-privacy">14.4 Privacy</a></li>
+                <li><a href="#145-accessibility-localization">14.5 Accessibility &amp; Localization</a></li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="#15-appendices-traceability-glossary">15. Appendices (Traceability &amp; Glossary)</a>
+            <ul>
+                <li><a href="#151-technical-standards-compliance">15.1 Technical Standards &amp; Compliance</a></li>
+                <li><a href="#152-external-references-resources">15.2 External References &amp; Resources</a></li>
+                <li><a href="#153-glossary-of-terms">15.3 Glossary of Terms</a></li>
+                <li><a href="#154-approval-sign-off">15.4 Approval &amp; Sign-Off</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>
 <hr />
 <h2 id="1-introduction_1">1. Introduction</h2>
 <h3 id="11-purpose">1.1 Purpose</h3>
