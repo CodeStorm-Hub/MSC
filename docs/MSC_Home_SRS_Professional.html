@@ -52,6 +52,11 @@
             size: A4 portrait;
             margin: 15mm 18mm 20mm 18mm;
         }
+
+        /* Cover page should be full-bleed (no margins) */
+        @page :first {
+            margin: 0;
+        }
         
         /* Print media styles */
         @media print {
@@ -60,6 +65,73 @@
                 print-color-adjust: exact;
                 margin: 0;
                 padding: 0;
+            }
+
+            /* Avoid double-margins (page margin + page padding) */
+            #srsContent .a4-page {
+                padding: 0 !important;
+            }
+
+            /* Let the long TOC flow naturally across pages */
+            #srsContent .toc,
+            #srsContent nav.toc {
+                page-break-inside: auto !important;
+                break-inside: auto !important;
+            }
+
+            /* Prevent wide tables from clipping in print */
+            #srsContent .table-wrapper {
+                overflow: visible !important;
+            }
+
+            /* Stable, professional print typography */
+            #srsContent {
+                font-size: 11pt;
+                line-height: 1.55;
+            }
+
+            #srsContent h1 { font-size: 18pt; border-bottom-width: 2px; }
+            #srsContent h2 { font-size: 14pt; border-bottom-width: 1px; }
+            #srsContent h3 { font-size: 12pt; }
+            #srsContent h4 { font-size: 11pt; }
+            #srsContent h5 { font-size: 10.5pt; }
+            #srsContent h6 { font-size: 10pt; }
+
+            #srsContent p,
+            #srsContent li {
+                font-size: 11pt;
+            }
+
+            #srsContent table {
+                font-size: 9.5pt;
+                width: 100% !important;
+                table-layout: fixed;
+            }
+
+            /* Ensure the cover page maps cleanly to the first printed page */
+            #srsContent .cover-page {
+                height: 297mm !important;
+                min-height: 297mm !important;
+            }
+
+            /* Prevent diagrams from overflowing page width in print */
+            #srsContent .mermaid svg {
+                max-width: 100% !important;
+                /* Some Mermaid diagrams can be taller than a page; clamp height to avoid PDF clipping */
+                max-height: 240mm !important;
+                height: auto !important;
+            }
+
+            #srsContent .mermaid {
+                padding: 10pt;
+            }
+
+            #srsContent hr {
+                margin: 14pt 0;
+            }
+
+            #srsContent .a4-page > :first-child {
+                margin-top: 0 !important;
             }
             
             .no-print {
@@ -137,6 +209,14 @@
             padding: 2.5rem;
             background: white;
         }
+
+        /* Base document typography should not affect the AI panel */
+        #srsContent {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            line-height: 1.65;
+            color: #111827;
+        }
         
         .header-logo {
             display: flex;
@@ -149,136 +229,177 @@
             height: 48px;
         }
         
-        /* Typography */
-        h1 {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-top: 2rem;
-            margin-bottom: 1.5rem;
-            color: #1e40af;
-            border-bottom: 3px solid #3b82f6;
-            padding-bottom: 0.5rem;
-        }
-        
-        h2 {
-            font-size: 1.75rem;
-            font-weight: 700;
-            margin-top: 2rem;
-            margin-bottom: 1.25rem;
+        /* Typography (scoped to the SRS document only) */
+        #srsContent h1 {
+            font-size: 1.9rem;
+            font-weight: 750;
+            margin-top: 1.75rem;
+            margin-bottom: 1.15rem;
             color: #1e3a8a;
             border-bottom: 2px solid #60a5fa;
             padding-bottom: 0.4rem;
         }
-        
-        h3 {
+
+        /* Title + subtitle pattern (two consecutive H1s at the start of the main content) */
+        #srsContent .a4-page > h1:first-of-type {
+            margin-top: 0;
+        }
+
+        #srsContent .a4-page > h1 + h1 {
+            font-size: 1.35rem;
+            font-weight: 650;
+            margin-top: 0.65rem;
+            margin-bottom: 1.25rem;
+            color: #0f172a;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        #srsContent h2 {
             font-size: 1.5rem;
-            font-weight: 600;
-            margin-top: 1.75rem;
-            margin-bottom: 1rem;
+            font-weight: 750;
+            margin-top: 1.7rem;
+            margin-bottom: 0.95rem;
+            color: #1e40af;
+            border-bottom: 1px solid #93c5fd;
+            padding-bottom: 0.35rem;
+        }
+
+        #srsContent h3 {
+            font-size: 1.25rem;
+            font-weight: 650;
+            margin-top: 1.35rem;
+            margin-bottom: 0.75rem;
             color: #1e40af;
         }
-        
-        h4 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-top: 1.5rem;
-            margin-bottom: 0.875rem;
+
+        #srsContent h4 {
+            font-size: 1.125rem;
+            font-weight: 650;
+            margin-top: 1.15rem;
+            margin-bottom: 0.6rem;
+            color: #1d4ed8;
+        }
+
+        #srsContent h5 {
+            font-size: 1.05rem;
+            font-weight: 650;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
             color: #2563eb;
         }
-        
-        h5 {
-            font-size: 1.125rem;
-            font-weight: 600;
-            margin-top: 1.25rem;
-            margin-bottom: 0.75rem;
-            color: #3b82f6;
+
+        #srsContent h6 {
+            font-size: 0.975rem;
+            font-weight: 650;
+            margin-top: 0.85rem;
+            margin-bottom: 0.45rem;
+            color: #2563eb;
         }
-        
-        h6 {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-top: 1rem;
-            margin-bottom: 0.625rem;
-            color: #60a5fa;
-        }
-        
-        p {
-            margin-bottom: 1rem;
-            line-height: 1.7;
-            color: #374151;
+
+        #srsContent p {
+            margin-bottom: 0.85rem;
+            line-height: 1.65;
+            color: #334155;
         }
         
         /* Lists */
-        ul, ol {
+        #srsContent ul, #srsContent ol {
             margin-bottom: 1rem;
             padding-left: 1.5rem;
         }
-        
-        ul {
+
+        #srsContent ul {
             list-style-type: disc;
         }
-        
-        ol {
+
+        #srsContent ol {
             list-style-type: decimal;
         }
-        
-        li {
+
+        #srsContent li {
             margin-bottom: 0.5rem;
-            line-height: 1.7;
-            color: #374151;
+            line-height: 1.65;
+            color: #334155;
         }
-        
-        ul ul, ol ul {
+
+        #srsContent ul ul, #srsContent ol ul {
             list-style-type: circle;
         }
-        
-        ul ul ul, ol ul ul {
+
+        #srsContent ul ul ul, #srsContent ol ul ul {
             list-style-type: square;
         }
         
         /* Tables */
-        .table-wrapper {
+        #srsContent .table-wrapper {
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
             margin: 1.5rem 0;
+            max-width: 100%;
         }
-        
-        table {
+
+        #srsContent .table-wrapper > table {
+            margin: 0;
+        }
+
+        #srsContent table {
             width: 100%;
             border-collapse: collapse;
             margin: 1.5rem 0;
             font-size: 0.875rem;
         }
-        
-        thead {
+
+        #srsContent thead {
             background-color: #eff6ff;
         }
-        
-        th {
+
+        #srsContent th {
             background-color: #dbeafe;
             border: 1px solid #93c5fd;
             padding: 0.75rem;
             text-align: left;
             font-weight: 600;
             color: #1e40af;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+            hyphens: auto;
         }
-        
-        td {
+
+        #srsContent td {
             border: 1px solid #e5e7eb;
             padding: 0.75rem;
             color: #374151;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+            hyphens: auto;
         }
-        
-        tbody tr:nth-child(even) {
+
+        #srsContent tbody tr:nth-child(even) {
             background-color: #f9fafb;
         }
-        
-        tbody tr:hover {
+
+        #srsContent tbody tr:hover {
             background-color: #f3f4f6;
+        }
+
+        /* Approval table should remain clean and fillable */
+        #srsContent table.approval-table {
+            break-inside: avoid;
+        }
+
+        #srsContent table.approval-table td {
+            height: 28px;
+            vertical-align: middle;
+        }
+
+        #srsContent table.approval-table tbody tr:nth-child(even),
+        #srsContent table.approval-table tbody tr:hover {
+            background-color: transparent;
         }
         
         /* Code */
-        code {
+        #srsContent code {
             background-color: #f1f5f9;
             padding: 0.2rem 0.4rem;
             border-radius: 0.25rem;
@@ -286,8 +407,8 @@
             font-size: 0.875em;
             color: #dc2626;
         }
-        
-        pre {
+
+        #srsContent pre {
             background-color: #1e293b;
             color: #e2e8f0;
             padding: 1rem;
@@ -295,26 +416,30 @@
             overflow-x: auto;
             margin: 1rem 0;
         }
-        
-        pre code {
+
+        #srsContent pre code {
             background: transparent;
             color: inherit;
             padding: 0;
         }
         
         /* Blockquotes */
-        blockquote {
+        #srsContent blockquote {
             border-left: 4px solid #3b82f6;
-            padding-left: 1rem;
             margin: 1.5rem 0;
             background-color: #eff6ff;
             padding: 1rem;
             border-radius: 0.25rem;
             color: #1e40af;
         }
+
+        #srsContent blockquote p {
+            color: inherit;
+            margin: 0.5rem 0;
+        }
         
         /* Mermaid diagrams */
-        .mermaid {
+        #srsContent .mermaid {
             margin: 2rem 0;
             display: flex;
             justify-content: center;
@@ -325,60 +450,60 @@
         }
         
         /* TOC */
-        .toc {
+        #srsContent .toc {
             background-color: #f9fafb;
             padding: 1.5rem;
             border-radius: 0.5rem;
             margin: 2rem 0;
         }
-        
-        .toc ul {
+
+        #srsContent .toc ul {
             list-style-type: none;
             padding-left: 0;
         }
-        
-        .toc > ul > li {
+
+        #srsContent .toc > ul > li {
             margin-bottom: 0.75rem;
         }
-        
-        .toc ul ul {
+
+        #srsContent .toc ul ul {
             padding-left: 1.5rem;
             margin-top: 0.5rem;
         }
-        
-        .toc a {
+
+        #srsContent .toc a {
             color: #2563eb;
             text-decoration: none;
             transition: color 0.2s;
         }
-        
-        .toc a:hover {
+
+        #srsContent .toc a:hover {
             color: #1d4ed8;
             text-decoration: underline;
         }
         
         /* Strong/Bold */
-        strong {
+        #srsContent strong {
             font-weight: 600;
             color: #111827;
         }
         
         /* Links */
-        a {
+        #srsContent a {
             color: #2563eb;
             text-decoration: none;
         }
-        
-        a:hover {
+
+        #srsContent a:hover {
             color: #1d4ed8;
             text-decoration: underline;
         }
         
         /* Horizontal rule */
-        hr {
+        #srsContent hr {
             border: none;
             border-top: 2px solid #e5e7eb;
-            margin: 2rem 0;
+            margin: 1.6rem 0;
         }
         
         /* Print button */
@@ -528,7 +653,7 @@
 
     <div class="a4-container" id="srsContent">
         <!-- Cover Page -->
-        <div class="a4-page page-break print-bg" style="background: linear-gradient(135deg, #0b1220 0%, #1a2a44 100%); color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 100vh;">
+        <div class="a4-page page-break print-bg cover-page" style="background: linear-gradient(135deg, #0b1220 0%, #1a2a44 100%); color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 100vh;">
             <div class="text-center space-y-8">
                 <!-- Logo -->
                 <div class="flex justify-center mb-8">
@@ -3701,7 +3826,7 @@ graph TB
 <hr />
 <h3 id="154-approval-sign-off">15.4 Approval &amp; Sign-Off</h3>
 <p><strong>Document Approval:</strong></p>
-<table>
+<table class="approval-table">
 <thead>
 <tr>
 <th>Role</th>
@@ -3712,34 +3837,34 @@ graph TB
 </thead>
 <tbody>
 <tr>
-<td>Product Owner</td>
-<td>[Name]</td>
-<td>[Signature/Digital Sign]</td>
-<td>[DD/MM/YYYY]</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 <tr>
-<td>Technical Architect</td>
-<td>[Name]</td>
-<td>[Signature/Digital Sign]</td>
-<td>[DD/MM/YYYY]</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 <tr>
-<td>Project Manager</td>
-<td>[Name]</td>
-<td>[Signature/Digital Sign]</td>
-<td>[DD/MM/YYYY]</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 <tr>
-<td>Quality Assurance Lead</td>
-<td>[Name]</td>
-<td>[Signature/Digital Sign]</td>
-<td>[DD/MM/YYYY]</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 <tr>
-<td>Client Representative</td>
-<td>[Name]</td>
-<td>[Signature/Digital Sign]</td>
-<td>[DD/MM/YYYY]</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -3761,6 +3886,27 @@ graph TB
     
     <!-- Initialize Mermaid -->
     <script>
+        // Ensure wide tables are usable on-screen (horizontal scroll) while keeping print safe.
+        // Many markdown-to-HTML pipelines produce bare <table> elements; this normalizes them.
+        (function wrapSrsTables() {
+            const root = document.getElementById('srsContent');
+            if (!root) return;
+
+            const tables = root.querySelectorAll('table');
+            tables.forEach((table) => {
+                if (table.closest('.table-wrapper')) return;
+
+                const wrapper = document.createElement('div');
+                wrapper.className = 'table-wrapper';
+
+                const parent = table.parentNode;
+                if (!parent) return;
+
+                parent.insertBefore(wrapper, table);
+                wrapper.appendChild(table);
+            });
+        })();
+
         mermaid.initialize({ 
             startOnLoad: true,
             theme: 'default',
