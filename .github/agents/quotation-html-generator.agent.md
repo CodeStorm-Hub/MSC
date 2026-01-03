@@ -1,15 +1,9 @@
 ---
 name: quotation-html-generator
-description: >
-  Generate a professional, modern, A4-size printable HTML file from the repository's
-  docs/Quotation.md (MSC Price Quotation). Uses Tailwind CSS CDN and other CDN-hosted
-  assets only. Writes the generated HTML to files/docs/Quotation.html in the repository.
+description:
+  Generate a professional, modern, A4-size printable HTML file from the repository docs/Quotation.md (MSC Price Quotation). Uses Tailwind CSS CDN and other CDN-hosted assets only. Writes the generated HTML to files/docs/Quotation.html in the repository.
 target: github-copilot
-tools:
-  - read
-  - search
-  - edit
-  - github/*
+tools: ["*"]
 infer: true
 metadata:
   owner: CodeStorm-Hub
