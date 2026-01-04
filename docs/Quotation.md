@@ -74,14 +74,14 @@ The system follows a **Backend → API → Frontend (Web & Mobile)** architectur
 
 | Step | Development Phase | Purpose / Cause | Timeline | Cost (BDT) |
 |----|------------------|-----------------|----------|-----------:|
-| Step 1 | Requirement Analysis & UI/UX Design | Define system flow and user experience | 3 Weeks | 70,000 |
-| Step 2 | Backend Development | Core business logic, roles, verification | 7 Weeks | 2,10,000 |
-| Step 3 | API Development | Secure data communication for all platforms | 4 Weeks | 1,00,000 |
-| Step 4 | Web Application Development | Browser-based access for users and admins | 5 Weeks | 1,30,000 |
-| Step 5 | Mobile Apps (Android & iOS) | Mobile access for buyers, sellers & agents | 5 Weeks | 1,70,000 |
-| Step 6 | Testing & Deployment | Quality assurance and production release | 3 Weeks | 50,000 |
-| Step 7 | **Annual Maintenance (AMC – 12 Months)** | Bug fixes, security updates, technical support | 12 Months | 70,000 |
-| **Total** |  |  | **5–6 Months + AMC** | **8,00,000** |
+| Step 1 | Requirement Analysis & UI/UX Design | Define system flow and user experience | 3 Weeks | 60,000 |
+| Step 2 | Backend Development | Core business logic, roles, verification | 7 Weeks | 1,70,000 |
+| Step 3 | API Development | Secure data communication for all platforms | 4 Weeks | 80,000 |
+| Step 4 | Web Application Development | Browser-based access for users and admins | 5 Weeks | 1,10,000 |
+| Step 5 | Mobile Apps (Android & iOS) | Mobile access for buyers, sellers & agents | 5 Weeks | 1,40,000 |
+| Step 6 | Testing & Deployment | Quality assurance and production release | 3 Weeks | 40,000 |
+| Step 7 | **Annual Maintenance (AMC – 12 Months)** | Bug fixes, security updates, technical support | 12 Months | 50,000 |
+| **Total** |  |  | **5–6 Months + AMC** | **6,50,000** |
 
 ---
 
@@ -105,14 +105,14 @@ This section details the team composition, effort allocation, and effective rate
 | **DevOps Engineer** | 50% | 10 weeks | 500 | 50,000 |
 | **Total Team Effort** | - | **215 person-weeks** | - | **11,75,000** |
 
-**Note:** The total calculated effort cost (BDT 11,75,000) is higher than the quoted price (BDT 7,30,000) due to vendor efficiency, parallel workstreams, and competitive pricing strategy. The quoted price represents a **38% discount** to win client partnership and establish market presence.
+**Note:** The total calculated effort cost (BDT 11,75,000) is higher than the quoted price (BDT 6,00,000) due to vendor efficiency, parallel workstreams, and competitive pricing strategy. The quoted price represents a **38% discount** to win client partnership and establish market presence.
 
 ### Effective Hourly Rate (Derived from Quoted Price)
 
-- **Total Development Cost:** BDT 7,30,000
+- **Total Development Cost:** BDT 6,00,000
 - **Total Person-Weeks:** 215 weeks
 - **Assuming 40-hour work week:** 215 × 40 = 8,600 hours
-- **Effective Blended Rate:** BDT 7,30,000 ÷ 8,600 hours = **BDT 84.88/hour**
+- **Effective Blended Rate:** BDT 6,00,000 ÷ 8,600 hours = **BDT 69.77/hour**
 
 This blended rate is significantly below market rates, reflecting CodeStorm Hub's commitment to client value and long-term partnership.
 
@@ -136,12 +136,12 @@ This blended rate is significantly below market rates, reflecting CodeStorm Hub'
 
 | Category | Amount (BDT) |
 |-------|--------------:|
-| Development Cost | 7,30,000 |
-| Annual Maintenance Cost (AMC) | 70,000 |
-| **Grand Total** | **8,00,000** |
+| Development Cost | 6,00,000 |
+| Annual Maintenance Cost (AMC) | 50,000 |
+| **Grand Total** | **6,50,000** |
 
 **In Words:**  
-**Eight Lakh Bangladeshi Taka Only**
+**Six Lakh Fifty Thousand Bangladeshi Taka Only**
 
 ---
 
@@ -308,9 +308,9 @@ This blended rate is significantly below market rates, reflecting CodeStorm Hub'
 
 | Stage | Percentage | Amount (BDT) |
 |-----|------------|--------------:|
-| Project Initiation | 30% | 2,40,000 |
-| Mid Development | 40% | 3,20,000 |
-| Final Delivery | 30% | 2,40,000 |
+| Project Initiation | 30% | 1,95,000 |
+| Mid Development | 40% | 2,60,000 |
+| Final Delivery | 30% | 1,95,000 |
 
 **Payment Due:** Within 15 days of invoice  
 **Payment Mode:** Bank Transfer / Mobile Banking / Cheque
@@ -319,7 +319,7 @@ This blended rate is significantly below market rates, reflecting CodeStorm Hub'
 
 ### Detailed Payment Schedule
 
-#### Payment 1: Project Initiation (30% - BDT 2,40,000)
+#### Payment 1: Project Initiation (30% - BDT 1,95,000)
 **Trigger:** Contract signing and project kickoff  
 **Due Date:** 15 January 2026 (Within 15 days of 01-Jan-2026 start)  
 **Deliverables to Unlock Payment:**
@@ -334,12 +334,12 @@ Invoice Number: MSC-INV-001-2026
 Invoice Date: 01 January 2026
 Due Date: 15 January 2026
 Description: Project Initiation - 30% of Development Cost
-Amount: BDT 2,40,000
+Amount: BDT 1,95,000
 ```
 
 ---
 
-#### Payment 2: Mid-Development (40% - BDT 3,20,000)
+#### Payment 2: Mid-Development (40% - BDT 2,60,000)
 **Trigger:** Completion of Milestones 2 & 3 (Backend + API)  
 **Due Date:** 23 April 2026 (Within 15 days of 08-Apr-2026 completion)  
 **Deliverables to Unlock Payment:**
@@ -354,13 +354,13 @@ Invoice Number: MSC-INV-002-2026
 Invoice Date: 09 April 2026
 Due Date: 23 April 2026
 Description: Mid-Development Completion - 40% of Development Cost
-Amount: BDT 3,20,000
-Cumulative Paid: BDT 5,60,000 (76.7%)
+Amount: BDT 2,60,000
+Cumulative Paid: BDT 4,55,000 (70%)
 ```
 
 ---
 
-#### Payment 3: Final Delivery (30% - BDT 2,40,000)
+#### Payment 3: Final Delivery (30% - BDT 1,95,000)
 **Trigger:** UAT sign-off and production deployment  
 **Due Date:** 15 June 2026 (Within 15 days of 31-May-2026 completion)  
 **Deliverables to Unlock Payment:**
@@ -376,16 +376,16 @@ Invoice Number: MSC-INV-003-2026
 Invoice Date: 01 June 2026
 Due Date: 15 June 2026
 Description: Final Delivery & Deployment - 30% of Development Cost
-Amount: BDT 2,40,000
-Total Project Cost: BDT 8,00,000 (including AMC)
+Amount: BDT 1,95,000
+Total Project Cost: BDT 6,50,000 (including AMC)
 ```
 
 ---
 
 ### AMC Payment Terms
 
-**AMC Annual Fee:** BDT 70,000  
-**Payment Frequency:** Quarterly (BDT 17,500 per quarter)  
+**AMC Annual Fee:** BDT 50,000  
+**Payment Frequency:** Quarterly (BDT 12,500 per quarter)  
 **First AMC Invoice:** 01 June 2026  
 **AMC Period:** 01 June 2026 – 31 May 2027
 
@@ -393,10 +393,10 @@ Total Project Cost: BDT 8,00,000 (including AMC)
 
 | Quarter | Period | Invoice Date | Due Date | Amount (BDT) |
 |---------|--------|--------------|----------|--------------|
-| Q1 | June-Aug 2026 | 01-Jun-2026 | 15-Jun-2026 | 17,500 |
-| Q2 | Sep-Nov 2026 | 01-Sep-2026 | 15-Sep-2026 | 17,500 |
-| Q3 | Dec-Feb 2027 | 01-Dec-2026 | 15-Dec-2026 | 17,500 |
-| Q4 | Mar-May 2027 | 01-Mar-2027 | 15-Mar-2027 | 17,500 |
+| Q1 | June-Aug 2026 | 01-Jun-2026 | 15-Jun-2026 | 12,500 |
+| Q2 | Sep-Nov 2026 | 01-Sep-2026 | 15-Sep-2026 | 12,500 |
+| Q3 | Dec-Feb 2027 | 01-Dec-2026 | 15-Dec-2026 | 12,500 |
+| Q4 | Mar-May 2027 | 01-Mar-2027 | 15-Mar-2027 | 12,500 |
 
 ---
 
@@ -407,9 +407,9 @@ Total Project Cost: BDT 8,00,000 (including AMC)
 - **Suspension of Services:** If payment is overdue by >30 days, CodeStorm Hub reserves the right to suspend development work or AMC support until payment is received
 - **Interest on Overdue Amounts:** 12% per annum calculated daily on amounts overdue beyond 30 days
 
-**Example:** If Payment 2 (BDT 3,20,000) is overdue by 2 weeks:
-- Late fee: 3,20,000 × 4% = BDT 12,800
-- Total due: BDT 3,32,800
+**Example:** If Payment 2 (BDT 2,60,000) is overdue by 2 weeks:
+- Late fee: 2,60,000 × 4% = BDT 10,400
+- Total due: BDT 2,70,400
 
 ---
 
@@ -756,7 +756,7 @@ on behalf of **MSC Home Rental & Real Estate**, hereby acknowledge and confirm t
 By signing below, I confirm that the MSC Home Rental & Real Estate Platform has been delivered in accordance with the agreed scope, and I accept the final deliverable on behalf of the client organization.
 
 This acceptance triggers:
-- Final payment invoice (30% - BDT 2,40,000)
+- Final payment invoice (30% - BDT 1,95,000)
 - Activation of Annual Maintenance Contract (AMC)
 - Project closure and handover completion
 
